@@ -155,26 +155,6 @@
             text-decoration: underline;
         }
 
-        /* Botão do Carrinho no Menu */
-        .cart-btn-menu {
-            background: #f1c40f;
-            color: #111;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s;
-        }
-
-        .cart-btn-menu:hover {
-            background: #f39c12;
-        }
-
         /* Banner */
         .banner {
             background: linear-gradient(135deg, #1a1a1a, #2c3e50);
@@ -428,154 +408,6 @@
             background-color: #0073a8;
         }
 
-        .btn-add-cart {
-            background-color: #f39c12;
-            color: white;
-            text-align: center;
-            padding: 8px;
-            border-radius: 4px;
-            border: none;
-            font-weight: bold;
-            display: block;
-            width: 100%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-add-cart:hover {
-            background-color: #d68910;
-        }
-
-        /* Mini Carrinho Lateral (Drawer) */
-        .cart-drawer {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 380px;
-            height: 100%;
-            background: #fff;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
-            z-index: 2500;
-            transition: right 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-drawer.open {
-            right: 0;
-        }
-
-        .cart-header {
-            background: #2c3e50;
-            color: #fff;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h3 {
-            font-size: 1.1rem;
-        }
-
-        .cart-close {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .cart-body {
-            padding: 20px;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-            padding: 10px 0;
-            font-size: 0.9rem;
-        }
-
-        .cart-item-details {
-            flex: 1;
-            padding-right: 10px;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-        }
-
-        .cart-item-price {
-            color: #27ae60;
-            font-weight: bold;
-        }
-
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            background: #f9f9f9;
-            border-top: 1px solid #eee;
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #222;
-        }
-
-        .btn-checkout-whatsapp {
-            background-color: #25d366;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            width: 100%;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.3s;
-        }
-
-        .btn-checkout-whatsapp:hover {
-            background-color: #1ebd59;
-        }
-
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2400;
-            display: none;
-        }
-
-        .cart-overlay.active {
-            display: block;
-        }
-
         /* Notificação Toast de Compra Recente */
         .toast-notification {
             position: fixed;
@@ -593,7 +425,7 @@
             max-width: 320px;
             transform: translateY(100px);
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transition: all 0.4s ease-in-out;
         }
 
         .toast-notification.show {
@@ -1246,27 +1078,6 @@
         <i class="fa fa-arrow-up"></i>
     </a>
 
-    <!-- Mini Carrinho Lateral (Drawer) -->
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <h3><i class="fa fa-shopping-cart"></i> Seu Carrinho de Compras</h3>
-            <button class="cart-close" onclick="toggleCart()">&times;</button>
-        </div>
-        <div class="cart-body" id="cartItemsList">
-            <p style="color: #777; text-align: center; margin-top: 20px;">Seu carrinho está vazio.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cartTotalPrice">R$ 0,00</span>
-            </div>
-            <button class="btn-checkout-whatsapp" onclick="checkoutWhatsApp()">
-                <i class="fab fa-whatsapp"></i> Fechar Pedido via WhatsApp
-            </button>
-        </div>
-    </div>
-
     <!-- Notificação Toast de Compra Recente -->
     <div class="toast-notification" id="toastNotification">
         <div class="toast-icon">
@@ -1310,9 +1121,6 @@
                 <i class="fa fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
             </div>
-            <button class="cart-btn-menu" onclick="toggleCart()">
-                <i class="fa fa-shopping-cart"></i> Carrinho <span id="cartCountBadge" style="background:#000; color:#fff; padding:2px 6px; border-radius:50%; font-size:0.75rem;">0</span>
-            </button>
         </div>
     </header>
 
@@ -1367,7 +1175,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2025 (9.1.3)', 135.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1382,7 +1189,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2024 (4.1.0)', 125.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1397,7 +1203,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Medianav 4.1.0', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1412,7 +1217,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Evolution 9.1.3', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1427,7 +1231,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal10155')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1nnyjKr" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema 1.0.15.5', 60.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>
@@ -1526,7 +1329,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2025 (9.1.3)', 135.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1541,7 +1343,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2024 (4.1.0)', 125.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1556,7 +1357,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Medianav 4.1.0', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1571,7 +1371,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Evolution 9.1.3', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1586,7 +1385,6 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal10155')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1nnyjKr" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema 1.0.15.5', 60.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>
@@ -1964,106 +1762,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
-        // ================= SISTEMA DE CARRINHO DE COMPRAS =================
-        let cart = JSON.parse(localStorage.getItem('medianav_cart')) || [];
-
-        function toggleCart() {
-            const drawer = document.getElementById('cartDrawer');
-            const overlay = document.getElementById('cartOverlay');
-            drawer.classList.toggle('open');
-            overlay.classList.toggle('active');
-            renderCart();
-        }
-
-        function addToCart(title, price) {
-            cart.push({ title, price });
-            localStorage.setItem('medianav_cart', JSON.stringify(cart));
-            updateCartBadge();
-            toggleCart();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('medianav_cart', JSON.stringify(cart));
-            updateCartBadge();
-            renderCart();
-        }
-
-        function updateCartBadge() {
-            const badge = document.getElementById('cartCountBadge');
-            if (badge) badge.innerText = cart.length;
-        }
-
-        function renderCart() {
-            const listEl = document.getElementById('cartItemsList');
-            const totalEl = document.getElementById('cartTotalPrice');
-            
-            if (cart.length === 0) {
-                listEl.innerHTML = '<p style="color: #777; text-align: center; margin-top: 20px;">Seu carrinho está vazio.</p>';
-                totalEl.innerText = 'R$ 0,00';
-                return;
-            }
-
-            let html = '';
-            let total = 0;
-            cart.forEach((item, index) => {
-                total += item.price;
-                html += `
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <div class="cart-item-title">${item.title}</div>
-                            <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${index})"><i class="fa fa-trash"></i></button>
-                    </div>
-                `;
-            });
-            listEl.innerHTML = html;
-            totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Seu carrinho está vazio!");
-                return;
-            }
-            
-            // Recupera os dados do cliente logado no site
-            let nomeCliente = "";
-            let emailCliente = "";
-            let telefoneCliente = "";
-            const dadosSalvos = localStorage.getItem('medianav_cliente');
-            if (dadosSalvos) {
-                try {
-                    const clienteObj = JSON.parse(dadosSalvos);
-                    nomeCliente = clienteObj.nome || "";
-                    emailCliente = clienteObj.email || "";
-                    telefoneCliente = clienteObj.telefone || "";
-                } catch(e) {
-                    console.log("Erro ao ler cliente logado", e);
-                }
-            }
-
-            let total = cart.reduce((sum, item) => sum + item.price, 0);
-            
-            let msg = "Olá! Gostaria de fechar o seguinte pedido consolidado:%0A";
-            
-            if (nomeCliente) {
-                msg += `%0A*Cliente:* ${nomeCliente}`;
-                if (emailCliente) msg += ` (%0A*E-mail:* ${emailCliente})`;
-                if (telefoneCliente) msg += ` - *Tel:* ${telefoneCliente}`;
-                msg += `%0A`;
-            }
-
-            msg += `%0A*Itens do Pedido:*%0A`;
-            cart.forEach(item => {
-                msg += `- ${item.title} (R$ ${item.price.toFixed(2).replace('.', ',')})%0A`;
-            });
-            msg += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
-            
-            window.open(`https://wa.me/5591982079997?text=${msg}`, '_blank');
-        }
-
         // ================= ÁREA DE AVALIAÇÕES INTERATIVAS =================
         function setRating(val) {
             document.getElementById('reviewRatingValue').value = val;
@@ -2119,107 +1817,13 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE (TODOS OS ESTADOS E CIDADES DO BRASIL) =================
+        // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE =================
         const mockBuyers = [
-            /* Acre (AC) */
-            { name: "Lucas de Rio Branco - AC", product: "Atualização Mapa 2025" },
-            { name: "Mariana de Cruzeiro do Sul - AC", product: "Atualização Sistema Evolution 9.1.3" },
-            /* Alagoas (AL) */
-            { name: "José de Maceió - AL", product: "Atualização Mapa 2024" },
-            { name: "Beatriz de Arapiraca - AL", product: "Atualização Sistema 4.1.0" },
-            /* Amapá (AP) */
-            { name: "Anderson de Macapá - AP", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Camila de Santana - AP", product: "Atualização Mapa 2025" },
-            /* Amazonas (AM) */
-            { name: "Rodrigo de Manaus - AM", product: "Atualização Mapa 2024" },
-            { name: "Larissa de Parintins - AM", product: "Atualização Sistema Evolution 9.1.3" },
-            /* Bahia (BA) */
-            { name: "Matheus de Salvador - BA", product: "Atualização Mapa 2025" },
-            { name: "Juliana de Feira de Santana - BA", product: "Atualização Sistema 4.1.0" },
-            { name: "Raimundo de Vitória da Conquista - BA", product: "Atualização Sistema 1.0.15.5" },
-            /* Ceará (CE) */
-            { name: "Thiago de Fortaleza - CE", product: "Atualização Mapa 2025" },
-            { name: "Fernanda de Juazeiro do Norte - CE", product: "Atualização Sistema Evolution 9.1.3" },
-            { name: "Renato de Sobral - CE", product: "Atualização Mapa 2024" },
-            /* Distrito Federal (DF) */
-            { name: "Bruno de Brasília - DF", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Patrícia de Taguatinga - DF", product: "Atualização Mapa 2025" },
-            /* Espírito Santo (ES) */
-            { name: "Diego de Vitória - ES", product: "Atualização Sistema 4.1.0" },
-            { name: "Vanessa de Vila Velha - ES", product: "Atualização Mapa 2024" },
-            { name: "Gabriel de Serra - ES", product: "Atualização Sistema Evolution 9.1.3" },
-            /* Goiás (GO) */
-            { name: "Rafael de Goiânia - GO", product: "Atualização Mapa 2025" },
-            { name: "Aline de Aparecida de Goiânia - GO", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Leandro de Anápolis - GO", product: "Atualização Mapa 2024" },
-            /* Maranhão (MA) */
-            { name: "Antônio de São Luís - MA", product: "Atualização Sistema Evolution 9.1.3" },
-            { name: "Francisca de Imperatriz - MA", product: "Atualização Mapa 2025" },
-            /* Mato Grosso (MT) */
-            { name: "Marcelo de Cuiabá - MT", product: "Atualização Sistema 4.1.0" },
-            { name: "Tatiane de Várzea Grande - MT", product: "Atualização Mapa 2024" },
-            { name: "Eduardo de Rondonópolis - MT", product: "Atualização Sistema 1.0.15.5" },
-            /* Mato Grosso do Sul (MS) */
-            { name: "Felipe de Campo Grande - MS", product: "Atualização Mapa 2025" },
-            { name: "Camila de Dourados - MS", product: "Atualização Sistema Evolution 9.1.3" },
-            /* Minas Gerais (MG) */
-            { name: "Roberto de Belo Horizonte - MG", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Flávia de Uberlândia - MG", product: "Atualização Mapa 2025" },
-            { name: "Marcos de Contagem - MG", product: "Atualização Sistema 4.1.0" },
-            { name: "Priscila de Juiz de Fora - MG", product: "Atualização Mapa 2024" },
-            /* Pará (PA) */
             { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
             { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" },
             { name: "Juliano de Marabá - PA", product: "Atualização Mapa 2024" },
             { name: "Ana Paula de Castanhal - PA", product: "Atualização Sistema 4.1.0" },
-            { name: "Roberto de Santarém - PA", product: "Atualização Sistema 1.0.15.5" },
-            /* Paraíba (PB) */
-            { name: "João de João Pessoa - PB", product: "Atualização Mapa 2025" },
-            { name: "Maria de Campina Grande - PB", product: "Atualização Sistema 1.0.15.5" },
-            /* Paraná (PR) */
-            { name: "Lucas de Curitiba - PR", product: "Atualização Sistema Evolution 9.1.3" },
-            { name: "Renata de Londrina - PR", product: "Atualização Mapa 2024" },
-            { name: "Alexandre de Maringá - PR", product: "Atualização Sistema 4.1.0" },
-            { name: "Jessica de Cascavel - PR", product: "Atualização Mapa 2025" },
-            /* Pernambuco (PE) */
-            { name: "Paulo de Recife - PE", product: "Atualização Mapa 2025" },
-            { name: "Luciana de Jaboatão dos Guararapes - PE", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Vinícius de Caruaru - PE", product: "Atualização Mapa 2024" },
-            /* Piauí (PI) */
-            { name: "Francisco de Teresina - PI", product: "Atualização Sistema Evolution 9.1.3" },
-            { name: "Antônia de Parnaíba - PI", product: "Atualização Mapa 2025" },
-            /* Rio de Janeiro (RJ) */
-            { name: "Daniel de Rio de Janeiro - RJ", product: "Atualização Mapa 2025" },
-            { name: "Carla de Niterói - RJ", product: "Atualização Sistema 4.1.0" },
-            { name: "Leonardo de Duque de Caxias - RJ", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Amanda de Nova Iguaçu - RJ", product: "Atualização Mapa 2024" },
-            /* Rio Grande do Norte (RN) */
-            { name: "Anderson de Natal - RN", product: "Atualização Mapa 2025" },
-            { name: "Natália de Mossoró - RN", product: "Atualização Sistema Evolution 9.1.3" },
-            /* Rio Grande do Sul (RS) */
-            { name: "Eduardo de Porto Alegre - RS", product: "Atualização Sistema 1.0.15.5" },
-            { name: "Letícia de Caxias do Sul - RS", product: "Atualização Mapa 2025" },
-            { name: "Guilherme de Canoas - RS", product: "Atualização Sistema 4.1.0" },
-            { name: "Sabrina de Pelotas - RS", product: "Atualização Mapa 2024" },
-            /* Rondônia (RO) */
-            { name: "Wellington de Porto Velho - RO", product: "Atualização Mapa 2025" },
-            { name: "Janaína de Ji-Paraná - RO", product: "Atualização Sistema Evolution 9.1.3" },
-            /* Roraima (RR) */
-            { name: "Sérgio de Boa Vista - RR", product: "Atualização Mapa 2024" },
-            /* Santa Catarina (SC) */
-            { name: "Maurício de Florianópolis - SC", product: "Atualização Sistema 4.1.0" },
-            { name: "Bianca de Joinville - SC", product: "Atualização Mapa 2025" },
-            { name: "Wagner de Blumenau - SC", product: "Atualização Sistema 1.0.15.5" },
-            /* São Paulo (SP) */
-            { name: "Ricardo de São Paulo - SP", product: "Atualização Mapa 2025" },
-            { name: "Marcela de Campinas - SP", product: "Atualização Sistema Evolution 9.1.3" },
-            { name: "Fabio de Santos - SP", product: "Atualização Mapa 2024" },
-            { name: "Cristiane de São Bernardo do Campo - SP", product: "Atualização Sistema 4.1.0" },
-            { name: "Adriano de Ribeirão Preto - SP", product: "Atualização Sistema 1.0.15.5" },
-            /* Sergipe (SE) */
-            { name: "Everson de Aracaju - SE", product: "Atualização Mapa 2025" },
-            /* Tocantins (TO) */
-            { name: "Reginaldo de Palmas - TO", product: "Atualização Sistema Evolution 9.1.3" }
+            { name: "Roberto de Santarém - PA", product: "Atualização Sistema 1.0.15.5" }
         ];
 
         function triggerToast() {
@@ -2232,13 +1836,12 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             descEl.innerText = `acabou de comprar a ${randomBuyer.product}`;
 
             toast.classList.add('show');
-            // Tempo aumentado para 8 segundos (8000ms) visível na tela
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 8000);
+            }, 5000);
         }
 
-        // ================= RECUPERAÇÃO DE CARRINHO / ABANDONO DE CONTATO =================
+        // ================= RECUPERAÇÃO DE CONTATO =================
         function setupContactRecovery() {
             const phoneInput = document.getElementById('cadTelefone');
             if (phoneInput) {
@@ -2377,7 +1980,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
-            updateCartBadge();
             setupContactRecovery();
 
             // Carregar avaliações salvas no localStorage
