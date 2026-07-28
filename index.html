@@ -1838,7 +1838,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 5000);
+            }, 8000); // Tempo que o toast fica visível na tela aumentado para 8 segundos
         }
 
         // ================= RECUPERAÇÃO DE CONTATO =================
@@ -2012,9 +2012,9 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (ocEl) ocEl.innerText = onlineUsers;
             }, 10000);
 
-            // Disparar Toast de compras recentes a cada 18 segundos
-            setTimeout(triggerToast, 4000);
-            setInterval(triggerToast, 18000);
+            // Disparar Toast de compras recentes a cada 65 segundos (intervalo ajustado para ~1 minuto para maior naturalidade)
+            setTimeout(triggerToast, 5000);
+            setInterval(triggerToast, 65000);
 
             atualizarAreaCliente();
         });
@@ -2055,3 +2055,4 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
     </script>
 </body>
 </html>
+```[cite: 7]
