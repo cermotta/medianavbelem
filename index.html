@@ -74,6 +74,14 @@
             gap: 25px;
             border-top: 1px solid #222;
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-links-wrapper {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .nav-menu a {
@@ -86,6 +94,34 @@
 
         .nav-menu a:hover {
             color: #f1c40f;
+        }
+
+        /* Estilo do Cliente Logado no Menu */
+        .user-greeting {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .user-greeting span {
+            color: #fff;
+        }
+
+        .user-greeting button {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-left: 5px;
+            text-decoration: underline;
         }
 
         /* Banner */
@@ -623,7 +659,7 @@
             color: #fff;
         }
 
-        .comprovante-container {
+        .comprovante-container, .cadastro-container {
             background: white;
             padding: 35px;
             border-radius: 8px;
@@ -632,20 +668,20 @@
             margin: 0 auto;
         }
 
-        .comprovante-box {
+        .comprovante-box, .cadastro-box {
             background: #fff8e1;
             padding: 25px;
             border-radius: 8px;
             border: 1px dashed #f39c12;
         }
 
-        .comprovante-box h3 {
+        .comprovante-box h3, .cadastro-box h3 {
             color: #d35400;
             margin-bottom: 10px;
             font-size: 1.2rem;
         }
 
-        .comprovante-box p {
+        .comprovante-box p, .cadastro-box p {
             color: #555;
             font-size: 0.95rem;
             margin-bottom: 15px;
@@ -674,7 +710,7 @@
             outline: none;
         }
 
-        .btn-enviar-comprovante {
+        .btn-enviar-comprovante, .btn-cadastrar {
             background-color: #27ae60;
             color: white;
             border: none;
@@ -691,7 +727,7 @@
             gap: 10px;
         }
 
-        .btn-enviar-comprovante:hover {
+        .btn-enviar-comprovante:hover, .btn-cadastrar:hover {
             background-color: #219653;
         }
 
@@ -996,11 +1032,15 @@
 
     <!-- Nav Menu -->
     <nav class="nav-menu">
-        <a onclick="switchPage('home')">Início</a>
-        <a onclick="switchPage('produtos')">Produtos</a>
-        <a onclick="switchPage('quemsomos')">Quem Somos</a>
-        <a onclick="switchPage('suporte')">Suporte / FAQ</a>
-        <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
+        <div class="nav-links-wrapper">
+            <a onclick="switchPage('home')">Início</a>
+            <a onclick="switchPage('produtos')">Produtos</a>
+            <a onclick="switchPage('quemsomos')">Quem Somos</a>
+            <a onclick="switchPage('suporte')">Suporte / FAQ</a>
+            <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
+            <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
+        </div>
+        <div id="userMenuArea"></div>
     </nav>
 
     <!-- Banner -->
@@ -1289,6 +1329,39 @@
         </div>
     </div>
 
+    <!-- ================= PAGE: CADASTRO PRÉVIO DO CLIENTE ================= -->
+    <div id="page-cadastro" class="page-view">
+        <div class="container">
+            <h2 class="section-title">Cadastro Prévio do Cliente</h2>
+            
+            <div class="cadastro-container">
+                <div class="cadastro-box">
+                    <h3>Cadastre seus dados para agilizar seu atendimento e compras!</h3>
+                    <p>Preencha com seu Nome, Telefone (WhatsApp) e E-mail. Seus dados ficarão salvos para facilitar o suporte e identificação de pedidos.</p>
+                    
+                    <form id="formCadastro" onsubmit="realizarCadastro(event)">
+                        <div class="form-group">
+                            <label for="cadNome">Nome Completo:</label>
+                            <input type="text" id="cadNome" name="cadNome" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadTelefone">Telefone / WhatsApp:</label>
+                            <input type="text" id="cadTelefone" name="cadTelefone" placeholder="(91) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadEmail">E-mail:</label>
+                            <input type="email" id="cadEmail" name="cadEmail" placeholder="seuemail@exemplo.com" required>
+                        </div>
+                        <button type="submit" class="btn-cadastrar">
+                            <i class="fa fa-user-check"></i> Salvar Meu Cadastro
+                        </button>
+                        <div id="cadastroStatus" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= PAGE: ENVIAR COMPROVANTE ================= -->
     <div id="page-comprovante" class="page-view">
         <div class="container">
@@ -1442,6 +1515,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                         <li><a onclick="switchPage('produtos')">Produtos</a></li>
                         <li><a onclick="switchPage('quemsomos')">Quem Somos</a></li>
                         <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
+                        <li><a onclick="switchPage('cadastro')">Meu Cadastro</a></li>
                         <li><a onclick="switchPage('comprovante')">Enviar Comprovante</a></li>
                     </ul>
                 </div>
@@ -1566,6 +1640,64 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
+        // Script de Gestão do Cadastro Prévio do Cliente
+        function realizarCadastro(e) {
+            e.preventDefault();
+            const nome = document.getElementById('cadNome').value.trim();
+            const telefone = document.getElementById('cadTelefone').value.trim();
+            const email = document.getElementById('cadEmail').value.trim();
+            const statusDiv = document.getElementById('cadastroStatus');
+
+            const clienteData = { nome, telefone, email };
+            localStorage.setItem('medianav_cliente', JSON.stringify(clienteData));
+
+            statusDiv.innerHTML = "Cadastro realizado com sucesso! Seja bem-vindo(a), " + nome + ".";
+            statusDiv.style.color = "#27ae60";
+
+            atualizarAreaCliente();
+
+            setTimeout(() => {
+                switchPage('home');
+            }, 2000);
+        }
+
+        function atualizarAreaCliente() {
+            const dadosSalvos = localStorage.getItem('medianav_cliente');
+            const userMenuArea = document.getElementById('userMenuArea');
+            const navCadastroLink = document.getElementById('navCadastroLink');
+
+            if (dadosSalvos) {
+                const cliente = JSON.parse(dadosSalvos);
+                if (navCadastroLink) navCadastroLink.innerHTML = '<i class="fa fa-user"></i> Meu Perfil';
+                if (userMenuArea) {
+                    userMenuArea.innerHTML = `
+                        <div class="user-greeting">
+                            <i class="fa fa-user-circle"></i> Olá, <span>${cliente.nome.split(' ')[0]}</span>
+                            <button onclick="sairCadastro()" title="Sair do cadastro">Sair</button>
+                        </div>
+                    `;
+                }
+                
+                // Preenche automaticamente o formulário de comprovante se existir
+                const nomeInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const whatsInput = document.getElementById('whatsapp');
+                if (nomeInput && !nomeInput.value) nomeInput.value = cliente.nome;
+                if (emailInput && !emailInput.value) emailInput.value = cliente.email;
+                if (whatsInput && !whatsInput.value) whatsInput.value = cliente.telefone;
+            } else {
+                if (navCadastroLink) navCadastroLink.innerHTML = '<i class="fa fa-user-plus"></i> Meu Cadastro';
+                if (userMenuArea) userMenuArea.innerHTML = '';
+            }
+        }
+
+        function sairCadastro() {
+            localStorage.removeItem('medianav_cliente');
+            atualizarAreaCliente();
+            alert("Você saiu do seu cadastro prévio neste navegador.");
+            switchPage('home');
+        }
+
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
             let visits = localStorage.getItem('medianav_visit_count');
@@ -1590,6 +1722,8 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (onlineUsers > 18) onlineUsers = 18;
                 document.getElementById('onlineCount').innerText = onlineUsers;
             }, 10000);
+
+            atualizarAreaCliente();
         });
 
         // Script para envio do formulário via Web3Forms
