@@ -245,6 +245,12 @@
             object-fit: cover;
             border-radius: 6px;
             margin-bottom: 12px;
+            cursor: pointer; /* Indica que a imagem é clicável para zoom */
+            transition: opacity 0.2s;
+        }
+
+        .product-img:hover {
+            opacity: 0.85;
         }
 
         .product-title {
@@ -420,7 +426,7 @@
             font-size: 0.95rem;
         }
 
-        /* Modal / Popup de Descrição */
+        /* Modal / Popup Geral & Zoom de Imagem */
         .modal {
             display: none;
             position: fixed;
@@ -481,6 +487,50 @@
             overflow-y: auto;
             padding-right: 10px;
             white-space: pre-line;
+        }
+
+        /* Modal Específico para Zoom de Imagem */
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .zoom-modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-zoom {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-zoom:hover {
+            color: #f1c40f;
         }
 
         /* Footer Completo e Estilizado */
@@ -638,7 +688,7 @@
                 <!-- 1. Mapa 2025 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
                         <div class="product-price">R$ 135,00</div>
                     </div>
@@ -651,7 +701,7 @@
                 <!-- 2. Mapa 2024 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
                         <div class="product-price">R$ 125,00</div>
                     </div>
@@ -664,7 +714,7 @@
                 <!-- 3. Atualização 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
                         <div class="product-price">R$ 55,00</div>
                     </div>
@@ -677,7 +727,7 @@
                 <!-- 4. Atualização 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
                         <div class="product-price">R$ 55,00</div>
                     </div>
@@ -690,7 +740,7 @@
                 <!-- 5. Atualização 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
                         <div class="product-price">R$ 60,00</div>
                     </div>
@@ -712,7 +762,7 @@
                 <!-- 1. Mapa 2025 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
                         <div class="product-price">R$ 135,00</div>
                     </div>
@@ -725,7 +775,7 @@
                 <!-- 2. Mapa 2024 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
                         <div class="product-price">R$ 125,00</div>
                     </div>
@@ -738,7 +788,7 @@
                 <!-- 3. Atualização 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
                         <div class="product-price">R$ 55,00</div>
                     </div>
@@ -751,7 +801,7 @@
                 <!-- 4. Atualização 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
                         <div class="product-price">R$ 55,00</div>
                     </div>
@@ -764,7 +814,7 @@
                 <!-- 5. Atualização 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema">
                     <div>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
                         <div class="product-price">R$ 60,00</div>
                     </div>
@@ -808,7 +858,6 @@
                     <h3>Já paguei, envie seu comprovante!</h3>
                     <p>Preencha os dados abaixo, anexe o comprovante de pagamento e clique para enviar diretamente para nosso e-mail (medianavbelem@gmail.com).</p>
                     
-                    <!-- Substitua 'SEU_ACCESS_KEY_AQUI' gerado gratuitamente em web3forms.com -->
                     <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" id="formComprovante">
                         <input type="hidden" name="access_key" value="SEU_ACCESS_KEY_AQUI">
                         <input type="hidden" name="subject" value="Novo Comprovante de Pagamento - MediaNav Belém">
@@ -946,6 +995,12 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         </div>
     </div>
 
+    <!-- ================= MODAL DE ZOOM PARA AS FOTOS ================= -->
+    <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
+        <span class="close-zoom">&times;</span>
+        <img id="zoomImg" src="" alt="Zoom da Imagem">
+    </div>
+
     <!-- Footer Completo e Estilizado -->
     <footer>
         <div class="container">
@@ -1002,6 +1057,19 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) modal.style.display = 'none';
+        }
+
+        // Funções para o Zoom das Imagens
+        function openZoom(imageSrc) {
+            const zoomModal = document.getElementById('zoomModal');
+            const zoomImg = document.getElementById('zoomImg');
+            zoomImg.src = imageSrc;
+            zoomModal.style.display = 'flex';
+        }
+
+        function closeZoom() {
+            const zoomModal = document.getElementById('zoomModal');
+            zoomModal.style.display = 'none';
         }
 
         window.onclick = function(event) {
