@@ -43,6 +43,12 @@
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));
         }
 
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .search-box {
             position: relative;
             width: 300px;
@@ -97,7 +103,7 @@
             color: #f1c40f;
         }
 
-        /* Bloco de Geolocalização, Data (Cidade, Dia, Mês, Ano) e Hora na Extremidade Direita da Barra Preta */
+        /* Bloco de Geolocalização, Data e Hora alinhado à extrema direita */
         .nav-geo-datetime {
             display: flex;
             align-items: center;
@@ -1016,14 +1022,22 @@
         </div>
     </div>
 
-    <!-- Top Bar com fundo amarelo e logo -->
+    <!-- Top Bar com fundo amarelo, logo e bloco de geolocalização/data/hora alinhado à direita -->
     <header class="top-bar">
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
-        <div class="search-box">
-            <i class="fa fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
+        <div class="top-bar-right">
+            <!-- Bloco de Geolocalização, Data e Hora reposicionado na barra superior para alinhar diretamente com a caixa de pesquisa -->
+            <div class="nav-geo-datetime" style="background: rgba(0, 0, 0, 0.08); border-color: rgba(0,0,0,0.15); color: #222;">
+                <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
+                <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">Carregando data...</span></span>
+                <span><i class="fa fa-clock"></i> <span id="tempoRelogio">--:--:--</span></span>
+            </div>
+            <div class="search-box">
+                <i class="fa fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
+            </div>
         </div>
     </header>
 
@@ -1036,12 +1050,6 @@
             <a onclick="switchPage('suporte')">Suporte / FAQ</a>
             <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
-        </div>
-        <!-- Bloco de Geolocalização, Data Formatada (Cidade, Dia, Mês, Ano) e Hora na Extremidade Direita -->
-        <div class="nav-geo-datetime">
-            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
-            <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">Carregando data...</span></span>
-            <span><i class="fa fa-clock"></i> <span id="tempoRelogio">--:--:--</span></span>
         </div>
         <div id="userMenuArea"></div>
     </nav>
@@ -1662,10 +1670,9 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             if (relogioEl) relogioEl.innerText = agora.toLocaleTimeString('pt-BR');
             
             if (dataEl) {
-                // Formatação personalizada: Dia da semana, dia do mês, nome do mês por extenso e ano (ex: Terça-feira, 28 de julho de 2026)
+                // Formatação personalizada: Dia da semana, dia do mês, nome do mês por extenso e ano
                 const opcoesData = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
                 let dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
-                // Primeira letra maiúscula
                 dataEl.innerText = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
             }
         }
@@ -1695,7 +1702,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
             const clienteData = { nome, telefone, email, data: dataRegistro };
             
-            // Salva a sessão do cliente logado no navegador dele
             localStorage.setItem('medianav_cliente', JSON.stringify(clienteData));
 
             statusDiv.innerHTML = "Sucesso! Conectado como " + nome + ".";
