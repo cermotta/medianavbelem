@@ -82,6 +82,7 @@
             display: flex;
             gap: 25px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-menu a {
@@ -93,6 +94,30 @@
         }
 
         .nav-menu a:hover {
+            color: #f1c40f;
+        }
+
+        /* Bloco de Geolocalização, Data e Hora na Barra Preta */
+        .nav-geo-datetime {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ccc;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .nav-geo-datetime span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+        }
+
+        .nav-geo-datetime i {
             color: #f1c40f;
         }
 
@@ -995,9 +1020,6 @@
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
-        <div style="font-weight: bold; color: #111; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
-            <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span>
-        </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
             <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
@@ -1013,6 +1035,11 @@
             <a onclick="switchPage('suporte')">Suporte / FAQ</a>
             <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
+        </div>
+        <div class="nav-geo-datetime">
+            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
+            <span><i class="fa fa-clock"></i> <span id="tempoRelogio">--:--:--</span></span>
+            <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">--/--/----</span></span>
         </div>
         <div id="userMenuArea"></div>
     </nav>
@@ -1624,13 +1651,23 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Geolocalização por IP
+        // Script de Relógio, Data e Geolocalização em Tempo Real
+        function atualizarRelogioData() {
+            const agora = new Date();
+            const relogioEl = document.getElementById('tempoRelogio');
+            const dataEl = document.getElementById('tempoData');
+            
+            if (relogioEl) relogioEl.innerText = agora.toLocaleTimeString('pt-BR');
+            if (dataEl) dataEl.innerText = agora.toLocaleDateString('pt-BR');
+        }
+
         function carregarGeolocalizacao() {
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
                 .then(data => {
                     if (data && data.city && data.region_code) {
-                        document.getElementById('geoLocalizacao').innerText = `${data.city} - ${data.region_code}`;
+                        const geoEl = document.getElementById('geoLocalizacao');
+                        if (geoEl) geoEl.innerText = `${data.city} - ${data.region_code}`;
                     }
                 })
                 .catch(error => {
@@ -1707,6 +1744,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             switchPage('home');
         }
 
+        // Inicialização imediata ao carregar a página
+        atualizarRelogioData();
+        setInterval(atualizarRelogioData, 1000);
+
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
@@ -1721,17 +1762,20 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 }
             }
             localStorage.setItem('medianav_visit_count', visits);
-            document.getElementById('visitCount').innerText = Number(visits).toLocaleString('pt-BR');
+            const visitCountEl = document.getElementById('visitCount');
+            if (visitCountEl) visitCountEl.innerText = Number(visits).toLocaleString('pt-BR');
 
             let onlineUsers = Math.floor(Math.random() * 10) + 5; 
-            document.getElementById('onlineCount').innerText = onlineUsers;
+            const onlineCountEl = document.getElementById('onlineCount');
+            if (onlineCountEl) onlineCountEl.innerText = onlineUsers;
 
             setInterval(() => {
                 let change = Math.random() > 0.5 ? 1 : -1;
                 onlineUsers += change;
                 if (onlineUsers < 4) onlineUsers = 4;
                 if (onlineUsers > 18) onlineUsers = 18;
-                document.getElementById('onlineCount').innerText = onlineUsers;
+                const ocEl = document.getElementById('onlineCount');
+                if (ocEl) ocEl.innerText = onlineUsers;
             }, 10000);
 
             atualizarAreaCliente();
