@@ -218,6 +218,56 @@
             background-color: #0073a8;
         }
 
+        /* FAQ / Suporte Styles */
+        .faq-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .whatsapp-box {
+            text-align: center;
+            margin-top: 30px;
+            background: #e1f5fe;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd59;
+        }
+
         /* Modal / Popup de Descrição */
         .modal {
             display: none;
@@ -328,28 +378,11 @@
             font-size: 0.85rem;
             color: #666;
         }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            justify-content: center;
-        }
-
-        .social-icons a {
-            color: #aaa;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #f1c40f;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar com fundo amarelo e logo bem maior (clicável para ir ao Início) -->
+    <!-- Top Bar com fundo amarelo e logo (clicável para voltar ao Início) -->
     <header class="top-bar">
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
@@ -364,8 +397,7 @@
     <nav class="nav-menu">
         <a onclick="switchPage('home')">Início</a>
         <a onclick="switchPage('produtos')">Produtos</a>
-        <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20suporte%20com%20o%20MediaNav%20Belém." target="_blank">Suporte</a>
-        <a onclick="switchPage('home'); location.hash='#contato';">Contato</a>
+        <a onclick="switchPage('suporte')">Suporte / FAQ</a>
     </nav>
 
     <!-- Banner -->
@@ -450,7 +482,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: PRODUTOS (TODOS OS PRODUTOS) ================= -->
+    <!-- ================= PAGE: PRODUTOS ================= -->
     <div id="page-produtos" class="page-view">
         <div class="container">
             <h2 class="section-title">Catálogo Completo de Produtos</h2>
@@ -482,7 +514,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Atualização 4.1.0 (Sistema) -->
+                <!-- 3. Atualização 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
@@ -495,7 +527,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Atualização 9.1.3 (Sistema) -->
+                <!-- 4. Atualização 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
@@ -508,7 +540,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Atualização 1.0.15.5 (Valor R$ 60,00) -->
+                <!-- 5. Atualização 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img">
@@ -524,21 +556,165 @@
         </div>
     </div>
 
-    <!-- Modal 2025 (Evolution) -->
+    <!-- ================= PAGE: SUPORTE / FAQ ================= -->
+    <div id="page-suporte" class="page-view">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes (FAQ) & Suporte</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">1. Como recebo os arquivos após a compra?</div>
+                    <div class="faq-answer">O envio dos arquivos e instruções é feito de forma digital e automatizada após a confirmação do pagamento pelo Mercado Pago. Entraremos em contato via chat ou WhatsApp.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">2. Qual pen drive devo utilizar para fazer a atualização?</div>
+                    <div class="faq-answer">Você deve utilizar um pen drive de 4GB até 32GB, versão 2.0, totalmente formatado em FAT32 e vazio. Evite pen drives genéricos ("xing ling") para evitar erros na leitura do MediaNav.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">3. Como descubro a versão exata do meu MediaNav?</div>
+                    <div class="faq-answer">No seu painel do MediaNav, vá em: Sistema > Versão do Sistema. Lá você encontrará o número da versão (ex: 4.1.0, 9.1.3, 1.0.15.5).</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">4. O procedimento é oficial pela Renault?</div>
+                    <div class="faq-answer">Não. Trata-se de arquivos e procedimentos customizados para permitir atualizações de mapas e sistemas de forma independente através da porta USB.</div>
+                </div>
+
+                <div class="whatsapp-box">
+                    <h3>Ainda tem dúvidas ou precisa de ajuda técnica personalizada?</h3>
+                    <p>Fale diretamente com o nosso suporte técnico pelo WhatsApp oficial de Belém/PA.</p>
+                    <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20suporte%20com%20o%20MediaNav%20Belém." target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Chamar no WhatsApp (91) 98207-9997
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAIS DE DESCRIÇÃO ================= -->
+    
+    <!-- Modal 2025 -->
     <div id="modal2025" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2025')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
             <div class="modal-body">Brazil_HERE_2025.Q2 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.
 
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
+***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS***
 
-PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
+PROCEDIMENTO REALIZADO POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
 
-NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
+NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO.</div>
+        </div>
+    </div>
 
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
+    <!-- Modal 2024 -->
+    <div id="modal2024" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2024')">&times;</span>
+            <div class="modal-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
+            <div class="modal-body">Atualização completa de mapas para Media Nav Standard (Versão 4.1.0). Acompanha passo a passo detalhado para instalação via USB de forma simples e segura.</div>
+        </div>
+    </div>
 
-OBSERVAÇÕES:
+    <!-- Modal Firmware 4.1.0 -->
+    <div id="modalFirmware" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
+            <div class="modal-body">Pacote de arquivos para restauração e atualização do sistema operacional do Media Nav Standard versão 4.1.0. Ideal para corrigir travamentos e falhas de inicialização.</div>
+        </div>
+    </div>
 
-PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODONormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+    <!-- Modal Evolution 9.1.3 -->
+    <div id="modalEvolution913" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalEvolution913')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
+            <div class="modal-body">Firmware oficial otimizado para linha Renault Evolution versão 9.1.3. Melhora a estabilidade geral do sistema multimídia e conectividade Bluetooth.</div>
+        </div>
+    </div>
+
+    <!-- Modal 1.0.15.5 -->
+    <div id="modal10155" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal10155')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
+            <div class="modal-body">Versão de sistema atualizada para os novos modelos Media Nav. Correção de bugs, melhoria na resposta da tela touch e otimização geral do sistema.</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h3>MediaNav Belém</h3>
+                    <ul>
+                        <li><a onclick="switchPage('home')">Início</a></li>
+                        <li><a onclick="switchPage('produtos')">Produtos</a></li>
+                        <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato Direto</h3>
+                    <ul>
+                        <li>Belém - PA</li>
+                        <li>WhatsApp: (91) 98207-9997</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript de Controle -->
+    <script>
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        function filterProducts() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.product-card');
+
+            // Se o usuário começar a pesquisar, garante que estamos na página de produtos ou início para ver o resultado
+            cards.forEach(card => {
+                let name = card.getAttribute('data-name');
+                if (name.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
