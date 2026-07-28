@@ -98,6 +98,7 @@
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .nav-menu a:hover {
@@ -125,6 +126,15 @@
         .banner-text p {
             font-size: 1.1rem;
             color: #ccc;
+        }
+
+        /* Views / Pages Control */
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active {
+            display: block;
         }
 
         /* Main Container */
@@ -321,6 +331,7 @@
             color: #aaa;
             text-decoration: none;
             font-size: 0.9rem;
+            cursor: pointer;
         }
 
         .footer-col ul li a:hover {
@@ -370,12 +381,12 @@
         </div>
     </header>
 
-    <!-- Nav Menu -->
+    <!-- Nav Menu com Links de Páginas -->
     <nav class="nav-menu">
-        <a href="#">Início</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#suporte">Suporte</a>
-        <a href="#contato">Contato</a>
+        <a onclick="switchPage('home')">Início</a>
+        <a onclick="switchPage('produtos')">Produtos</a>
+        <a onclick="switchPage('home'); location.hash='#suporte';">Suporte</a>
+        <a onclick="switchPage('home'); location.hash='#contato';">Contato</a>
     </nav>
 
     <!-- Banner -->
@@ -386,73 +397,136 @@
         </div>
     </section>
 
-    <!-- Content Container -->
-    <div class="container" id="produtos">
-        <h2 class="section-title">Todos os Produtos</h2>
-        
-        <div class="product-grid">
-            <!-- 1. Mapa 2025 -->
-            <div class="product-card">
-                <div>
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
-                    <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
-                    <div class="product-price">R$ 135,00</div>
+    <!-- ================= PAGE: INÍCIO (MAIS VENDIDOS) ================= -->
+    <div id="page-home" class="page-view active">
+        <div class="container">
+            <h2 class="section-title">Mais Vendidos</h2>
+            
+            <div class="product-grid">
+                <!-- 1. Mapa 2025 (1º Mais Vendido solicitado) -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
+                        <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
+                        <div class="product-price">R$ 135,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
-                    <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+
+                <!-- 2. Mapa 2024 (2º Mais Vendido solicitado) -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
+                        <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
+                        <div class="product-price">R$ 125,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
+                </div>
+
+                <!-- 3. Atualização 4.1.0 (3º Mais Vendido solicitado) -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
+                        <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
+                </div>
+
+                <!-- 4. Atualização 9.1.3 (4º Mais Vendido solicitado) -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
+                        <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- 2. Mapa 2024 -->
-            <div class="product-card">
-                <div>
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
-                    <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
-                    <div class="product-price">R$ 125,00</div>
+    <!-- ================= PAGE: PRODUTOS (TODOS OS PRODUTOS) ================= -->
+    <div id="page-produtos" class="page-view">
+        <div class="container">
+            <h2 class="section-title">Catálogo Completo de Produtos</h2>
+            
+            <div class="product-grid">
+                <!-- 1. Mapa 2025 -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
+                        <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
+                        <div class="product-price">R$ 135,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
-                    <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                </div>
-            </div>
 
-            <!-- 3. Atualização 4.1.0 (Sistema) -->
-            <div class="product-card">
-                <div>
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
-                    <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
-                    <div class="product-price">R$ 55,00</div>
+                <!-- 2. Mapa 2024 -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
+                        <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
+                        <div class="product-price">R$ 125,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
-                    <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                </div>
-            </div>
 
-            <!-- 4. Atualização 9.1.3 (Sistema) -->
-            <div class="product-card">
-                <div>
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
-                    <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
-                    <div class="product-price">R$ 55,00</div>
+                <!-- 3. Atualização 4.1.0 (Sistema) -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
+                        <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
-                    <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-                </div>
-            </div>
 
-            <!-- 5. Kit Cabos -->
-            <div class="product-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500&q=80" alt="Kit Cabos" class="product-img">
-                    <div class="product-title">Kit Cabos e Conectores para Instalação Multimídia</div>
-                    <div class="product-price">R$ 89,00</div>
+                <!-- 4. Atualização 9.1.3 (Sistema) -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
+                        <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn-desc" onclick="openModal('modalCabos')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
-                    <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_PREF_ID_3" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+
+                <!-- 5. Kit Cabos -->
+                <div class="product-card">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500&q=80" alt="Kit Cabos" class="product-img">
+                        <div class="product-title">Kit Cabos e Conectores para Instalação Multimídia</div>
+                        <div class="product-price">R$ 89,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modalCabos')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_PREF_ID_3" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -583,7 +657,7 @@ PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 
             <div class="footer-col">
                 <h3>Institucional</h3>
                 <ul>
-                    <li><a href="#">Quem Somos</a></li>
+                    <li><a onclick="switchPage('home')">Quem Somos</a></li>
                     <li><a href="#">Política de Privacidade</a></li>
                     <li><a href="#">Termos de Uso</a></li>
                 </ul>
@@ -591,7 +665,7 @@ PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 
             <div class="footer-col">
                 <h3>Atendimento</h3>
                 <ul>
-                    <li><a href="#">Contato</a></li>
+                    <li><a onclick="switchPage('produtos')">Ver Todos os Produtos</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li>WhatsApp: (91) 99999-9999</li>
                     <li>Email: contato@medianavbelem.com.br</li>
@@ -613,8 +687,16 @@ PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 
         </div>
     </footer>
 
-    <!-- JavaScript para abrir e fechar os modais -->
+    <!-- JavaScript para alternar páginas, modais e abas -->
     <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById('page-' + pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
         }
@@ -623,7 +705,6 @@ PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 
             document.getElementById(modalId).style.display = "none";
         }
 
-        // Fecha o modal ao clicar fora da caixa de conteúdo
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = "none";
