@@ -18,22 +18,20 @@
             color: #333;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background-color: #111;
-            color: #ccc;
-            font-size: 13px;
-            padding: 8px 5%;
+        /* Top Bar Integrada no Header Amarelo exatamente como na sua versão original */
+        .top-bar-info {
             display: flex;
-            justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            font-size: 13px;
+            color: #222; /* Cor ajustada para boa visibilidade no fundo amarelo */
+            font-weight: 600;
         }
 
-        .top-bar span {
+        .top-bar-info span {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         /* Header Principal */
@@ -54,6 +52,13 @@
 
         .logo-container img {
             height: 45px;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
         }
 
         .search-bar {
@@ -264,21 +269,25 @@
 </head>
 <body>
 
-    <!-- Top Bar com Local e Data Exatos -->
-    <div class="top-bar">
-        <span><i class="fa-solid fa-location-dot"></i> Belém - PA</span>
-        <span><i class="fa-regular fa-calendar"></i> Terça-feira, 28 de julho de 2026 - 03:03:03</span>
-    </div>
-
-    <!-- Header -->
+    <!-- Header com Logo e Local/Data alinhados exatamente no layout original -->
     <header>
         <div class="logo-container">
             <img src="logo.png" alt="MediaNav Belém" onerror="this.style.display='none'">
             <span style="font-weight: 900; font-size: 22px; color: #000;">MEDIANAV <span style="color:#d9534f">BELÉM</span></span>
         </div>
-        <div class="search-bar">
-            <i class="fa-solid fa-search"></i>
-            <input type="text" placeholder="Pesquisar produtos...">
+        
+        <div class="header-right">
+            <!-- Cidade e Data posicionadas no mesmo local da sua referência -->
+            <div class="top-bar-info">
+                <span><i class="fa-solid fa-location-dot"></i> Belém - PA</span>
+                <span>|</span>
+                <span><i class="fa-regular fa-calendar"></i> Terça-feira, 28 de julho de 2026 - 03:03:03</span>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Pesquisar produtos...">
+            </div>
         </div>
     </header>
 
