@@ -376,36 +376,6 @@
             background-color: #0073a8;
         }
 
-        .compatibility-box {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-        }
-
-        .compatibility-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .compatibility-table th, .compatibility-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-            font-size: 0.95rem;
-        }
-
-        .compatibility-table th {
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        .compatibility-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
         /* Chatbot Widget Flutuante */
         .chatbot-container {
             position: fixed;
@@ -1330,16 +1300,16 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: CADASTRO PRÉVIO / LOGIN / NEWSLETTER ================= -->
+    <!-- ================= PAGE: CADASTRO PRÉVIO / LOGIN ================= -->
     <div id="page-cadastro" class="page-view">
         <div class="container">
-            <h2 class="section-title">Painel do Cliente & Cadastro Prévio</h2>
+            <h2 class="section-title">Painel do Cliente & Login</h2>
             
             <div class="cadastro-container">
                 <!-- Seção para Novo Cadastro ou Login -->
                 <div class="cadastro-box" id="boxFormularioCadastro">
                     <h3>Cadastre-se ou entre com seu E-mail</h3>
-                    <p>Preencha para salvar seu acesso, agilizar atendimentos e receber nossas novidades e ofertas (Newsletter).</p>
+                    <p>Preencha para salvar seu acesso e agilizar seus futuros atendimentos no site.</p>
                     
                     <form id="formCadastro" onsubmit="realizarCadastro(event)">
                         <div class="form-group">
@@ -1355,7 +1325,7 @@
                             <input type="email" id="cadEmail" name="cadEmail" placeholder="seuemail@exemplo.com" required>
                         </div>
                         <button type="submit" class="btn-cadastrar">
-                            <i class="fa fa-user-check"></i> Salvar / Entrar no Site
+                            <i class="fa fa-user-check"></i> Entrar / Salvar Dados
                         </button>
                         <div id="cadastroStatus" class="form-status"></div>
                     </form>
@@ -1369,14 +1339,6 @@
                         <i class="fa fa-sign-out-alt"></i> Sair da Conta (Logout)
                     </button>
                 </div>
-
-                <!-- Botão oculto/discreto apenas para você baixar a lista de leads em CSV para disparar sua newsletter -->
-                <div style="margin-top: 25px; text-align: right; border-top: 1px solid #eee; padding-top: 15px;">
-                    <button onclick="exportarCsvLeads()" style="background: #34495e; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
-                        <i class="fa fa-download"></i> Baixar Lista de Leads (CSV para Newsletter)
-                    </button>
-                </div>
-
             </div>
         </div>
     </div>
@@ -1659,7 +1621,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Gestão do Cadastro Prévio, Login e Log Interno (Newsletter)
+        // Script de Gestão do Cadastro Prévio e Login Local
         function realizarCadastro(e) {
             e.preventDefault();
             const nome = document.getElementById('cadNome').value.trim();
@@ -1670,20 +1632,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
             const clienteData = { nome, telefone, email, data: dataRegistro };
             
-            // Salva a sessão atual do cliente logado
+            // Salva a sessão do cliente logado no navegador dele
             localStorage.setItem('medianav_cliente', JSON.stringify(clienteData));
 
-            // Salva e acumula no log interno de leads (sem mostrar tabela na tela)
-            let listaClientes = JSON.parse(localStorage.getItem('medianav_clientes_lista')) || [];
-            let indexExistente = listaClientes.findIndex(c => c.email.toLowerCase() === email.toLowerCase());
-            if (indexExistente >= 0) {
-                listaClientes[indexExistente] = clienteData;
-            } else {
-                listaClientes.push(clienteData);
-            }
-            localStorage.setItem('medianav_clientes_lista', JSON.stringify(listaClientes));
-
-            statusDiv.innerHTML = "Sucesso! Cadastro efetuado e salvo, " + nome + ".";
+            statusDiv.innerHTML = "Sucesso! Conectado como " + nome + ".";
             statusDiv.style.color = "#27ae60";
 
             atualizarAreaCliente();
@@ -1736,28 +1688,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             atualizarAreaCliente();
             alert("Você saiu da sua conta com sucesso.");
             switchPage('home');
-        }
-
-        // Função para exportar os leads salvos em arquivo CSV/TXT para sua newsletter
-        function exportarCsvLeads() {
-            let listaClientes = JSON.parse(localStorage.getItem('medianav_clientes_lista')) || [];
-            if (listaClientes.length === 0) {
-                alert("Ainda não há clientes cadastrados para exportar.");
-                return;
-            }
-
-            let csvContent = "data:text/csv;charset=utf-8,Nome;Email;Telefone;Data\n";
-            listaClientes.forEach(function(c) {
-                csvContent += `"${c.ucName || c.nome}";"${c.email}";"${c.telefone}";"${c.data}"\n`;
-            });
-
-            let encodedUri = encodeURI(csvContent);
-            let link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "leads_newsletter_medianav.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
         }
 
         // Script para o Contador de Visitas Totais e Pessoas Online
