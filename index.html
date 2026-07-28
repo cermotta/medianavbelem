@@ -995,8 +995,8 @@
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
-        <div style="font-weight: bold; color: #111; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
-            <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span>
+        <div style="font-weight: bold; color: #111; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; text-align: right;">
+            <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span> | <i class="fa fa-calendar-alt"></i> <span id="geoDataHora">Carregando data e hora...</span>
         </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
@@ -1624,8 +1624,13 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Geolocalização por IP
-        function carregarGeolocalizacao() {
+        // Script de Geolocalização por IP e Data/Hora atualizada em tempo real
+        function carregarGeolocalizacaoEData() {
+            // Atualiza data e hora local imediatamente
+            atualizarRelogioData();
+            setInterval(atualizarRelogioData, 1000);
+
+            // Busca geolocalização por IP
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
                 .then(data => {
@@ -1636,6 +1641,25 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 .catch(error => {
                     console.log("Geolocalização padrão mantida:", error);
                 });
+        }
+
+        function atualizarRelogioData() {
+            const agora = new Date();
+            
+            // Formatar data por extenso (Ex: Terça-feira, 28 de Julho de 2026)
+            const opcoesData = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            let dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
+            
+            // Capitalizar primeira letra do dia da semana
+            dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+
+            // Formatar hora (Ex: 14:35:12)
+            const horaFormatada = agora.toLocaleTimeString('pt-BR');
+
+            const elemento = document.getElementById('geoDataHora');
+            if (elemento) {
+                elemento.innerText = `${dataFormatada} - ${horaFormatada}`;
+            }
         }
 
         // Script de Gestão do Cadastro Prévio e Login Local
@@ -1709,7 +1733,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
-            carregarGeolocalizacao();
+            carregarGeolocalizacaoEData();
 
             let visits = localStorage.getItem('medianav_visit_count');
             if (!visits) {
