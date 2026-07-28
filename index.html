@@ -1511,13 +1511,16 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <!-- Contadores Dinâmicos no Rodapé -->
+                <!-- Contadores Dinâmicos e Local/Data/Hora no Rodapé -->
                 <div class="counters-wrapper">
                     <div class="visitor-counter">
                         <i class="fa fa-circle"></i> Online agora: <span id="onlineCount">--</span>
                     </div>
                     <div class="visitor-counter">
                         <i class="fa fa-eye"></i> Visitantes: <span id="visitCount">Carregando...</span>
+                    </div>
+                    <div class="visitor-counter">
+                        <i class="fa fa-map-marker-alt"></i> <span id="userLocation">Belém - PA</span> | <span id="userDateTime">Carregando data e hora...</span>
                     </div>
                 </div>
                 <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
@@ -1690,7 +1693,38 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             switchPage('home');
         }
 
-        // Script para o Contador de Visitas Totais e Pessoas Online
+        // Função para carregar a cidade e a data/hora atual do visitante
+        async function carregarLocalEDataHora() {
+            const atualizarRelogio = () => {
+                const agora = new Date();
+                const opcoesData = { day: '2-digit', month: 'long', year: 'numeric' };
+                const dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
+                const horaFormatada = agora.toLocaleTimeString('pt-BR');
+                
+                const elementoDateTime = document.getElementById('userDateTime');
+                if (elementoDateTime) {
+                    elementoDateTime.innerText = `${dataFormatada} - ${horaFormatada}`;
+                }
+            };
+
+            atualizarRelogio();
+            setInterval(atualizarRelogio, 1000);
+
+            try {
+                let resposta = await fetch('https://ipapi.co/json/');
+                let dados = await resposta.json();
+                if (dados && dados.city && dados.region_code) {
+                    const elementoLocation = document.getElementById('userLocation');
+                    if (elementoLocation) {
+                        elementoLocation.innerText = `${dados.city} - ${dados.region_code}`;
+                    }
+                }
+            } catch (erro) {
+                console.log("Não foi possível carregar a geolocalização automática, mantendo padrão.");
+            }
+        }
+
+        // Script para o Contador de Visitas Totais, Pessoas Online e Local/Data/Hora
         window.addEventListener('DOMContentLoaded', () => {
             let visits = localStorage.getItem('medianav_visit_count');
             if (!visits) {
@@ -1716,6 +1750,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }, 10000);
 
             atualizarAreaCliente();
+            carregarLocalEDataHora();
         });
 
         // Script para envio do formulário via Web3Forms
