@@ -356,7 +356,7 @@
         </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
-            <input type="text" placeholder="Pesquisar produtos...">
+            <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
         </div>
     </header>
 
@@ -376,14 +376,14 @@
         </div>
     </section>
 
-    <!-- ================= PAGE: INÍCIO (MAIS VENDIDOS) ================= -->
+    <!-- ================= PAGE: INÍCIO (TODOS OS PRODUTOS) ================= -->
     <div id="page-home" class="page-view active">
         <div class="container">
-            <h2 class="section-title">Mais Vendidos</h2>
+            <h2 class="section-title">Catálogo Completo</h2>
             
-            <div class="product-grid">
+            <div class="product-grid" id="productGridHome">
                 <!-- 1. Mapa 2025 -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
                         <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
@@ -396,7 +396,7 @@
                 </div>
 
                 <!-- 2. Mapa 2024 -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
                         <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
@@ -409,7 +409,7 @@
                 </div>
 
                 <!-- 3. Atualização 4.1.0 -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
                         <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
@@ -422,7 +422,7 @@
                 </div>
 
                 <!-- 4. Atualização 9.1.3 -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
                         <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
@@ -431,6 +431,19 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
+                </div>
+
+                <!-- 5. Atualização 1.0.15.5 -->
+                <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema">
+                    <div>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img">
+                        <div class="product-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
+                        <div class="product-price">R$ 60,00</div>
+                    </div>
+                    <div>
+                        <button class="btn-desc" onclick="openModal('modal10155')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <a href="https://mpago.la/1nnyjKr" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
                     </div>
                 </div>
             </div>
@@ -442,9 +455,9 @@
         <div class="container">
             <h2 class="section-title">Catálogo Completo de Produtos</h2>
             
-            <div class="product-grid">
+            <div class="product-grid" id="productGridProdutos">
                 <!-- 1. Mapa 2025 -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img">
                         <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
@@ -457,7 +470,7 @@
                 </div>
 
                 <!-- 2. Mapa 2024 -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
                         <div class="product-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
@@ -470,7 +483,7 @@
                 </div>
 
                 <!-- 3. Atualização 4.1.0 (Sistema) -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
                         <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
@@ -483,7 +496,7 @@
                 </div>
 
                 <!-- 4. Atualização 9.1.3 (Sistema) -->
-                <div class="product-card">
+                <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp" alt="Atualização Medianav Renault Evolution 9.1.3" class="product-img">
                         <div class="product-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
@@ -495,8 +508,8 @@
                     </div>
                 </div>
 
-                <!-- 5. Atualização 1.0.15.5 (Valor Alterado para R$ 60,00) -->
-                <div class="product-card">
+                <!-- 5. Atualização 1.0.15.5 (Valor R$ 60,00) -->
+                <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema">
                     <div>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp" alt="Atualização Medianav Renault 1.0.15.5" class="product-img">
                         <div class="product-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
@@ -528,4 +541,4 @@ O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM
 
 OBSERVAÇÕES:
 
-PROCEDIMENTO DE ATUALIZAÇÃO DO MAPANormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODONormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
