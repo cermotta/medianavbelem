@@ -155,6 +155,26 @@
             text-decoration: underline;
         }
 
+        /* Botão do Carrinho no Menu */
+        .cart-btn-menu {
+            background: #f1c40f;
+            color: #111;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .cart-btn-menu:hover {
+            background: #f39c12;
+        }
+
         /* Banner */
         .banner {
             background: linear-gradient(135deg, #1a1a1a, #2c3e50);
@@ -400,11 +420,209 @@
             text-decoration: none;
             font-weight: bold;
             display: block;
+            margin-bottom: 6px;
             transition: background 0.3s;
         }
 
         .btn-buy:hover {
             background-color: #0073a8;
+        }
+
+        .btn-add-cart {
+            background-color: #f39c12;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background-color: #d68910;
+        }
+
+        /* Mini Carrinho Lateral (Drawer) */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+            z-index: 2500;
+            transition: right 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.1rem;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .btn-checkout-whatsapp {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .btn-checkout-whatsapp:hover {
+            background-color: #1ebd59;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2400;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        /* Notificação Toast de Compra Recente */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #27ae60;
+            max-width: 320px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            background: #e8f8f5;
+            color: #27ae60;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .toast-content h4 {
+            font-size: 0.85rem;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .toast-content p {
+            font-size: 0.8rem;
+            color: #666;
         }
 
         /* Chatbot Widget Flutuante */
@@ -556,6 +774,35 @@
         .testimonial-location {
             font-size: 0.8rem;
             color: #888;
+        }
+
+        /* Formulário de Envio de Avaliação */
+        .review-form-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .review-form-box h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 8px;
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .star-rating-input i.selected {
+            color: #f39c12;
         }
 
         .faq-container {
@@ -999,6 +1246,38 @@
         <i class="fa fa-arrow-up"></i>
     </a>
 
+    <!-- Mini Carrinho Lateral (Drawer) -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa fa-shopping-cart"></i> Seu Carrinho de Compras</h3>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-body" id="cartItemsList">
+            <p style="color: #777; text-align: center; margin-top: 20px;">Seu carrinho está vazio.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout-whatsapp" onclick="checkoutWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Fechar Pedido via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Notificação Toast de Compra Recente -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-icon">
+            <i class="fa fa-shopping-bag"></i>
+        </div>
+        <div class="toast-content">
+            <h4 id="toastTitle">Carlos de Belém - PA</h4>
+            <p id="toastDesc">acabou de comprar a Atualização Mapa 2025</p>
+        </div>
+    </div>
+
     <!-- Chatbot Widget Flutuante -->
     <div class="chatbot-container">
         <div class="chatbot-toggle" onclick="toggleChatbot()" title="Assistente Virtual">
@@ -1031,6 +1310,9 @@
                 <i class="fa fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
             </div>
+            <button class="cart-btn-menu" onclick="toggleCart()">
+                <i class="fa fa-shopping-cart"></i> Carrinho <span id="cartCountBadge" style="background:#000; color:#fff; padding:2px 6px; border-radius:50%; font-size:0.75rem;">0</span>
+            </button>
         </div>
     </header>
 
@@ -1085,6 +1367,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2025 (9.1.3)', 135.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1099,6 +1382,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2024 (4.1.0)', 125.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1113,6 +1397,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Medianav 4.1.0', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1127,6 +1412,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Evolution 9.1.3', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1141,6 +1427,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal10155')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1nnyjKr" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema 1.0.15.5', 60.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>
@@ -1148,7 +1435,7 @@
             <!-- Seção de Prova Social / Depoimentos -->
             <div class="testimonials-section">
                 <h2 class="section-title">O que dizem nossos clientes</h2>
-                <div class="testimonial-grid">
+                <div class="testimonial-grid" id="testimonialGrid">
                     <div class="testimonial-card">
                         <div class="testimonial-stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
                         <div class="testimonial-text">"A atualização funcionou corretamente. No mapa aparecem as edificações em 3d, funciona perfeitamente. A instalação demora em torno de 10-15 minutos. Recomendo muito!"</div>
@@ -1180,6 +1467,36 @@
                         <div class="testimonial-location">Curitiba - PR</div>
                     </div>
                 </div>
+
+                <!-- Formulário para Envio de Depoimento Interativo -->
+                <div class="review-form-box">
+                    <h3>Deixe sua Avaliação / Depoimento</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Sua opinião é fundamental para nossa prova social. Avalie nosso serviço!</p>
+                    <form id="formReview" onsubmit="enviarAvaliacao(event)">
+                        <div class="form-group">
+                            <label>Sua Nota (1 a 5 estrelas):</label>
+                            <div class="star-rating-input" id="starRatingInput">
+                                <i class="fa fa-star selected" data-value="1" onclick="setRating(1)"></i>
+                                <i class="fa fa-star selected" data-value="2" onclick="setRating(2)"></i>
+                                <i class="fa fa-star selected" data-value="3" onclick="setRating(3)"></i>
+                                <i class="fa fa-star selected" data-value="4" onclick="setRating(4)"></i>
+                                <i class="fa fa-star selected" data-value="5" onclick="setRating(5)"></i>
+                            </div>
+                            <input type="hidden" id="reviewRatingValue" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewAuthor">Seu Nome e Cidade/Estado:</label>
+                            <input type="text" id="reviewAuthor" placeholder="Ex: Marcos Silva - Belém/PA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Seu Comentário:</label>
+                            <textarea id="reviewText" rows="3" placeholder="O que achou da atualização e do suporte?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-enviar-comprovante">
+                            <i class="fa fa-paper-plane"></i> Publicar Avaliação
+                        </button>
+                    </form>
+                </div>
             </div>
 
         </div>
@@ -1209,6 +1526,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2M4rvcA" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2025 (9.1.3)', 135.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1223,6 +1541,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal2024')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2zGXq7J" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Mapa do Brasil 2024 (4.1.0)', 125.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1237,6 +1556,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Medianav 4.1.0', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1251,6 +1571,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modalEvolution913')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2z2VCpC" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema Evolution 9.1.3', 55.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
 
@@ -1265,6 +1586,7 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal10155')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1nnyjKr" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                        <button class="btn-add-cart" onclick="addToCart('Atualização Sistema 1.0.15.5', 60.00)"><i class="fa fa-cart-plus"></i> Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>
@@ -1642,6 +1964,175 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
+        // ================= NOVO: SISTEMA DE CARRINHO DE COMPRAS =================
+        let cart = JSON.parse(localStorage.getItem('medianav_cart')) || [];
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+            renderCart();
+        }
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            localStorage.setItem('medianav_cart', JSON.stringify(cart));
+            updateCartBadge();
+            toggleCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('medianav_cart', JSON.stringify(cart));
+            updateCartBadge();
+            renderCart();
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cartCountBadge');
+            if (badge) badge.innerText = cart.length;
+        }
+
+        function renderCart() {
+            const listEl = document.getElementById('cartItemsList');
+            const totalEl = document.getElementById('cartTotalPrice');
+            
+            if (cart.length === 0) {
+                listEl.innerHTML = '<p style="color: #777; text-align: center; margin-top: 20px;">Seu carrinho está vazio.</p>';
+                totalEl.innerText = 'R$ 0,00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${index})"><i class="fa fa-trash"></i></button>
+                    </div>
+                `;
+            });
+            listEl.innerHTML = html;
+            totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let msg = "Olá! Gostaria de fechar o seguinte pedido consolidado:%0A";
+            cart.forEach(item => {
+                msg += `- ${item.title} (R$ ${item.price.toFixed(2).replace('.', ',')})%0A`;
+            });
+            msg += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
+            
+            window.open(`https://wa.me/5591982079997?text=${msg}`, '_blank');
+        }
+
+        // ================= NOVO: ÁREA DE AVALIAÇÕES INTERATIVAS =================
+        function setRating(val) {
+            document.getElementById('reviewRatingValue').value = val;
+            const stars = document.querySelectorAll('#starRatingInput i');
+            stars.forEach((star, idx) => {
+                if (idx < val) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        function enviarAvaliacao(e) {
+            e.preventDefault();
+            const rating = document.getElementById('reviewRatingValue').value;
+            const author = document.getElementById('reviewAuthor').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+
+            let starsHtml = '';
+            for (let i = 0; i < parseInt(rating); i++) {
+                starsHtml += '<i class="fa fa-star"></i>';
+            }
+
+            const newReview = { stars: starsHtml, text, author, location: "Cliente Verificado" };
+            
+            // Salvar no localStorage
+            let savedReviews = JSON.parse(localStorage.getItem('medianav_reviews')) || [];
+            savedReviews.unshift(newReview);
+            localStorage.setItem('medianav_reviews', JSON.stringify(savedReviews));
+
+            appendReviewToDOM(newReview, true);
+            alert("Obrigado pela sua avaliação! Publicada com sucesso.");
+            document.getElementById('formReview').reset();
+            setRating(5);
+        }
+
+        function appendReviewToDOM(rev, prepend = false) {
+            const grid = document.getElementById('testimonialGrid');
+            if (!grid) return;
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.innerHTML = `
+                <div class="testimonial-stars">${rev.stars}</div>
+                <div class="testimonial-text">"${rev.text}"</div>
+                <div class="testimonial-author">${rev.author}</div>
+                <div class="testimonial-location">${rev.location}</div>
+            `;
+            if (prepend) {
+                grid.prepend(card);
+            } else {
+                grid.appendChild(card);
+            }
+        }
+
+        // ================= NOVO: NOTIFICAÇÃO TOAST DE COMPRA RECENTE =================
+        const mockBuyers = [
+            { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
+            { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "Juliano de Marabá - PA", product: "Atualização Mapa 2024" },
+            { name: "Ana Paula de Castanhal - PA", product: "Atualização Sistema 4.1.0" },
+            { name: "Roberto de Santarém - PA", product: "Atualização Sistema 1.0.15.5" }
+        ];
+
+        function triggerToast() {
+            const toast = document.getElementById('toastNotification');
+            const titleEl = document.getElementById('toastTitle');
+            const descEl = document.getElementById('toastDesc');
+
+            const randomBuyer = mockBuyers[Math.floor(Math.random() * mockBuyers.length)];
+            titleEl.innerText = randomBuyer.name;
+            descEl.innerText = `acabou de comprar a ${randomBuyer.product}`;
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // ================= NOVO: RECUPERAÇÃO DE CARRINHO / ABANDONO DE CONTATO =================
+        function setupContactRecovery() {
+            const phoneInput = document.getElementById('cadTelefone');
+            if (phoneInput) {
+                phoneInput.addEventListener('blur', function() {
+                    if (phoneInput.value.length >= 8) {
+                        localStorage.setItem('medianav_abandoned_contact', JSON.stringify({
+                            telefone: phoneInput.value,
+                            nome: document.getElementById('cadNome')?.value || 'Não informado',
+                            email: document.getElementById('cadEmail')?.value || 'Não informado',
+                            data: new Date().toISOString()
+                        }));
+                    }
+                });
+            }
+        }
+
         // Script do Chatbot Interativo
         function toggleChatbot() {
             const box = document.getElementById('chatbotBox');
@@ -1764,6 +2255,12 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
+            updateCartBadge();
+            setupContactRecovery();
+
+            // Carregar avaliações salvas no localStorage
+            let savedReviews = JSON.parse(localStorage.getItem('medianav_reviews')) || [];
+            savedReviews.forEach(rev => appendReviewToDOM(rev, false));
 
             let visits = localStorage.getItem('medianav_visit_count');
             if (!visits) {
@@ -1791,6 +2288,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (ocEl) ocEl.innerText = onlineUsers;
             }, 10000);
 
+            // Disparar Toast de compras recentes a cada 15 segundos
+            setTimeout(triggerToast, 4000);
+            setInterval(triggerToast, 18000);
+
             atualizarAreaCliente();
         });
 
@@ -1798,33 +2299,35 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         const form = document.getElementById('formComprovante');
         const result = document.getElementById('formStatus');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            result.innerHTML = "Enviando aviso, por favor aguarde...";
-            result.style.color = "#d35400";
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                result.innerHTML = "Enviando aviso, por favor aguarde...";
+                result.style.color = "#d35400";
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    result.innerHTML = "Aviso enviado com sucesso! Entraremos em contato em breve.";
-                    result.style.color = "#27ae60";
-                    form.reset();
-                } else {
-                    result.innerHTML = json.message;
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = "Aviso enviado com sucesso! Entraremos em contato em breve.";
+                        result.style.color = "#27ae60";
+                        form.reset();
+                    } else {
+                        result.innerHTML = json.message;
+                        result.style.color = "#c0392b";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
                     result.style.color = "#c0392b";
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
-                result.style.color = "#c0392b";
+                });
             });
-        });
+        }
     </script>
 </body>
 </html>
