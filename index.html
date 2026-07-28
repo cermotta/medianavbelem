@@ -135,6 +135,86 @@
             padding-left: 10px;
         }
 
+        /* Quem Somos Seção Top */
+        .about-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .feature-item i {
+            color: #f1c40f;
+            font-size: 1.2rem;
+        }
+
+        .about-badge {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            padding: 30px;
+            border-radius: 8px;
+            color: #111;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-badge i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .about-badge h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .about-badge p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         /* Product Grid */
         .product-grid {
             display: grid;
@@ -523,6 +603,28 @@
     <!-- ================= PAGE: INÍCIO (TODOS OS PRODUTOS) ================= -->
     <div id="page-home" class="page-view active">
         <div class="container">
+            <!-- QUEM SOMOS TOP -->
+            <div class="about-section">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Quem Somos</h3>
+                        <p>O <strong>MediaNav Belém</strong> é referência em soluções tecnológicas especializadas para centrais multimídia Renault em Belém e região. Nascemos com o compromisso de trazer inovação, praticidade e segurança para o seu veículo, oferecendo atualizações de mapas e sistemas rigorosamente testados.</p>
+                        <p>Trabalhamos com total transparência e suporte personalizado, garantindo que você dirija sempre com rotas precisas e o sistema multimídia 100% otimizado.</p>
+                        <div class="about-features">
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Suporte Especializado</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Envio 100% Digital</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Procedimento Seguro</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Atendimento Dedicado</div>
+                        </div>
+                    </div>
+                    <div class="about-badge">
+                        <i class="fa fa-shield-alt"></i>
+                        <h4>Confiança e Credibilidade</h4>
+                        <p>Milhares de clientes satisfeitos em todo o Brasil. Garantia de suporte técnico via WhatsApp e e-mail para auxiliar em cada etapa do processo.</p>
+                    </div>
+                </div>
+            </div>
+
             <h2 class="section-title">Catálogo Completo</h2>
             
             <div class="product-grid" id="productGridHome">
@@ -833,8 +935,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     <p>Sua solução completa em atualizações de mapas, firmware e sistemas multimídia Renault com suporte especializado em Belém - PA.</p>
                     <div class="social-icons">
                         <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site." target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/medianavbelem" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
