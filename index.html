@@ -995,8 +995,10 @@
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
-        <div style="font-weight: bold; color: #111; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
-            <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span>
+        <!-- Cidade e Data atualizadas à direita na cor branca -->
+        <div style="font-weight: bold; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 12px;">
+            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
+            <span><i class="fa fa-calendar-alt"></i> <span id="currentDate">--/--/----</span></span>
         </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
@@ -1346,7 +1348,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: ENVIAR COMPROVANTE ================= -->
+    <!-- ================= PAGE: ENVIAR COMPROVANTE (ÚLTIMO ITEM DO MENU) ================= -->
     <div id="page-comprovante" class="page-view">
         <div class="container">
             <h2 class="section-title">Enviar Comprovante de Pagamento</h2>
@@ -1624,8 +1626,14 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Geolocalização por IP
+        // Script de Geolocalização por IP e Data Atual
         function carregarGeolocalizacao() {
+            // Define a data atual formatada (DD/MM/AAAA)
+            const hoje = new Date();
+            const dataFormatada = hoje.toLocaleDateString('pt-BR');
+            const dateEl = document.getElementById('currentDate');
+            if (dateEl) dateEl.innerText = dataFormatada;
+
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
                 .then(data => {
@@ -1747,4 +1755,27 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             result.innerHTML = "Enviando aviso, por favor aguarde...";
             result.style.color = "#d35400";
 
-            fetch('https://api.web3forms.com
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = "Aviso enviado com sucesso! Entraremos em contato em breve.";
+                    result.style.color = "#27ae60";
+                    form.reset();
+                } else {
+                    result.innerHTML = json.message;
+                    result.style.color = "#c0392b";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
+                result.style.color = "#c0392b";
+            });
+        });
+    </script>
+</body>
+</html>
