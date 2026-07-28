@@ -71,18 +71,18 @@
             background-color: #000;
             padding: 12px 5%;
             display: flex;
-            gap: 25px;
+            justify-content: space-between;
+            align-items: center;
             border-top: 1px solid #222;
             flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
+            gap: 15px;
         }
 
-        .nav-left-group {
+        .nav-links-wrapper {
             display: flex;
-            align-items: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-datetime-badge {
@@ -96,12 +96,7 @@
             padding: 5px 12px;
             border-radius: 20px;
             border: 1px solid #333;
-        }
-
-        .nav-links-wrapper {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
+            white-space: nowrap;
         }
 
         .nav-menu a {
@@ -1023,22 +1018,22 @@
 
     <!-- Nav Menu -->
     <nav class="nav-menu">
-        <div class="nav-left-group">
-            <!-- Cidade, Data (Dia, Mês e Ano) e Hora posicionados na extrema esquerda da barra preta -->
+        <div class="nav-links-wrapper">
+            <a onclick="switchPage('home')">Início</a>
+            <a onclick="switchPage('produtos')">Produtos</a>
+            <a onclick="switchPage('quemsomos')">Quem Somos</a>
+            <a onclick="switchPage('suporte')">Suporte / FAQ</a>
+            <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
+            <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <!-- Cidade, Data (Dia, Mês e Ano) e Hora posicionados na extrema direita da barra preta -->
             <div class="nav-datetime-badge">
                 <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span> | 
                 <i class="fa fa-calendar-alt"></i> <span id="currentDateTime">--/--/---- --:--</span>
             </div>
-            <div class="nav-links-wrapper">
-                <a onclick="switchPage('home')">Início</a>
-                <a onclick="switchPage('produtos')">Produtos</a>
-                <a onclick="switchPage('quemsomos')">Quem Somos</a>
-                <a onclick="switchPage('suporte')">Suporte / FAQ</a>
-                <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
-                <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
-            </div>
+            <div id="userMenuArea"></div>
         </div>
-        <div id="userMenuArea"></div>
     </nav>
 
     <!-- Banner -->
@@ -1618,7 +1613,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             let pageEl = context === 'Home' ? document.getElementById('page-home') : document.getElementById('page-produtos');
             let buttons = pageEl.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
 
             cards.forEach(card => {
                 let cardCategory = card.getAttribute('data-category');
@@ -1779,35 +1777,39 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         });
 
         // Script para envio do formulário via Web3Forms
-        const form = document.getElementById('formComprovante');
-        const result = document.getElementById('formStatus');
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('formComprovante');
+            if (form) {
+                const result = document.getElementById('formStatus');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            result.innerHTML = "Enviando aviso, por favor aguarde...";
-            result.style.color = "#d35400";
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    result.innerHTML = "Enviando aviso, por favor aguarde...";
+                    result.style.color = "#d35400";
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    result.innerHTML = "Aviso enviado com sucesso! Entraremos em contato em breve.";
-                    result.style.color = "#27ae60";
-                    form.reset();
-                } else {
-                    result.innerHTML = json.message;
-                    result.style.color = "#c0392b";
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
-                result.style.color = "#c0392b`;
-            });
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            result.innerHTML = "Aviso enviado com sucesso! Entraremos em contato em breve.";
+                            result.style.color = "#27ae60";
+                            form.reset();
+                        } else {
+                            result.innerHTML = json.message;
+                            result.style.color = "#c0392b";
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
+                        result.style.color = "#c0392b";
+                    });
+                });
+            }
         });
     </script>
 </body>
