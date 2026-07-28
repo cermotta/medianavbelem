@@ -789,7 +789,7 @@
 <body>
 
     <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20e%20preciso%20de%20ajuda." target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">
+    <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20ajuda." target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1074,7 +1074,7 @@
                 <div class="whatsapp-box">
                     <h3>Ainda tem dúvidas ou precisa de ajuda técnica personalizada?</h3>
                     <p>Fale diretamente com o nosso suporte técnico pelo WhatsApp oficial de Belém/PA.</p>
-                    <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20suporte%20com%20o%20MediaNav%20Belém." target="_blank" class="btn-whatsapp">
+                    <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20suporte." target="_blank" class="btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Chamar no WhatsApp (91) 98207-9997
                     </a>
                 </div>
@@ -1120,7 +1120,7 @@
 
                     <div style="margin-top: 20px; text-align: center; border-top: 1px dashed #f39c12; padding-top: 15px;">
                         <p style="font-size: 0.9rem; color: #555; margin-bottom: 10px;">Deseja enviar a foto do comprovante instantaneamente?</p>
-                        <a href="https://wa.me/5591982079997?text=Olá,%20já%20fiz%20o%20pagamento%20e%20estou%20enviando%20o%20comprovante." target="_blank" class="btn-whatsapp" style="margin-top: 0;">
+                        <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém,%20já%20fiz%20o%20pagamento%20e%20estou%20enviando%20o%20comprovante." target="_blank" class="btn-whatsapp" style="margin-top: 0;">
                             <i class="fab fa-whatsapp"></i> Enviar Comprovante via WhatsApp
                         </a>
                     </div>
@@ -1224,7 +1224,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     <h3>MediaNav Belém</h3>
                     <p>Sua solução completa em atualizações de mapas, firmware e sistemas multimídia Renault com suporte especializado em Belém - PA.</p>
                     <div class="social-icons">
-                        <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site." target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém." target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.instagram.com/medianavbelem" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -1258,6 +1258,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     </div>
                 </div>
                 <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Desenvolvido com dedicação por <strong>Eduardo Motta</strong>.</p>
             </div>
         </div>
     </footer>
@@ -1320,18 +1321,15 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
         // Função de Filtro por Categoria (Mapas / Sistemas)
         function filterCategory(category, context) {
-            // Define o grid correto dependendo de onde o usuário está (Início ou Produtos)
             let gridId = context === 'Home' ? 'productGridHome' : 'productGridProdutos';
             let container = document.getElementById(gridId);
             let cards = container.querySelectorAll('.product-card');
 
-            // Atualiza os botões ativos na página atual
             let pageEl = context === 'Home' ? document.getElementById('page-home') : document.getElementById('page-produtos');
             let buttons = pageEl.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Filtra os cards
             cards.forEach(card => {
                 let cardCategory = card.getAttribute('data-category');
                 if (category === 'all' || cardCategory === category) {
@@ -1344,7 +1342,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
-            // 1. Visitantes Totais
             let visits = localStorage.getItem('medianav_visit_count');
             if (!visits) {
                 visits = 1246;
@@ -1357,11 +1354,9 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             localStorage.setItem('medianav_visit_count', visits);
             document.getElementById('visitCount').innerText = Number(visits).toLocaleString('pt-BR');
 
-            // 2. Simulador de Pessoas Online Agora (Gera um número crível entre 5 e 14 e varia levemente)
             let onlineUsers = Math.floor(Math.random() * 10) + 5; 
             document.getElementById('onlineCount').innerText = onlineUsers;
 
-            // Faz o número de online oscilar levemente a cada 10 segundos para dar dinamismo
             setInterval(() => {
                 let change = Math.random() > 0.5 ? 1 : -1;
                 onlineUsers += change;
