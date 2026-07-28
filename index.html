@@ -995,6 +995,9 @@
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
+        <div style="font-weight: bold; color: #111; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
+            <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span>
+        </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
             <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
@@ -1621,6 +1624,20 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
+        // Script de Geolocalização por IP
+        function carregarGeolocalizacao() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.city && data.region_code) {
+                        document.getElementById('geoLocalizacao').innerText = `${data.city} - ${data.region_code}`;
+                    }
+                })
+                .catch(error => {
+                    console.log("Geolocalização padrão mantida:", error);
+                });
+        }
+
         // Script de Gestão do Cadastro Prévio e Login Local
         function realizarCadastro(e) {
             e.preventDefault();
@@ -1692,6 +1709,8 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
         // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
+            carregarGeolocalizacao();
+
             let visits = localStorage.getItem('medianav_visit_count');
             if (!visits) {
                 visits = 1246;
