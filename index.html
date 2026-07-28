@@ -135,7 +135,7 @@
             padding-left: 10px;
         }
 
-        /* Quem Somos Seção Top */
+        /* Quem Somos Seção Página Própria */
         .about-section {
             background: white;
             padding: 40px;
@@ -642,10 +642,11 @@
         </div>
     </header>
 
-    <!-- Nav Menu com Links de Páginas -->
+    <!-- Nav Menu com Links de Páginas (Incluindo Quem Somos) -->
     <nav class="nav-menu">
         <a onclick="switchPage('home')">Início</a>
         <a onclick="switchPage('produtos')">Produtos</a>
+        <a onclick="switchPage('quemsomos')">Quem Somos</a>
         <a onclick="switchPage('suporte')">Suporte / FAQ</a>
     </nav>
 
@@ -657,32 +658,10 @@
         </div>
     </section>
 
-    <!-- ================= PAGE: INÍCIO (TODOS OS PRODUTOS) ================= -->
+    <!-- ================= PAGE: INÍCIO ================= -->
     <div id="page-home" class="page-view active">
         <div class="container">
-            <!-- QUEM SOMOS TOP -->
-            <div class="about-section">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h3>Quem Somos</h3>
-                        <p>O <strong>MediaNav Belém</strong> é referência em soluções tecnológicas especializadas para centrais multimídia Renault em Belém e região. Nascemos com o compromisso de trazer inovação, praticidade e segurança para o seu veículo, oferecendo atualizações de mapas e sistemas rigorosamente testados.</p>
-                        <p>Trabalhamos com total transparência e suporte personalizado, garantindo que você dirija sempre com rotas precisas e o sistema multimídia 100% otimizado.</p>
-                        <div class="about-features">
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Suporte Especializado</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Envio 100% Digital</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Procedimento Seguro</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Atendimento Dedicado</div>
-                        </div>
-                    </div>
-                    <div class="about-badge">
-                        <i class="fa fa-shield-alt"></i>
-                        <h4>Confiança e Credibilidade</h4>
-                        <p>Milhares de clientes satisfeitos em todo o Brasil. Garantia de suporte técnico via WhatsApp e e-mail para auxiliar em cada etapa do processo.</p>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="section-title">Catálogo Completo</h2>
+            <h2 class="section-title">Destaques & Produtos Populares</h2>
             
             <div class="product-grid" id="productGridHome">
                 <!-- 1. Mapa 2025 -->
@@ -821,6 +800,32 @@
                     <div>
                         <button class="btn-desc" onclick="openModal('modal10155')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/1nnyjKr" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE: QUEM SOMOS ================= -->
+    <div id="page-quemsomos" class="page-view">
+        <div class="container">
+            <div class="about-section">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Quem Somos</h3>
+                        <p>O <strong>MediaNav Belém</strong> é referência em soluções tecnológicas especializadas para centrais multimídia Renault em Belém e região. Nascemos com o compromisso de trazer inovação, praticidade e segurança para o seu veículo, oferecendo atualizações de mapas e sistemas rigorosamente testados.</p>
+                        <p>Trabalhamos com total transparência e suporte personalizado, garantindo que você dirija sempre com rotas precisas e o sistema multimídia 100% otimizado.</p>
+                        <div class="about-features">
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Suporte Especializado</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Envio 100% Digital</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Procedimento Seguro</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Atendimento Dedicado</div>
+                        </div>
+                    </div>
+                    <div class="about-badge">
+                        <i class="fa fa-shield-alt"></i>
+                        <h4>Confiança e Credibilidade</h4>
+                        <p>Milhares de clientes satisfeitos em todo o Brasil. Garantia de suporte técnico via WhatsApp e e-mail para auxiliar em cada etapa do processo.</p>
                     </div>
                 </div>
             </div>
@@ -1019,6 +1024,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     <ul>
                         <li><a onclick="switchPage('home')">Início</a></li>
                         <li><a onclick="switchPage('produtos')">Produtos</a></li>
+                        <li><a onclick="switchPage('quemsomos')">Quem Somos</a></li>
                         <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
                     </ul>
                 </div>
