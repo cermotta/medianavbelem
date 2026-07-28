@@ -78,6 +78,26 @@
             justify-content: space-between;
         }
 
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-datetime-badge {
+            color: #f1c40f;
+            font-weight: 600;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
         .nav-links-wrapper {
             display: flex;
             gap: 25px;
@@ -995,11 +1015,6 @@
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
-        <!-- Cidade e Data atualizadas à direita na cor branca -->
-        <div style="font-weight: bold; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 12px;">
-            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
-            <span><i class="fa fa-calendar-alt"></i> <span id="currentDate">--/--/----</span></span>
-        </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
             <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
@@ -1008,13 +1023,20 @@
 
     <!-- Nav Menu -->
     <nav class="nav-menu">
-        <div class="nav-links-wrapper">
-            <a onclick="switchPage('home')">Início</a>
-            <a onclick="switchPage('produtos')">Produtos</a>
-            <a onclick="switchPage('quemsomos')">Quem Somos</a>
-            <a onclick="switchPage('suporte')">Suporte / FAQ</a>
-            <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
-            <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
+        <div class="nav-left-group">
+            <!-- Cidade, Data (Dia, Mês e Ano) e Hora posicionados na extrema esquerda da barra preta -->
+            <div class="nav-datetime-badge">
+                <i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span> | 
+                <i class="fa fa-calendar-alt"></i> <span id="currentDateTime">--/--/---- --:--</span>
+            </div>
+            <div class="nav-links-wrapper">
+                <a onclick="switchPage('home')">Início</a>
+                <a onclick="switchPage('produtos')">Produtos</a>
+                <a onclick="switchPage('quemsomos')">Quem Somos</a>
+                <a onclick="switchPage('suporte')">Suporte / FAQ</a>
+                <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
+                <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
+            </div>
         </div>
         <div id="userMenuArea"></div>
     </nav>
@@ -1626,13 +1648,24 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Geolocalização por IP e Data Atual
+        // Script de Geolocalização por IP e Data/Hora Dinâmica
+        function atualizarDataHoraEGeo() {
+            const agora = new Date();
+            const dia = String(agora.getDate()).padStart(2, '0');
+            const mes = String(agora.getMonth() + 1).padStart(2, '0');
+            const ano = agora.getFullYear();
+            const hora = String(agora.getHours()).padStart(2, '0');
+            const minuto = String(agora.getMinutes()).padStart(2, '0');
+            const segundo = String(agora.getSeconds()).padStart(2, '0');
+            
+            const dateTimeString = `${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
+            const dateTimeEl = document.getElementById('currentDateTime');
+            if (dateTimeEl) dateTimeEl.innerText = dateTimeString;
+        }
+
         function carregarGeolocalizacao() {
-            // Define a data atual formatada (DD/MM/AAAA)
-            const hoje = new Date();
-            const dataFormatada = hoje.toLocaleDateString('pt-BR');
-            const dateEl = document.getElementById('currentDate');
-            if (dateEl) dateEl.innerText = dataFormatada;
+            atualizarDataHoraEGeo();
+            setInterval(atualizarDataHoraEGeo, 1000);
 
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
@@ -1773,7 +1806,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             .catch(error => {
                 console.log(error);
                 result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
-                result.style.color = "#c0392b";
+                result.style.color = "#c0392b`;
             });
         });
     </script>
