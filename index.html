@@ -34,6 +34,7 @@
         .logo-area {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         /* Logo Bem Maior e Destacada */
@@ -64,24 +65,6 @@
             top: 50%;
             transform: translateY(-50%);
             color: #666;
-        }
-
-        .cart-icon {
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: relative;
-            color: #111;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background: #ff3b30;
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 50%;
         }
 
         /* Navigation Menu */
@@ -366,18 +349,14 @@
 </head>
 <body>
 
-    <!-- Top Bar com fundo amarelo e logo bem maior -->
+    <!-- Top Bar com fundo amarelo e logo bem maior (clicável para ir ao Início) -->
     <header class="top-bar">
-        <div class="logo-area">
+        <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
         </div>
         <div class="search-box">
             <i class="fa fa-search"></i>
             <input type="text" placeholder="Pesquisar produtos...">
-        </div>
-        <div class="cart-icon">
-            <i class="fa fa-shopping-cart"></i>
-            <span class="cart-count">5</span>
         </div>
     </header>
 
@@ -385,7 +364,7 @@
     <nav class="nav-menu">
         <a onclick="switchPage('home')">Início</a>
         <a onclick="switchPage('produtos')">Produtos</a>
-        <a onclick="switchPage('home'); location.hash='#suporte';">Suporte</a>
+        <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20suporte%20com%20o%20MediaNav%20Belém." target="_blank">Suporte</a>
         <a onclick="switchPage('home'); location.hash='#contato';">Contato</a>
     </nav>
 
@@ -547,4 +526,6 @@ NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT3
 
 O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
 
-Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+OBSERVAÇÕES:
+
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPANormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
