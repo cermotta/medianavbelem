@@ -124,6 +124,36 @@
             text-decoration: underline;
         }
 
+        /* Barra de Localização e Data/Hora no Topo */
+        .top-info-bar {
+            background-color: #111;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            border-bottom: 1px solid #222;
+        }
+
+        .top-info-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+
+        .top-info-badge i {
+            color: #f1c40f;
+        }
+
+        .top-info-badge span {
+            color: #fff;
+            font-weight: bold;
+        }
+
         /* Banner */
         .banner {
             background: linear-gradient(135deg, #1a1a1a, #2c3e50);
@@ -958,6 +988,13 @@
 </head>
 <body>
 
+    <!-- Barra de Localização e Data/Hora no Topo Exatamente Como Solicitado -->
+    <div class="top-info-bar">
+        <div class="top-info-badge">
+            <i class="fa fa-map-marker-alt"></i> <span id="topUserLocation">Carregando...</span> | <span id="topUserDateTime">Carregando...</span>
+        </div>
+    </div>
+
     <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20ajuda." target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -1511,16 +1548,13 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <!-- Contadores Dinâmicos e Local/Data/Hora no Rodapé -->
+                <!-- Contadores Dinâmicos no Rodapé -->
                 <div class="counters-wrapper">
                     <div class="visitor-counter">
                         <i class="fa fa-circle"></i> Online agora: <span id="onlineCount">--</span>
                     </div>
                     <div class="visitor-counter">
                         <i class="fa fa-eye"></i> Visitantes: <span id="visitCount">Carregando...</span>
-                    </div>
-                    <div class="visitor-counter">
-                        <i class="fa fa-map-marker-alt"></i> <span id="userLocation">Belém - PA</span> | <span id="userDateTime">Carregando data e hora...</span>
                     </div>
                 </div>
                 <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
@@ -1693,38 +1727,49 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             switchPage('home');
         }
 
-        // Função para carregar a cidade e a data/hora atual do visitante
-        async function carregarLocalEDataHora() {
-            const atualizarRelogio = () => {
+        // Função para carregar a cidade e a data/hora exata no topo (com o mês por extenso igual na imagem)
+        async function carregarLocalEDataHoraTopo() {
+            const atualizarRelogioTopo = () => {
                 const agora = new Date();
-                const opcoesData = { day: '2-digit', month: 'long', year: 'numeric' };
-                const dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
-                const horaFormatada = agora.toLocaleTimeString('pt-BR');
+                const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+                const dia = String(agora.getDate()).padStart(2, '0');
+                const mes = meses[agora.getMonth()];
+                const ano = agora.getFullYear();
+                const hora = String(agora.getHours()).padStart(2, '0');
+                const minuto = String(agora.getMinutes()).padStart(2, '0');
+                const segundo = String(agora.getSeconds()).padStart(2, '0');
                 
-                const elementoDateTime = document.getElementById('userDateTime');
+                const dataFormatada = `${dia} de ${mes} de ${ano} - ${hora}:${minuto}:${segundo}`;
+                
+                const elementoDateTime = document.getElementById('topUserDateTime');
                 if (elementoDateTime) {
-                    elementoDateTime.innerText = `${dataFormatada} - ${horaFormatada}`;
+                    elementoDateTime.innerText = dataFormatada;
                 }
             };
 
-            atualizarRelogio();
-            setInterval(atualizarRelogio, 1000);
+            atualizarRelogioTopo();
+            setInterval(atualizarRelogioTopo, 1000);
 
             try {
                 let resposta = await fetch('https://ipapi.co/json/');
                 let dados = await resposta.json();
                 if (dados && dados.city && dados.region_code) {
-                    const elementoLocation = document.getElementById('userLocation');
+                    const elementoLocation = document.getElementById('topUserLocation');
                     if (elementoLocation) {
                         elementoLocation.innerText = `${dados.city} - ${dados.region_code}`;
                     }
+                } else {
+                    document.getElementById('topUserLocation').innerText = "Belém - PA";
                 }
             } catch (erro) {
-                console.log("Não foi possível carregar a geolocalização automática, mantendo padrão.");
+                const elementoLocation = document.getElementById('topUserLocation');
+                if (elementoLocation) {
+                    elementoLocation.innerText = "Belém - PA";
+                }
             }
         }
 
-        // Script para o Contador de Visitas Totais, Pessoas Online e Local/Data/Hora
+        // Script para o Contador de Visitas Totais, Pessoas Online e Inicialização Geral
         window.addEventListener('DOMContentLoaded', () => {
             let visits = localStorage.getItem('medianav_visit_count');
             if (!visits) {
@@ -1750,7 +1795,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }, 10000);
 
             atualizarAreaCliente();
-            carregarLocalEDataHora();
+            carregarLocalEDataHoraTopo();
         });
 
         // Script para envio do formulário via Web3Forms
