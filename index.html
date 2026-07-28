@@ -74,6 +74,7 @@
             display: flex;
             gap: 25px;
             border-top: 1px solid #222;
+            flex-wrap: wrap;
         }
 
         .nav-menu a {
@@ -354,9 +355,17 @@
             background-color: #1ebd59;
         }
 
-        /* Comprovante / Envio Box */
+        /* Comprovante / Envio Box (Aba Separada) */
+        .comprovante-container {
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .comprovante-box {
-            margin-top: 30px;
             background: #fff8e1;
             padding: 25px;
             border-radius: 8px;
@@ -642,12 +651,13 @@
         </div>
     </header>
 
-    <!-- Nav Menu com Links de Páginas (Incluindo Quem Somos) -->
+    <!-- Nav Menu com Links de Páginas (Incluindo Enviar Comprovante) -->
     <nav class="nav-menu">
         <a onclick="switchPage('home')">Início</a>
         <a onclick="switchPage('produtos')">Produtos</a>
         <a onclick="switchPage('quemsomos')">Quem Somos</a>
         <a onclick="switchPage('suporte')">Suporte / FAQ</a>
+        <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
     </nav>
 
     <!-- Banner -->
@@ -858,13 +868,28 @@
                     <div class="faq-answer">Não. Trata-se de arquivos e procedimentos customizados para permitir atualizações de mapas e sistemas de forma independente através da porta USB.</div>
                 </div>
 
-                <!-- Caixa para Envio de Comprovante (Otimizada para Web3Forms Free + WhatsApp) -->
+                <div class="whatsapp-box">
+                    <h3>Ainda tem dúvidas ou precisa de ajuda técnica personalizada?</h3>
+                    <p>Fale diretamente com o nosso suporte técnico pelo WhatsApp oficial de Belém/PA.</p>
+                    <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20suporte%20com%20o%20MediaNav%20Belém." target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Chamar no WhatsApp (91) 98207-9997
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE: ENVIAR COMPROVANTE (MENU SEPARADO) ================= -->
+    <div id="page-comprovante" class="page-view">
+        <div class="container">
+            <h2 class="section-title">Enviar Comprovante de Pagamento</h2>
+            
+            <div class="comprovante-container">
                 <div class="comprovante-box">
                     <h3>Já paguei, avise-nos por aqui ou pelo WhatsApp!</h3>
                     <p>Preencha os dados abaixo e clique para enviar a confirmação de pagamento para nosso e-mail. Para enviar a foto do comprovante com mais rapidez, utilize o botão do WhatsApp logo abaixo.</p>
                     
                     <form action="https://api.web3forms.com/submit" method="POST" id="formComprovante">
-                        <!-- Sua chave real do Web3Forms aplicada aqui -->
                         <input type="hidden" name="access_key" value="92776d49-4c7e-42fc-8127-b96cd8732750">
                         <input type="hidden" name="subject" value="Novo Aviso de Pagamento - MediaNav Belém">
                         
@@ -890,21 +915,12 @@
                         <div id="formStatus" class="form-status"></div>
                     </form>
 
-                    <!-- Botão Direto para o WhatsApp (A forma mais prática para enviar a foto/comprovante) -->
                     <div style="margin-top: 20px; text-align: center; border-top: 1px dashed #f39c12; padding-top: 15px;">
                         <p style="font-size: 0.9rem; color: #555; margin-bottom: 10px;">Deseja enviar a foto do comprovante instantaneamente?</p>
                         <a href="https://wa.me/5591982079997?text=Olá,%20já%20fiz%20o%20pagamento%20e%20estou%20enviando%20o%20comprovante." target="_blank" class="btn-whatsapp" style="margin-top: 0;">
                             <i class="fab fa-whatsapp"></i> Enviar Comprovante via WhatsApp
                         </a>
                     </div>
-                </div>
-
-                <div class="whatsapp-box">
-                    <h3>Ainda tem dúvidas ou precisa de ajuda técnica personalizada?</h3>
-                    <p>Fale diretamente com o nosso suporte técnico pelo WhatsApp oficial de Belém/PA.</p>
-                    <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20suporte%20com%20o%20MediaNav%20Belém." target="_blank" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Chamar no WhatsApp (91) 98207-9997
-                    </a>
                 </div>
             </div>
         </div>
@@ -1026,6 +1042,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                         <li><a onclick="switchPage('produtos')">Produtos</a></li>
                         <li><a onclick="switchPage('quemsomos')">Quem Somos</a></li>
                         <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
+                        <li><a onclick="switchPage('comprovante')">Enviar Comprovante</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
