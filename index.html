@@ -103,7 +103,7 @@
             color: #f1c40f;
         }
 
-        /* Bloco de Geolocalização, Data e Hora reposicionado na extrema direita da barra preta (.nav-menu) */
+        /* Bloco de Geolocalização, Data e Hora alinhado perfeitamente na barra preta */
         .nav-geo-datetime {
             display: flex;
             align-items: center;
@@ -114,7 +114,6 @@
             padding: 6px 14px;
             border-radius: 20px;
             border: 1px solid #333;
-            margin-left: auto;
         }
 
         .nav-geo-datetime span {
@@ -1035,7 +1034,7 @@
         </div>
     </header>
 
-    <!-- Nav Menu com o Bloco de Geolocalização, Data e Hora alinhado à extrema direita -->
+    <!-- Nav Menu com o Bloco de Geolocalização, Data e Hora alinhado perfeitamente -->
     <nav class="nav-menu">
         <div class="nav-links-wrapper">
             <a onclick="switchPage('home')">Início</a>
@@ -1045,7 +1044,7 @@
             <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
         </div>
-        <!-- Bloco de Geolocalização, Data e Hora reposicionado na barra preta, alinhado à extrema direita -->
+        <!-- Bloco de Geolocalização, Data e Hora integrado perfeitamente na barra preta -->
         <div class="nav-geo-datetime">
             <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
             <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">Carregando data...</span></span>
@@ -1670,7 +1669,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             if (relogioEl) relogioEl.innerText = agora.toLocaleTimeString('pt-BR');
             
             if (dataEl) {
-                // Formatação personalizada: Dia da semana, dia do mês, nome do mês por extenso e ano
                 const opcoesData = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
                 let dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
                 dataEl.innerText = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
