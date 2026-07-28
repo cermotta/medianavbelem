@@ -36,8 +36,19 @@
             gap: 12px;
         }
 
+        /* Fundo amarelo ouro para destacar a logo transparente */
+        .logo-container {
+            background: linear-gradient(135deg, #f1c40f, #d4ac0d);
+            padding: 5px 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(241, 196, 15, 0.3);
+        }
+
         .logo-area img {
-            height: 45px;
+            height: 40px;
             object-fit: contain;
         }
 
@@ -276,10 +287,12 @@
 </head>
 <body>
 
-    <!-- Top Bar com a sua logo -->
+    <!-- Top Bar com a logo em destaque no fundo amarelo ouro -->
     <header class="top-bar">
         <div class="logo-area">
-            <img src="medianavbelem.png" alt="MediaNav Belém Logo">
+            <div class="logo-container">
+                <img src="medianavbelem.png" alt="MediaNav Belém Logo">
+            </div>
             <span>MediaNav Belém</span>
         </div>
         <div class="search-box">
