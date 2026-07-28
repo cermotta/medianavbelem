@@ -413,6 +413,13 @@
             background-color: #219653;
         }
 
+        .form-status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
         /* Modal / Popup de Descrição */
         .modal {
             display: none;
@@ -796,32 +803,45 @@
                     <div class="faq-answer">Não. Trata-se de arquivos e procedimentos customizados para permitir atualizações de mapas e sistemas de forma independente através da porta USB.</div>
                 </div>
 
-                <!-- Caixa para Envio de Comprovante -->
+                <!-- Caixa para Envio de Comprovante (100% Automático via Web3Forms) -->
                 <div class="comprovante-box">
-                    <h3>Já realizou o pagamento? Envie seu comprovante!</h3>
-                    <p>Preencha os dados abaixo, anexe o comprovante de pagamento e envie para nosso email (medianavbelem@gmail.com) e/ou WhatsApp.</p>
+                    <h3>Já paguei, envie seu comprovante!</h3>
+                    <p>Preencha os dados abaixo, anexe o comprovante de pagamento e clique para enviar diretamente para nosso e-mail (medianavbelem@gmail.com).</p>
                     
-                    <form id="formComprovante" onsubmit="enviarComprovante(event)">
+                    <!-- Substitua 'SEU_ACCESS_KEY_AQUI' gerado gratuitamente em web3forms.com -->
+                    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" id="formComprovante">
+                        <input type="hidden" name="access_key" value="SEU_ACCESS_KEY_AQUI">
+                        <input type="hidden" name="subject" value="Novo Comprovante de Pagamento - MediaNav Belém">
+                        
                         <div class="form-group">
-                            <label for="nomeCliente">Seu Nome Completo:</label>
-                            <input type="text" id="nomeCliente" placeholder="Digite seu nome" required>
+                            <label for="name">Seu Nome Completo:</label>
+                            <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
                         </div>
                         <div class="form-group">
-                            <label for="emailCliente">Seu E-mail:</label>
-                            <input type="email" id="emailCliente" placeholder="seuemail@exemplo.com" required>
+                            <label for="email">Seu E-mail:</label>
+                            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="whatsappCliente">Seu WhatsApp (com DDD):</label>
-                            <input type="text" id="whatsappCliente" placeholder="(91) 99999-9999" required>
+                            <label for="whatsapp">Seu WhatsApp (com DDD):</label>
+                            <input type="text" id="whatsapp" name="whatsapp" placeholder="(91) 99999-9999" required>
                         </div>
                         <div class="form-group">
-                            <label for="arquivoComprovante">Anexar Comprovante (Imagem ou PDF):</label>
-                            <input type="file" id="arquivoComprovante" accept="image/*,.pdf" required>
+                            <label for="attachment">Anexar Comprovante (Imagem ou PDF):</label>
+                            <input type="file" id="attachment" name="attachment" accept="image/*,.pdf" required>
                         </div>
                         <button type="submit" class="btn-enviar-comprovante">
-                            <i class="fa fa-paper-plane"></i> Enviar Comprovante por E-mail / WhatsApp
+                            <i class="fa fa-paper-plane"></i> Enviar Comprovante para o E-mail
                         </button>
+                        <div id="formStatus" class="form-status"></div>
                     </form>
+
+                    <!-- Botão extra caso o cliente queira mandar no WhatsApp -->
+                    <div style="margin-top: 20px; text-align: center; border-top: 1px dashed #f39c12; padding-top: 15px;">
+                        <p style="font-size: 0.9rem; color: #555; margin-bottom: 10px;">Prefere enviar direto pelo WhatsApp?</p>
+                        <a href="https://wa.me/5591982079997?text=Olá,%20já%20fiz%20o%20pagamento%20e%20estou%20enviando%20o%20comprovante." target="_blank" class="btn-whatsapp" style="margin-top: 0;">
+                            <i class="fab fa-whatsapp"></i> Enviar Comprovante via WhatsApp
+                        </a>
+                    </div>
                 </div>
 
                 <div class="whatsapp-box">
@@ -1004,31 +1024,37 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
-        function enviarComprovante(event) {
-            event.preventDefault();
-            const nome = document.getElementById('nomeCliente').value;
-            const email = document.getElementById('emailCliente').value;
-            const whatsapp = document.getElementById('whatsappCliente').value;
-            const arquivoInput = document.getElementById('arquivoComprovante');
+        // Script para envio automático do formulário via Web3Forms
+        const form = document.getElementById('formComprovante');
+        const result = document.getElementById('formStatus');
 
-            if(arquivoInput.files.length === 0) {
-                alert('Por favor, anexe o comprovante.');
-                return;
-            }
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            result.innerHTML = "Enviando comprovante, por favor aguarde...";
+            result.style.color = "#d35400";
 
-            const fileName = arquivoInput.files[0].name;
-
-            // Abrir mailto para o email da loja
-            const subject = encodeURIComponent("Comprovante de Pagamento - MediaNav Belém");
-            const body = encodeURIComponent(`Olá, segue meu comprovante de pagamento.\n\nNome: ${nome}\nE-mail: ${email}\nWhatsApp: ${whatsapp}\nArquivo Anexado: ${fileName}`);
-            window.location.href = `mailto:medianavbelem@gmail.com?subject=${subject}&body=${body}`;
-
-            // Redirecionar também para o WhatsApp com os dados
-            const msgZap = encodeURIComponent(`Olá, sou ${nome} (${email}). Acabei de enviar o comprovante por e-mail e estou anexando/enviando por aqui também. Meu WhatsApp é ${whatsapp}.`);
-            setTimeout(() => {
-                window.open(`https://wa.me/5591982079997?text=${msgZap}`, '_blank');
-            }, 1000);
-        }
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = "Comprovante enviado com sucesso! Entraremos em contato em breve.";
+                    result.style.color = "#27ae60";
+                    form.reset();
+                } else {
+                    result.innerHTML = json.message;
+                    result.style.color = "#c0392b";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
+                result.style.color = "#c0392b";
+            });
+        });
     </script>
 </body>
 </html>
