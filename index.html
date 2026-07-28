@@ -739,33 +739,6 @@
             font-size: 0.95rem;
         }
 
-        /* Estilo da tabela do log de clientes (Newsletter) */
-        .admin-log-box {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-top: 20px;
-        }
-
-        .admin-log-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-
-        .admin-log-table th, .admin-log-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .admin-log-table th {
-            background-color: #34495e;
-            color: white;
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -1397,27 +1370,10 @@
                     </button>
                 </div>
 
-                <!-- Painel Log de Cadastros para Envio de Newsletter (Para o Administrador visualizar) -->
-                <div class="admin-log-box">
-                    <h3 style="color: #2c3e50; margin-bottom: 5px;"><i class="fa fa-database"></i> Log de Clientes Cadastrados (Newsletter)</h3>
-                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">Esta tabela lista todos os e-mails e telefones salvos para o envio de campanhas.</p>
-                    <div style="overflow-x: auto;">
-                        <table class="admin-log-table">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>E-mail</th>
-                                    <th>Telefone</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabelaLogClientes">
-                                <!-- Preenchido via JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <button onclick="limparLogCadastros()" style="margin-top: 10px; background: none; border: none; color: #c0392b; cursor: pointer; font-size: 0.8rem; text-decoration: underline;">
-                        Limpar todo o log de cadastros
+                <!-- Botão oculto/discreto apenas para você baixar a lista de leads em CSV para disparar sua newsletter -->
+                <div style="margin-top: 25px; text-align: right; border-top: 1px solid #eee; padding-top: 15px;">
+                    <button onclick="exportarCsvLeads()" style="background: #34495e; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
+                        <i class="fa fa-download"></i> Baixar Lista de Leads (CSV para Newsletter)
                     </button>
                 </div>
 
@@ -1703,7 +1659,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Gestão do Cadastro Prévio, Login e Log para Newsletter
+        // Script de Gestão do Cadastro Prévio, Login e Log Interno (Newsletter)
         function realizarCadastro(e) {
             e.preventDefault();
             const nome = document.getElementById('cadNome').value.trim();
@@ -1717,15 +1673,13 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             // Salva a sessão atual do cliente logado
             localStorage.setItem('medianav_cliente', JSON.stringify(clienteData));
 
-            // Adiciona ao Log Geral de Clientes (para Newsletter / disparo)
+            // Salva e acumula no log interno de leads (sem mostrar tabela na tela)
             let listaClientes = JSON.parse(localStorage.getItem('medianav_clientes_lista')) || [];
-            
-            // Verifica se o e-mail já existe na lista para atualizar, senão adiciona novo
             let indexExistente = listaClientes.findIndex(c => c.email.toLowerCase() === email.toLowerCase());
             if (indexExistente >= 0) {
-                listaClientes[indexExistente] = clienteData; // Atualiza dados
+                listaClientes[indexExistente] = clienteData;
             } else {
-                listaClientes.push(clienteData); // Insere novo lead
+                listaClientes.push(clienteData);
             }
             localStorage.setItem('medianav_clientes_lista', JSON.stringify(listaClientes));
 
@@ -1733,7 +1687,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             statusDiv.style.color = "#27ae60";
 
             atualizarAreaCliente();
-            renderizarLogClientes();
 
             setTimeout(() => {
                 switchPage('home');
@@ -1764,7 +1717,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (boxLogado) boxLogado.style.display = 'block';
                 if (infoLogadoTexto) infoLogadoTexto.innerHTML = `Você está logado como: <strong>${cliente.nome}</strong> (${cliente.email}). Seus dados estão salvos e prontos para agilizar seus pedidos.`;
                 
-                // Preenche automaticamente o formulário de comprovante se existir
                 const nomeInput = document.getElementById('name');
                 const emailInput = document.getElementById('email');
                 const whatsInput = document.getElementById('whatsapp');
@@ -1777,7 +1729,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (boxFormulario) boxFormulario.style.display = 'block';
                 if (boxLogado) boxLogado.style.display = 'none';
             }
-            renderizarLogClientes();
         }
 
         function sairCadastro() {
@@ -1787,35 +1738,26 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             switchPage('home');
         }
 
-        function renderizarLogClientes() {
-            const tbody = document.getElementById('tabelaLogClientes');
-            if (!tbody) return;
-            
+        // Função para exportar os leads salvos em arquivo CSV/TXT para sua newsletter
+        function exportarCsvLeads() {
             let listaClientes = JSON.parse(localStorage.getItem('medianav_clientes_lista')) || [];
-            tbody.innerHTML = '';
-
             if (listaClientes.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#888;">Nenhum cliente cadastrado ainda.</td></tr>';
+                alert("Ainda não há clientes cadastrados para exportar.");
                 return;
             }
 
-            listaClientes.forEach(cliente => {
-                let tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${cliente.nome}</td>
-                    <td>${cliente.email}</td>
-                    <td>${cliente.telefone}</td>
-                    <td>${cliente.data || 'N/D'}</td>
-                `;
-                tbody.appendChild(tr);
+            let csvContent = "data:text/csv;charset=utf-8,Nome;Email;Telefone;Data\n";
+            listaClientes.forEach(function(c) {
+                csvContent += `"${c.ucName || c.nome}";"${c.email}";"${c.telefone}";"${c.data}"\n`;
             });
-        }
 
-        function limparLogCadastros() {
-            if (confirm("Deseja realmente apagar o histórico de cadastros da newsletter?")) {
-                localStorage.removeItem('medianav_clientes_lista');
-                renderizarLogClientes();
-            }
+            let encodedUri = encodeURI(csvContent);
+            let link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "leads_newsletter_medianav.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Script para o Contador de Visitas Totais e Pessoas Online
