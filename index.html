@@ -20,12 +20,38 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        header {
+            background-color: #232f3e;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
 
         .card {
@@ -38,7 +64,7 @@
         }
 
         h2 {
-            font-size: 22px;
+            font-size: 20px;
             margin-top: 0;
             display: flex;
             align-items: center;
@@ -49,7 +75,7 @@
             content: "";
             display: inline-block;
             width: 4px;
-            height: 22px;
+            height: 20px;
             background-color: #007600;
             border-radius: 2px;
         }
@@ -119,9 +145,27 @@
         .whatsapp-link:hover {
             text-decoration: underline;
         }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+            background-color: #ffffff;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Motta Achados</h1>
+        <nav>
+            <a href="#page-rastreio">Rastrear Pedido</a>
+            <a href="https://wa.me/5591982079997" target="_blank">Suporte WhatsApp</a>
+        </nav>
+    </header>
 
     <div class="container">
         <!-- Seção de Rastreio de Pedido Rápido -->
@@ -145,6 +189,10 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        Desenvolvido por Eduardo Motta
+    </footer>
 
 </body>
 </html>
