@@ -1964,7 +1964,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
-        // ================= NOVO: SISTEMA DE CARRINHO DE COMPRAS =================
+        // ================= NOVO: SISTEMA DE CARRINHO DE COMPRAS COM VALIDAÇÃO DE RESTRIÇÕES =================
         let cart = JSON.parse(localStorage.getItem('medianav_cart')) || [];
 
         function toggleCart() {
@@ -1976,6 +1976,51 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         }
 
         function addToCart(title, price) {
+            // Regras de validação solicitadas:
+            // 1. Mapa 2025 (9.1.3) NÃO pode com Atualização Sistema Medianav 4.1.0 (ou vice-versa)
+            // 2. Mapa 2024 (4.1.0) NÃO pode com Atualização Sistema Evolution 9.1.3 (ou vice-versa)
+            // 3. Atualização Sistema 1.0.15.5 NÃO pode com nenhuma das outras citadas.
+
+            const isMapa2025 = title.includes('2025') && title.includes('9.1.3');
+            const isSis410 = title.includes('4.1.0') && title.includes('Sistema');
+
+            const isMapa2024 = title.includes('2024') && title.includes('4.1.0');
+            const isSis913 = title.includes('9.1.3') && title.includes('Sistema');
+
+            const isSis10155 = title.includes('1.0.15.5');
+
+            for (let item of cart) {
+                const cartItemIsMapa2025 = item.title.includes('2025') && item.title.includes('9.1.3');
+                const cartItemIsSis410 = item.title.includes('4.1.0') && item.title.includes('Sistema');
+
+                const cartItemIsMapa2024 = item.title.includes('2024') && item.title.includes('4.1.0');
+                const cartItemIsSis913 = item.title.includes('9.1.3') && item.title.includes('Sistema');
+
+                const cartItemIsSis10155 = item.title.includes('1.0.15.5');
+
+                // Validação Regra 1: Mapa 2025 (9.1.3) x Sistema 4.1.0
+                if ((isMapa2025 && cartItemIsSis410) || (isSis410 && cartItemIsMapa2025)) {
+                    alert("Atenção: Não é possível comprar o Mapa 2025 (9.1.3) junto com a Atualização do Sistema 4.1.0!");
+                    return;
+                }
+
+                // Validação Regra 2: Mapa 2024 (4.1.0) x Sistema 9.1.3
+                if ((isMapa2024 && cartItemIsSis913) || (isSis913 && cartItemIsMapa2024)) {
+                    alert("Atenção: Não é possível comprar o Mapa 2024/4.1.0 junto com a Atualização do Sistema 9.1.3!");
+                    return;
+                }
+
+                // Validação Regra 3: Sistema 1.0.15.5 não pode com nenhuma outra versão citada
+                if (isSis10155 && (cartItemIsMapa2025 || cartItemIsSis410 || cartItemIsMapa2024 || cartItemIsSis913 || cartItemIsSis10155)) {
+                    alert("Atenção: A atualização 1.0.15.5 não pode ser combinada com outras versões de mapas ou sistemas incompatíveis no mesmo carrinho!");
+                    return;
+                }
+                if (cartItemIsSis10155 && (isMapa2025 || isSis410 || isMapa2024 || isSis913 || isSis10155)) {
+                    alert("Atenção: A atualização 1.0.15.5 não pode ser combinada com outras versões de mapas ou sistemas incompatíveis no mesmo carrinho!");
+                    return;
+                }
+            }
+
             cart.push({ title, price });
             localStorage.setItem('medianav_cart', JSON.stringify(cart));
             updateCartBadge();
@@ -2027,6 +2072,19 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 alert("Seu carrinho está vazio!");
                 return;
             }
+
+            // Dupla checagem de segurança no fechamento do pedido caso algo esteja inconsistente
+            let temMapa2025 = cart.some(i => i.title.includes('2025') && i.title.includes('9.1.3'));
+            let temSis410 = cart.some(i => i.title.includes('4.1.0') && i.title.includes('Sistema'));
+            let temMapa2024 = cart.some(i => i.title.includes('2024') && i.title.includes('4.1.0'));
+            let temSis913 = cart.some(i => i.title.includes('9.1.3') && i.title.includes('Sistema'));
+            let tem10155 = cart.some(i => i.title.includes('1.0.15.5'));
+
+            if ((temMapa2025 && temSis410) || (temMapa2024 && temSis913) || tem10155 && cart.length > 1) {
+                alert("Existe uma combinação incompatível de itens no carrinho. Por favor, revise seus produtos.");
+                return;
+            }
+
             let total = cart.reduce((sum, item) => sum + item.price, 0);
             let msg = "Olá! Gostaria de fechar o seguinte pedido consolidado:%0A";
             cart.forEach(item => {
