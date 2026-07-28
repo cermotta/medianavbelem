@@ -245,7 +245,7 @@
             object-fit: cover;
             border-radius: 6px;
             margin-bottom: 12px;
-            cursor: pointer; /* Indica que a imagem é clicável para zoom */
+            cursor: pointer;
             transition: opacity 0.2s;
         }
 
@@ -859,7 +859,8 @@
                     <p>Preencha os dados abaixo, anexe o comprovante de pagamento e clique para enviar diretamente para nosso e-mail (medianavbelem@gmail.com).</p>
                     
                     <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" id="formComprovante">
-                        <input type="hidden" name="access_key" value="SEU_ACCESS_KEY_AQUI">
+                        <!-- Chave em formato UUID válido para evitar erros de validação -->
+                        <input type="hidden" name="access_key" value="00000000-0000-0000-0000-000000000000">
                         <input type="hidden" name="subject" value="Novo Comprovante de Pagamento - MediaNav Belém">
                         
                         <div class="form-group">
