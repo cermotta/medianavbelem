@@ -593,7 +593,7 @@
             max-width: 320px;
             transform: translateY(100px);
             opacity: 0;
-            transition: all 0.4s ease-in-out;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         .toast-notification.show {
@@ -2119,13 +2119,107 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE =================
+        // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE (TODOS OS ESTADOS E CIDADES DO BRASIL) =================
         const mockBuyers = [
+            /* Acre (AC) */
+            { name: "Lucas de Rio Branco - AC", product: "Atualização Mapa 2025" },
+            { name: "Mariana de Cruzeiro do Sul - AC", product: "Atualização Sistema Evolution 9.1.3" },
+            /* Alagoas (AL) */
+            { name: "José de Maceió - AL", product: "Atualização Mapa 2024" },
+            { name: "Beatriz de Arapiraca - AL", product: "Atualização Sistema 4.1.0" },
+            /* Amapá (AP) */
+            { name: "Anderson de Macapá - AP", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Camila de Santana - AP", product: "Atualização Mapa 2025" },
+            /* Amazonas (AM) */
+            { name: "Rodrigo de Manaus - AM", product: "Atualização Mapa 2024" },
+            { name: "Larissa de Parintins - AM", product: "Atualização Sistema Evolution 9.1.3" },
+            /* Bahia (BA) */
+            { name: "Matheus de Salvador - BA", product: "Atualização Mapa 2025" },
+            { name: "Juliana de Feira de Santana - BA", product: "Atualização Sistema 4.1.0" },
+            { name: "Raimundo de Vitória da Conquista - BA", product: "Atualização Sistema 1.0.15.5" },
+            /* Ceará (CE) */
+            { name: "Thiago de Fortaleza - CE", product: "Atualização Mapa 2025" },
+            { name: "Fernanda de Juazeiro do Norte - CE", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "Renato de Sobral - CE", product: "Atualização Mapa 2024" },
+            /* Distrito Federal (DF) */
+            { name: "Bruno de Brasília - DF", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Patrícia de Taguatinga - DF", product: "Atualização Mapa 2025" },
+            /* Espírito Santo (ES) */
+            { name: "Diego de Vitória - ES", product: "Atualização Sistema 4.1.0" },
+            { name: "Vanessa de Vila Velha - ES", product: "Atualização Mapa 2024" },
+            { name: "Gabriel de Serra - ES", product: "Atualização Sistema Evolution 9.1.3" },
+            /* Goiás (GO) */
+            { name: "Rafael de Goiânia - GO", product: "Atualização Mapa 2025" },
+            { name: "Aline de Aparecida de Goiânia - GO", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Leandro de Anápolis - GO", product: "Atualização Mapa 2024" },
+            /* Maranhão (MA) */
+            { name: "Antônio de São Luís - MA", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "Francisca de Imperatriz - MA", product: "Atualização Mapa 2025" },
+            /* Mato Grosso (MT) */
+            { name: "Marcelo de Cuiabá - MT", product: "Atualização Sistema 4.1.0" },
+            { name: "Tatiane de Várzea Grande - MT", product: "Atualização Mapa 2024" },
+            { name: "Eduardo de Rondonópolis - MT", product: "Atualização Sistema 1.0.15.5" },
+            /* Mato Grosso do Sul (MS) */
+            { name: "Felipe de Campo Grande - MS", product: "Atualização Mapa 2025" },
+            { name: "Camila de Dourados - MS", product: "Atualização Sistema Evolution 9.1.3" },
+            /* Minas Gerais (MG) */
+            { name: "Roberto de Belo Horizonte - MG", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Flávia de Uberlândia - MG", product: "Atualização Mapa 2025" },
+            { name: "Marcos de Contagem - MG", product: "Atualização Sistema 4.1.0" },
+            { name: "Priscila de Juiz de Fora - MG", product: "Atualização Mapa 2024" },
+            /* Pará (PA) */
             { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
             { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" },
             { name: "Juliano de Marabá - PA", product: "Atualização Mapa 2024" },
             { name: "Ana Paula de Castanhal - PA", product: "Atualização Sistema 4.1.0" },
-            { name: "Roberto de Santarém - PA", product: "Atualização Sistema 1.0.15.5" }
+            { name: "Roberto de Santarém - PA", product: "Atualização Sistema 1.0.15.5" },
+            /* Paraíba (PB) */
+            { name: "João de João Pessoa - PB", product: "Atualização Mapa 2025" },
+            { name: "Maria de Campina Grande - PB", product: "Atualização Sistema 1.0.15.5" },
+            /* Paraná (PR) */
+            { name: "Lucas de Curitiba - PR", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "Renata de Londrina - PR", product: "Atualização Mapa 2024" },
+            { name: "Alexandre de Maringá - PR", product: "Atualização Sistema 4.1.0" },
+            { name: "Jessica de Cascavel - PR", product: "Atualização Mapa 2025" },
+            /* Pernambuco (PE) */
+            { name: "Paulo de Recife - PE", product: "Atualização Mapa 2025" },
+            { name: "Luciana de Jaboatão dos Guararapes - PE", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Vinícius de Caruaru - PE", product: "Atualização Mapa 2024" },
+            /* Piauí (PI) */
+            { name: "Francisco de Teresina - PI", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "Antônia de Parnaíba - PI", product: "Atualização Mapa 2025" },
+            /* Rio de Janeiro (RJ) */
+            { name: "Daniel de Rio de Janeiro - RJ", product: "Atualização Mapa 2025" },
+            { name: "Carla de Niterói - RJ", product: "Atualização Sistema 4.1.0" },
+            { name: "Leonardo de Duque de Caxias - RJ", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Amanda de Nova Iguaçu - RJ", product: "Atualização Mapa 2024" },
+            /* Rio Grande do Norte (RN) */
+            { name: "Anderson de Natal - RN", product: "Atualização Mapa 2025" },
+            { name: "Natália de Mossoró - RN", product: "Atualização Sistema Evolution 9.1.3" },
+            /* Rio Grande do Sul (RS) */
+            { name: "Eduardo de Porto Alegre - RS", product: "Atualização Sistema 1.0.15.5" },
+            { name: "Letícia de Caxias do Sul - RS", product: "Atualização Mapa 2025" },
+            { name: "Guilherme de Canoas - RS", product: "Atualização Sistema 4.1.0" },
+            { name: "Sabrina de Pelotas - RS", product: "Atualização Mapa 2024" },
+            /* Rondônia (RO) */
+            { name: "Wellington de Porto Velho - RO", product: "Atualização Mapa 2025" },
+            { name: "Janaína de Ji-Paraná - RO", product: "Atualização Sistema Evolution 9.1.3" },
+            /* Roraima (RR) */
+            { name: "Sérgio de Boa Vista - RR", product: "Atualização Mapa 2024" },
+            /* Santa Catarina (SC) */
+            { name: "Maurício de Florianópolis - SC", product: "Atualização Sistema 4.1.0" },
+            { name: "Bianca de Joinville - SC", product: "Atualização Mapa 2025" },
+            { name: "Wagner de Blumenau - SC", product: "Atualização Sistema 1.0.15.5" },
+            /* São Paulo (SP) */
+            { name: "Ricardo de São Paulo - SP", product: "Atualização Mapa 2025" },
+            { name: "Marcela de Campinas - SP", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "Fabio de Santos - SP", product: "Atualização Mapa 2024" },
+            { name: "Cristiane de São Bernardo do Campo - SP", product: "Atualização Sistema 4.1.0" },
+            { name: "Adriano de Ribeirão Preto - SP", product: "Atualização Sistema 1.0.15.5" },
+            /* Sergipe (SE) */
+            { name: "Everson de Aracaju - SE", product: "Atualização Mapa 2025" },
+            /* Tocantins (TO) */
+            { name: "Reginaldo de Palmas - TO", product: "Atualização Sistema Evolution 9.1.3" }
         ];
 
         function triggerToast() {
@@ -2138,9 +2232,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             descEl.innerText = `acabou de comprar a ${randomBuyer.product}`;
 
             toast.classList.add('show');
+            // Tempo aumentado para 8 segundos (8000ms) visível na tela
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 5000);
+            }, 8000);
         }
 
         // ================= RECUPERAÇÃO DE CARRINHO / ABANDONO DE CONTATO =================
@@ -2315,7 +2410,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (ocEl) ocEl.innerText = onlineUsers;
             }, 10000);
 
-            // Disparar Toast de compras recentes a cada 15 segundos
+            // Disparar Toast de compras recentes a cada 18 segundos
             setTimeout(triggerToast, 4000);
             setInterval(triggerToast, 18000);
 
@@ -2358,4 +2453,3 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
     </script>
 </body>
 </html>
-```[cite: 5]
