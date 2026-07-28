@@ -37,7 +37,6 @@
             cursor: pointer;
         }
 
-        /* Logo Bem Maior e Destacada */
         .logo-area img {
             height: 120px; 
             object-fit: contain;
@@ -112,7 +111,6 @@
             color: #ccc;
         }
 
-        /* Views / Pages Control */
         .page-view {
             display: none;
         }
@@ -121,7 +119,6 @@
             display: block;
         }
 
-        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -136,7 +133,6 @@
             padding-left: 10px;
         }
 
-        /* Quem Somos Seção Página Própria */
         .about-section {
             background: white;
             padding: 40px;
@@ -216,7 +212,6 @@
             line-height: 1.5;
         }
 
-        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -305,7 +300,6 @@
             background-color: #0073a8;
         }
 
-        /* FAQ / Suporte Styles */
         .faq-container {
             background: white;
             padding: 30px;
@@ -355,7 +349,6 @@
             background-color: #1ebd59;
         }
 
-        /* Comprovante / Envio Box (Aba Separada) */
         .comprovante-container {
             background: white;
             padding: 35px;
@@ -435,7 +428,6 @@
             font-size: 0.95rem;
         }
 
-        /* Modal / Popup Geral & Zoom de Imagem */
         .modal {
             display: none;
             position: fixed;
@@ -498,7 +490,6 @@
             white-space: pre-line;
         }
 
-        /* Modal Específico para Zoom de Imagem */
         .zoom-modal {
             display: none;
             position: fixed;
@@ -542,7 +533,15 @@
             color: #f1c40f;
         }
 
-        /* Contador de Visitas Estilizado */
+        /* Área dos Contadores no Rodapé */
+        .counters-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
         .visitor-counter {
             display: inline-flex;
             align-items: center;
@@ -553,11 +552,22 @@
             border-radius: 20px;
             font-size: 0.85rem;
             color: #bbb;
-            margin-top: 10px;
         }
 
         .visitor-counter i {
             color: #f1c40f;
+        }
+
+        .visitor-counter i.fa-circle {
+            color: #27ae60;
+            font-size: 0.5rem;
+            animation: pulseDot 1.5s infinite;
+        }
+
+        @keyframes pulseDot {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
         }
 
         .visitor-counter span {
@@ -667,7 +677,7 @@
 </head>
 <body>
 
-    <!-- Top Bar com fundo amarelo e logo (clicável para voltar ao Início) -->
+    <!-- Top Bar com fundo amarelo e logo -->
     <header class="top-bar">
         <div class="logo-area" onclick="switchPage('home')">
             <img src="medianavbelem.png" alt="MediaNav Belém Logo">
@@ -678,7 +688,7 @@
         </div>
     </header>
 
-    <!-- Nav Menu com Links de Páginas (Incluindo Enviar Comprovante) -->
+    <!-- Nav Menu -->
     <nav class="nav-menu">
         <a onclick="switchPage('home')">Início</a>
         <a onclick="switchPage('produtos')">Produtos</a>
@@ -906,7 +916,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: ENVIAR COMPROVANTE (MENU SEPARADO) ================= -->
+    <!-- ================= PAGE: ENVIAR COMPROVANTE ================= -->
     <div id="page-comprovante" class="page-view">
         <div class="container">
             <h2 class="section-title">Enviar Comprovante de Pagamento</h2>
@@ -954,8 +964,6 @@
     </div>
 
     <!-- ================= MODAIS DE DESCRIÇÃO ================= -->
-    
-    <!-- Modal 2025 -->
     <div id="modal2025" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2025')">&times;</span>
@@ -968,15 +976,10 @@ PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FA
 
 NECESSÁRIO UM PENDRIVE DE ATÉ 8GB, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
 
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
-
-OBSERVAÇÕES:
-
-PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO</div>
+O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.</div>
         </div>
     </div>
 
-    <!-- Modal 2024 -->
     <div id="modal2024" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2024')">&times;</span>
@@ -993,7 +996,6 @@ O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM
         </div>
     </div>
 
-    <!-- Modal Firmware 4.1.0 -->
     <div id="modalFirmware" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
@@ -1010,7 +1012,6 @@ ACOMPANHA TUTORIAL PASSO A PASSO PARA APLICAÇÃO SEGURA VIA USB.</div>
         </div>
     </div>
 
-    <!-- Modal Evolution 9.1.3 -->
     <div id="modalEvolution913" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalEvolution913')">&times;</span>
@@ -1027,7 +1028,6 @@ ACOMPANHA INSTRUÇÕES DETALHADAS PARA INSTALAÇÃO DIRETA PELA PORTA USB.</div>
         </div>
     </div>
 
-    <!-- Modal 1.0.15.5 -->
     <div id="modal10155" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal10155')">&times;</span>
@@ -1044,7 +1044,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         </div>
     </div>
 
-    <!-- ================= MODAL DE ZOOM PARA AS FOTOS ================= -->
+    <!-- MODAL DE ZOOM -->
     <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
         <span class="close-zoom">&times;</span>
         <img id="zoomImg" src="" alt="Zoom da Imagem">
@@ -1082,9 +1082,14 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <!-- Contador de Acessos Integrado -->
-                <div class="visitor-counter">
-                    <i class="fa fa-eye"></i> Visitantes: <span id="visitCount">Carregando...</span>
+                <!-- Contadores Dinâmicos no Rodapé -->
+                <div class="counters-wrapper">
+                    <div class="visitor-counter">
+                        <i class="fa fa-circle"></i> Online agora: <span id="onlineCount">--</span>
+                    </div>
+                    <div class="visitor-counter">
+                        <i class="fa fa-eye"></i> Visitantes: <span id="visitCount">Carregando...</span>
+                    </div>
                 </div>
                 <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
             </div>
@@ -1114,7 +1119,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             if (modal) modal.style.display = 'none';
         }
 
-        // Funções para o Zoom das Imagens
         function openZoom(imageSrc) {
             const zoomModal = document.getElementById('zoomModal');
             const zoomImg = document.getElementById('zoomImg');
@@ -1147,25 +1151,36 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
-        // Script para o Contador de Visitas Automático
+        // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
+            // 1. Visitantes Totais
             let visits = localStorage.getItem('medianav_visit_count');
-            
             if (!visits) {
-                visits = 1245; // Número inicial base realista para o contador começar bonito
+                visits = 1246;
             } else {
-                // Conta apenas 1 visita nova por sessão do navegador para evitar contagem dupla rápida
                 if (!sessionStorage.getItem('visited_session')) {
                     visits = parseInt(visits) + 1;
                     sessionStorage.setItem('visited_session', 'true');
                 }
             }
-            
             localStorage.setItem('medianav_visit_count', visits);
             document.getElementById('visitCount').innerText = Number(visits).toLocaleString('pt-BR');
+
+            // 2. Simulador de Pessoas Online Agora (Gera um número crível entre 5 e 14 e varia levemente)
+            let onlineUsers = Math.floor(Math.random() * 10) + 5; 
+            document.getElementById('onlineCount').innerText = onlineUsers;
+
+            // Faz o número de online oscilar levemente a cada 10 segundos para dar dinamismo
+            setInterval(() => {
+                let change = Math.random() > 0.5 ? 1 : -1;
+                onlineUsers += change;
+                if (onlineUsers < 4) onlineUsers = 4;
+                if (onlineUsers > 18) onlineUsers = 18;
+                document.getElementById('onlineCount').innerText = onlineUsers;
+            }, 10000);
         });
 
-        // Script para envio automático do formulário via Web3Forms
+        // Script para envio do formulário via Web3Forms
         const form = document.getElementById('formComprovante');
         const result = document.getElementById('formStatus');
 
