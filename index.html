@@ -98,10 +98,111 @@
         .geo-datetime-block span {
             white-space: nowrap;
         }
+
+        /* Estilo do Formulário de Comprovante */
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fffdf5;
+            border: 2px dashed #f0ad4e;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            color: #d9534f;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .form-container p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #00bcd4;
+        }
+
+        .btn-email {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-email:hover {
+            background-color: #218838;
+        }
+
+        .divider {
+            border-top: 1px dashed #f0ad4e;
+            margin: 25px 0 15px 0;
+            text-align: center;
+        }
+
+        .divider span {
+            background: #fffdf5;
+            padding: 0 10px;
+            color: #777;
+            font-size: 13px;
+            position: relative;
+            top: -10px;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Barra Superior -->
     <header class="top-bar">
         <!-- Links do Menu à Esquerda -->
         <nav class="menu-links">
@@ -130,6 +231,44 @@
         </div>
     </header>
 
+    <!-- Seção do Formulário de Comprovante[cite: 3] -->
+    <main>
+        <div class="form-container" id="comprovante">
+            <h2>Já paguei, avise-nos por aqui ou pelo WhatsApp!</h2>
+            <p>Preencha os dados abaixo e clique para enviar a confirmação de pagamento para nosso e-mail. Para enviar a foto do comprovante com mais rapidez, utilize o botão do WhatsApp logo abaixo.</p>
+            
+            <form onsubmit="enviarAviso(event)">
+                <div class="form-group">
+                    <label>Seu Nome Completo:</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Seu E-mail:</label>
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Seu WhatsApp (com DDD):</label>
+                    <input type="text" id="whatsapp" placeholder="(91) 99999-9999" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ID da Transação do Mercado Pago[cite: 3]:</label>
+                    <textarea id="transacao" rows="3" placeholder="Informe o ID da transação do Mercado Pago..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-email">Enviar Aviso de Pagamento por E-mail</button>
+            </form>
+
+            <div class="divider">
+                <span>Deseja enviar a foto do comprovante instantaneamente?</span>
+            </div>
+
+            <a href="https://wa.me/" target="_blank" class="btn-whatsapp">Enviar Comprovante via WhatsApp</a>
+        </div>
+    </main>
+
     <script>
         // Função para atualizar Data e Hora em tempo real
         function atualizarDataHora() {
@@ -152,10 +291,9 @@
         // Simulação de Geolocalização simples via navegador
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                // Aqui você pode integrar com uma API de Reverse Geocoding se desejar a cidade exata
                 document.getElementById('geoLoc').innerText = "Belém, PA";
             }, function(error) {
-                document.getElementById('geoLoc').innerText = "Belém, PA"; // Fallback padrão
+                document.getElementById('geoLoc').innerText = "Belém, PA";
             });
         } else {
             document.getElementById('geoLoc').innerText = "Belém, PA";
@@ -169,6 +307,11 @@
         function realizarPesquisa() {
             const termo = document.getElementById('searchInput').value;
             console.log("Pesquisando por: " + termo);
+        }
+
+        function enviarAviso(event) {
+            event.preventDefault();
+            alert("Aviso de pagamento enviado com sucesso!");
         }
     </script>
 
