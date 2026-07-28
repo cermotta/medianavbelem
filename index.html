@@ -340,6 +340,181 @@
             background-color: #0073a8;
         }
 
+        /* Novos Recursos Estilizados */
+        .compatibility-box, .status-tracker-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .compatibility-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .compatibility-table th, .compatibility-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .compatibility-table th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .compatibility-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .tracker-form {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tracker-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .tracker-form button {
+            background-color: #f1c40f;
+            color: #111;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tracker-form button:hover {
+            background-color: #f39c12;
+        }
+
+        #trackerResult {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Chatbot Widget Flutuante */
+        .chatbot-container {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            z-index: 997;
+        }
+
+        .chatbot-toggle {
+            background-color: #2c3e50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            background-color: #1a252f;
+        }
+
+        .chatbot-box {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            width: 320px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: fadeIn 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .chatbot-header {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .chatbot-header span i {
+            color: #27ae60;
+            font-size: 0.6rem;
+            margin-right: 5px;
+        }
+
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .chatbot-body {
+            padding: 15px;
+            max-height: 250px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .chatbot-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .chatbot-option-btn {
+            background: #f4f6f9;
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #333;
+            transition: background 0.2s;
+        }
+
+        .chatbot-option-btn:hover {
+            background: #f1c40f;
+            border-color: #f39c12;
+            font-weight: 600;
+        }
+
+        .chatbot-response {
+            margin-top: 10px;
+            padding: 10px;
+            background: #eef2f7;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
         /* Seção de Depoimentos */
         .testimonials-section {
             margin-top: 50px;
@@ -825,6 +1000,28 @@
         <i class="fa fa-arrow-up"></i>
     </a>
 
+    <!-- Chatbot Widget Flutuante -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" onclick="toggleChatbot()" title="Assistente Virtual">
+            <i class="fa fa-comments"></i>
+        </div>
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <span><i class="fa fa-circle"></i> Assistente MediaNav</span>
+                <span class="chatbot-close" onclick="toggleChatbot()">&times;</span>
+            </div>
+            <div class="chatbot-body" id="chatbotBody">
+                <p>Olá! Como posso ajudar você hoje com o seu MediaNav?</p>
+                <div class="chatbot-options">
+                    <button class="chatbot-option-btn" onclick="chatbotReply('pendrive')">Qual pen drive devo usar?</button>
+                    <button class="chatbot-option-btn" onclick="chatbotReply('versao')">Como ver a versão do meu aparelho?</button>
+                    <button class="chatbot-option-btn" onclick="chatbotReply('envio')">Como funciona o envio dos arquivos?</button>
+                </div>
+                <div id="chatbotResponse" class="chatbot-response" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Top Bar com fundo amarelo e logo -->
     <header class="top-bar">
         <div class="logo-area" onclick="switchPage('home')">
@@ -840,6 +1037,8 @@
     <nav class="nav-menu">
         <a onclick="switchPage('home')">Início</a>
         <a onclick="switchPage('produtos')">Produtos</a>
+        <a onclick="switchPage('compatibilidade')">Compatibilidade</a>
+        <a onclick="switchPage('rastreio')">Rastrear Pedido</a>
         <a onclick="switchPage('quemsomos')">Quem Somos</a>
         <a onclick="switchPage('suporte')">Suporte / FAQ</a>
         <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
@@ -1063,6 +1262,75 @@
         </div>
     </div>
 
+    <!-- ================= PAGE: COMPATIBILIDADE ================= -->
+    <div id="page-compatibilidade" class="page-view">
+        <div class="container">
+            <div class="compatibility-box">
+                <h2 class="section-title" style="border-left-color: #2c3e50;">Guia de Compatibilidade por Veículos e Anos</h2>
+                <p style="color: #555; margin-bottom: 20px;">Confira abaixo qual versão de firmware e mapa atende perfeitamente ao seu modelo de veículo Renault:</p>
+                <div style="overflow-x: auto;">
+                    <table class="compatibility-table">
+                        <thead>
+                            <tr>
+                                <th>Modelo do Veículo</th>
+                                <th>Anos Compatíveis</th>
+                                <th>Versão do MediaNav</th>
+                                <th>Produto Recomendado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Renault Duster / Oroch</td>
+                                <td>2012 a 2015</td>
+                                <td>Standard (v4.0.3 a v4.1.0)</td>
+                                <td>Mapa 2024 (v4.1.0) / Sistema 4.1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Renault Sandero / Logan</td>
+                                <td>2012 a 2015</td>
+                                <td>Standard (v4.0.3 a v4.1.0)</td>
+                                <td>Mapa 2024 (v4.1.0) / Sistema 4.1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Renault Duster / Oroch</td>
+                                <td>2016 a 2020</td>
+                                <td>Evolution (v9.1.1 a v9.1.3)</td>
+                                <td>Mapa 2025 (v9.1.3) / Sistema 9.1.3</td>
+                            </tr>
+                            <tr>
+                                <td>Renault Sandero / Logan / Captur</td>
+                                <td>2016 a 2020</td>
+                                <td>Evolution (v9.1.1 a v9.1.3)</td>
+                                <td>Mapa 2025 (v9.1.3) / Sistema 9.1.3</td>
+                            </tr>
+                            <tr>
+                                <td>Renault Novos Modelos (Stepway / Duster)</td>
+                                <td>2021 em diante</td>
+                                <td>MediaNav MN3 (v1.0.15.x)</td>
+                                <td>Sistema 1.0.15.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE: RASTREIO DE PEDIDO ================= -->
+    <div id="page-rastreio" class="page-view">
+        <div class="container">
+            <div class="status-tracker-box" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title" style="border-left-color: #27ae60;">Consultar Status do Pedido</h2>
+                <p style="color: #555; margin-bottom: 15px;">Digite o seu e-mail cadastrado na compra para verificar o andamento e liberação do seu envio digital:</p>
+                <div class="tracker-form">
+                    <input type="email" id="trackerEmail" placeholder="Digite seu e-mail da compra...">
+                    <button onclick="checkOrderStatus()">Consultar Status</button>
+                </div>
+                <div id="trackerResult"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= PAGE: QUEM SOMOS ================= -->
     <div id="page-quemsomos" class="page-view">
         <div class="container">
@@ -1277,6 +1545,8 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     <ul>
                         <li><a onclick="switchPage('home')">Início</a></li>
                         <li><a onclick="switchPage('produtos')">Produtos</a></li>
+                        <li><a onclick="switchPage('compatibilidade')">Compatibilidade</a></li>
+                        <li><a onclick="switchPage('rastreio')">Rastrear Pedido</a></li>
                         <li><a onclick="switchPage('quemsomos')">Quem Somos</a></li>
                         <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
                         <li><a onclick="switchPage('comprovante')">Enviar Comprovante</a></li>
@@ -1302,7 +1572,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     </div>
                 </div>
                 <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Desenvolvido por <strong>Eduardo Motta</strong>.</p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Desenvolvido com excelência técnica e profissionalismo.</p>
             </div>
         </div>
     </footer>
@@ -1382,6 +1652,45 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     card.style.display = "none";
                 }
             });
+        }
+
+        // Script do Chatbot Interativo
+        function toggleChatbot() {
+            const box = document.getElementById('chatbotBox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function chatbotReply(topic) {
+            const respDiv = document.getElementById('chatbotResponse');
+            respDiv.style.display = 'block';
+            if (topic === 'pendrive') {
+                respDiv.innerHTML = "Recomendamos utilizar um pen drive de até 8GB, formatado em FAT32 e totalmente vazio. Evite modelos genéricos.";
+            } else if (topic === 'versao') {
+                respDiv.innerHTML = "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong> diretamente no seu MediaNav.";
+            } else if (topic === 'envio') {
+                respDiv.innerHTML = "O envio é 100% digital via e-mail e WhatsApp logo após a confirmação do pagamento e envio do comprovante.";
+            }
+        }
+
+        // Script de Simulação de Rastreio de Pedido
+        function checkOrderStatus() {
+            const emailInput = document.getElementById('trackerEmail').value.trim();
+            const resultDiv = document.getElementById('trackerResult');
+            
+            if (!emailInput || !emailInput.includes('@')) {
+                resultDiv.innerHTML = "<span style='color: #c0392b;'>Por favor, insira um e-mail válido.</span>";
+                return;
+            }
+
+            resultDiv.innerHTML = "<span style='color: #d35400;'>Consultando base de pedidos...</span>";
+            setTimeout(() => {
+                // Simulação simples baseada em exemplo
+                if (emailInput.toLowerCase() === 'teste@exemplo.com') {
+                    resultDiv.innerHTML = "<span style='color: #27ae60;'><i class='fa fa-check-circle'></i> Pedido encontrado! Status: <strong>Enviado por e-mail com sucesso.</strong> Verifique sua caixa de entrada e spam.</span>";
+                } else {
+                    resultDiv.innerHTML = "<span style='color: #2980b9;'><i class='fa fa-info-circle'></i> Nenhum envio pendente localizado para este e-mail. Se já enviou o comprovante, por favor confirme no WhatsApp (91) 98207-9997.</span>";
+                }
+            }, 800);
         }
 
         // Script para o Contador de Visitas Totais e Pessoas Online
