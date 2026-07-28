@@ -383,7 +383,7 @@
         </div>
         <div class="cart-icon">
             <i class="fa fa-shopping-cart"></i>
-            <span class="cart-count">2</span>
+            <span class="cart-count">3</span>
         </div>
     </header>
 
@@ -399,7 +399,7 @@
     <section class="banner">
         <div class="banner-text">
             <h1>MediaNav Belém - Atualização de GPS e Multimídia Renault</h1>
-            <p>Atualize seu sistema com radares, pontos de interesse e voz em português.</p>
+            <p>Atualize seu sistema com versões oficiais, firmware, radares e pontos de interesse.</p>
         </div>
     </section>
 
@@ -421,7 +421,7 @@
                 </div>
             </div>
 
-            <!-- Produto 2: MediaNav Standard 2024 -->
+            <!-- Produto 2: MediaNav Standard 2024 (Mapa) -->
             <div class="product-card">
                 <div>
                     <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img">
@@ -434,24 +434,30 @@
                 </div>
             </div>
 
-            <!-- Produto 3 -->
+            <!-- Produto 3: Atualização Sistema Firmware Standard 4.1.0 -->
+            <div class="product-card">
+                <div>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img">
+                    <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
+                    <div class="product-price">R$ 60,00</div>
+                </div>
+                <div>
+                    <button class="btn-desc" onclick="openModal('modalFirmware')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                    <a href="https://mpago.la/1HmKUWz" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
+                </div>
+            </div>
+
+            <!-- Produto 4 -->
             <div class="product-card">
                 <div>
                     <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500&q=80" alt="Kit Cabos" class="product-img">
                     <div class="product-title">Kit Cabos e Conectores para Instalação Multimídia</div>
                     <div class="product-price">R$ 89,00</div>
                 </div>
-                <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_PREF_ID_3" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
-            </div>
-
-            <!-- Produto 4 -->
-            <div class="product-card">
                 <div>
-                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=500&q=80" alt="Antena GPS" class="product-img">
-                    <div class="product-title">Antena GPS Externa Reforçada para Multimídia</div>
-                    <div class="product-price">R$ 59,00</div>
+                    <button class="btn-desc" onclick="openModal('modalCabos')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                    <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_PREF_ID_3" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
                 </div>
-                <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_PREF_ID_4" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
             </div>
         </div>
     </div>
@@ -537,6 +543,28 @@ MAIORES INFORMAÇÕES: UTILIZE O CAMPO DE MENSAGENS.
 NA HORA DE FINALIZAR A COMPRA, ESCOLHA A OPÇÃO DE FRETE RETIRAR EM MÃOS COM VENDEDOR OU COMBINAR ENTREGA COM VENDEDOR.
 
 PRODUTO É ENVIADO VIA E-MAIL INFORMADO PELO CLIENTE APÓS A COMPRA.</div>
+        </div>
+    </div>
+
+    <!-- Modal Firmware 4.1.0 -->
+    <div id="modalFirmware" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
+            <div class="modal-body">Atualização para MEDIANAV RENAULT STANDARD para a versão mais atual 4.1.0
+
+PARA MEDIANAV COM AS VERSÕES - 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6
+
+ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS.</div>
+        </div>
+    </div>
+
+    <!-- Modal Cabos -->
+    <div id="modalCabos" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalCabos')">&times;</span>
+            <div class="modal-title">Kit Cabos e Conectores para Instalação Multimídia</div>
+            <div class="modal-body">Kit completo contendo cabos e conectores adaptados para a correta instalação e funcionamento da sua central multimídia original Renault. Produto de excelente qualidade para garantir durabilidade e conexões seguras.</div>
         </div>
     </div>
 
