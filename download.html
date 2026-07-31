@@ -285,7 +285,7 @@
         fetch('config.json')
             .then(response => response.json())
             .then(config => {
-                let tempoRestante = config.tempo_espera_segundos || 30;
+                let tempoRestante = config.tempo_espera_segundos || 10;
                 const tempoTotal = tempoRestante;
                 const linkArquivoDownload = config.link_download;
 
