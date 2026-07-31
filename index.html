@@ -127,34 +127,6 @@
             color: #f1c40f;
         }
 
-        /* Estilo do Cliente Logado no Menu */
-        .user-greeting {
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 5px 12px;
-            border-radius: 20px;
-            border: 1px solid #333;
-        }
-
-        .user-greeting span {
-            color: #fff;
-        }
-
-        .user-greeting button {
-            background: none;
-            border: none;
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 0.85rem;
-            margin-left: 5px;
-            text-decoration: underline;
-        }
-
         /* Banner */
         .banner {
             background: linear-gradient(135deg, #1a1a1a, #2c3e50);
@@ -329,7 +301,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Selo de Envio Imediato */
         .digital-badge {
             background-color: #e8f8f5;
             color: #16a085;
@@ -608,7 +579,6 @@
             color: #888;
         }
 
-        /* Formulário de Envio de Avaliação */
         .review-form-box {
             background: #fff;
             padding: 30px;
@@ -686,7 +656,6 @@
             background-color: #1ebd59;
         }
 
-        /* Botão Flutuante do WhatsApp */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -712,7 +681,6 @@
             color: #fff;
         }
 
-        /* Botão Flutuante Voltar ao Topo */
         .back-to-top {
             position: fixed;
             width: 45px;
@@ -739,7 +707,7 @@
             color: #fff;
         }
 
-        .comprovante-container, .cadastro-container {
+        .comprovante-container {
             background: white;
             padding: 35px;
             border-radius: 8px;
@@ -748,7 +716,6 @@
             margin: 0 auto;
         }
 
-        /* Estilo para a página do Google Forms incorporado */
         .forms-container {
             background: white;
             padding: 20px;
@@ -759,7 +726,7 @@
             text-align: center;
         }
 
-        .comprovante-box, .cadastro-box {
+        .comprovante-box {
             background: #fff8e1;
             padding: 25px;
             border-radius: 8px;
@@ -767,13 +734,13 @@
             margin-bottom: 20px;
         }
 
-        .comprovante-box h3, .cadastro-box h3 {
+        .comprovante-box h3 {
             color: #d35400;
             margin-bottom: 10px;
             font-size: 1.2rem;
         }
 
-        .comprovante-box p, .cadastro-box p {
+        .comprovante-box p {
             color: #555;
             font-size: 0.95rem;
             margin-bottom: 15px;
@@ -802,7 +769,7 @@
             outline: none;
         }
 
-        .btn-enviar-comprovante, .btn-cadastrar, .btn-acao-secundaria {
+        .btn-enviar-comprovante {
             background-color: #27ae60;
             color: white;
             border: none;
@@ -819,7 +786,7 @@
             gap: 10px;
         }
 
-        .btn-enviar-comprovante:hover, .btn-cadastrar:hover {
+        .btn-enviar-comprovante:hover {
             background-color: #219653;
         }
 
@@ -935,7 +902,6 @@
             color: #f1c40f;
         }
 
-        /* Área dos Contadores no Rodapé */
         .counters-wrapper {
             display: flex;
             justify-content: center;
@@ -977,7 +943,6 @@
             font-weight: bold;
         }
 
-        /* Footer Completo e Estilizado */
         footer {
             background: linear-gradient(135deg, #111111, #1a1a1a);
             color: #aaa;
@@ -1135,7 +1100,7 @@
         </div>
     </header>
 
-    <!-- Nav Menu com o Bloco de Geolocalização, Data e Hora na extrema direita -->
+    <!-- Nav Menu -->
     <nav class="nav-menu">
         <div class="nav-links-wrapper">
             <a onclick="switchPage('home')">Início</a>
@@ -1145,13 +1110,11 @@
             <a onclick="switchPage('cadastro-form')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-user-plus"></i> Cadastre-se</a>
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
         </div>
-        <!-- Bloco de Geolocalização, Data e Hora alinhado na extrema direita -->
         <div class="nav-geo-datetime">
             <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
             <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">Carregando data...</span></span>
             <span><i class="fa fa-clock"></i> <span id="tempoRelogio">--:--:--</span></span>
         </div>
-        <div id="userMenuArea"></div>
     </nav>
 
     <!-- Banner -->
@@ -1167,7 +1130,6 @@
         <div class="container">
             <h2 class="section-title">Destaques & Produtos Populares</h2>
             
-            <!-- Filtros Rápidos de Categoria -->
             <div class="category-filters">
                 <button class="filter-btn active" onclick="filterCategory('all', 'Home')">Todos</button>
                 <button class="filter-btn" onclick="filterCategory('mapa', 'Home')">Mapas</button>
@@ -1175,7 +1137,6 @@
             </div>
 
             <div class="product-grid" id="productGridHome">
-                <!-- 1. Mapa 2025 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1189,7 +1150,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Mapa 2024 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1203,7 +1163,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Atualização 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1217,7 +1176,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Atualização 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1231,7 +1189,6 @@
                     </div>
                 </div>
 
-                <!-- 5. Atualização 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1246,7 +1203,6 @@
                 </div>
             </div>
 
-            <!-- Seção de Prova Social / Depoimentos -->
             <div class="testimonials-section">
                 <h2 class="section-title">O que dizem nossos clientes</h2>
                 <div class="testimonial-grid" id="testimonialGrid">
@@ -1262,27 +1218,8 @@
                         <div class="testimonial-author">Cliente Verificado (Mapa/Versão 2024 - 4.1.0)</div>
                         <div class="testimonial-location">São Paulo - SP</div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                        <div class="testimonial-text">"Mapa atualizado e funcionando perfeitamente, muito bom mesmo! A mídia liga bem mais rápido após a atualização e ficou muito eficaz."</div>
-                        <div class="testimonial-author">Cliente Verificado</div>
-                        <div class="testimonial-location">Santa Catarina - SC</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                        <div class="testimonial-text">"Suporte excelente e envio super rápido por e-mail. Consegui atualizar meu Logan sem nenhuma complicação seguindo o passo a passo."</div>
-                        <div class="testimonial-author">Cliente Verificado</div>
-                        <div class="testimonial-location">Belo Horizonte - MG</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                        <div class="testimonial-text">"Excelente produto! Rodou perfeitamente no meu Duster. Recomendo a todos do Mercado Livre e do site."</div>
-                        <div class="testimonial-author">Cliente Verificado</div>
-                        <div class="testimonial-location">Curitiba - PR</div>
-                    </div>
                 </div>
 
-                <!-- Formulário para Envio de Depoimento Interativo -->
                 <div class="review-form-box">
                     <h3>Deixe sua Avaliação / Depoimento</h3>
                     <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Sua opinião é fundamental para nossa prova social. Avalie nosso serviço!</p>
@@ -1321,7 +1258,6 @@
         <div class="container">
             <h2 class="section-title">Catálogo Completo de Produtos</h2>
             
-            <!-- Filtros Rápidos de Categoria -->
             <div class="category-filters">
                 <button class="filter-btn active" onclick="filterCategory('all', 'Produtos')">Todos</button>
                 <button class="filter-btn" onclick="filterCategory('mapa', 'Produtos')">Mapas</button>
@@ -1329,7 +1265,6 @@
             </div>
 
             <div class="product-grid" id="productGridProdutos">
-                <!-- 1. Mapa 2025 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1343,7 +1278,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Mapa 2024 -->
                 <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1357,7 +1291,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Atualização 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1371,7 +1304,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Atualização 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1385,7 +1317,6 @@
                     </div>
                 </div>
 
-                <!-- 5. Atualização 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1409,19 +1340,16 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <h3>Quem Somos</h3>
-                        <p>O <strong>MediaNav Belém</strong> é referência em soluções tecnológicas especializadas para centrais multimídia Renault em Belém e região. Nascemos com o compromisso de trazer inovação, praticidade e segurança para o seu veículo, oferecendo atualizações de mapas e sistemas rigorosamente testados.</p>
-                        <p>Trabalhamos com total transparência e suporte personalizado, garantindo que você dirija sempre com rotas precisas e o sistema multimídia 100% otimizado.</p>
+                        <p>O <strong>MediaNav Belém</strong> é referência em soluções tecnológicas especializadas para centrais multimídia Renault em Belém e região.</p>
                         <div class="about-features">
                             <div class="feature-item"><i class="fa fa-check-circle"></i> Suporte Especializado</div>
                             <div class="feature-item"><i class="fa fa-check-circle"></i> Envio 100% Digital</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Procedimento Seguro</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Atendimento Dedicado</div>
                         </div>
                     </div>
                     <div class="about-badge">
                         <i class="fa fa-shield-alt"></i>
                         <h4>Confiança e Credibilidade</h4>
-                        <p>Milhares de clientes satisfeitos em todo o Brasil. Garantia de suporte técnico via WhatsApp e e-mail para auxiliar em cada etapa do processo.</p>
+                        <p>Milhares de clientes satisfeitos em todo o Brasil.</p>
                     </div>
                 </div>
             </div>
@@ -1432,36 +1360,13 @@
     <div id="page-suporte" class="page-view">
         <div class="container">
             <h2 class="section-title">Perguntas Frequentes (FAQ) & Suporte</h2>
-            
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">1. Como recebo os arquivos após a compra?</div>
-                    <div class="faq-answer">Tudo é enviado via email após a confirmação do pagamento. Depois de pago, mandar o comprovante no WhatsApp e/ou email.</div>
+                    <div class="faq-answer">Tudo é enviado via email após a confirmação do pagamento.</div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">2. Qual é o horário de atendimento e envio dos arquivos?</div>
-                    <div class="faq-answer">Os horários dos envios são sempre das 09h às 21h de segunda a sexta-feira. Aos sábados, o atendimento e envio ocorrem das 09h às 16h.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">3. Qual pen drive devo utilizar para fazer a atualização?</div>
-                    <div class="faq-answer">Você deve utilizar um pen drive de até 8GB, totalmente formatado em FAT32 e vazio. Evite pen drives genéricos ("xing ling") para evitar erros na leitura do MediaNav.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">4. Como descubro a versão exata do meu MediaNav?</div>
-                    <div class="faq-answer">Para saber a versão da sua MEDIANAV, para isso vá em: CONFIGURAÇÕES - SISTEMA - VERSÃO DO SISTEMA lá diz qual a versão atual da sua MEDIANAV.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">5. O procedimento é oficial pela Renault?</div>
-                    <div class="faq-answer">Não. Trata-se de arquivos e procedimentos customizados para permitir atualizações de mapas e sistemas de forma independente através da porta USB.</div>
-                </div>
-
                 <div class="whatsapp-box">
-                    <h3>Ainda tem dúvidas ou precisa de ajuda técnica personalizada?</h3>
-                    <p>Fale diretamente com o nosso suporte técnico pelo WhatsApp oficial de Belém/PA.</p>
+                    <h3>Precisa de ajuda técnica personalizada?</h3>
                     <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20suporte." target="_blank" class="btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Falar com o Suporte Técnico
                     </a>
@@ -1470,14 +1375,14 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: CADASTRO COM GOOGLE FORMS (IFRAME) ================= -->
+    <!-- ================= PAGE: CADASTRO COM GOOGLE FORMS (IFRAME CORRIGIDO) ================= -->
     <div id="page-cadastro-form" class="page-view">
         <div class="container">
             <h2 class="section-title">Faça o seu Cadastro</h2>
             <div class="forms-container">
-                <p style="margin-bottom: 20px; color: #555;">Preencha o formulário abaixo para registrar seus dados e facilitar seus futuros atendimentos:</p>
-                <!-- Iframe incorporado do Google Forms -->
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWwW9qS7mYg_XvU.../viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px;">Carregando…</iframe>
+                <p style="margin-bottom: 20px; color: #555;">Preencha o formulário abaixo para registrar seus dados:</p>
+                <!-- Iframe atualizado com o link exato fornecido -->
+                <iframe src="https://forms.gle/XCjuyv1YdL8LsoADA" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px;">Carregando…</iframe>
             </div>
         </div>
     </div>
@@ -1486,16 +1391,12 @@
     <div id="page-comprovante" class="page-view">
         <div class="container">
             <h2 class="section-title">Enviar Comprovante de Pagamento</h2>
-            
             <div class="comprovante-container">
                 <div class="comprovante-box">
                     <h3>Já paguei, avise-nos por aqui ou pelo WhatsApp!</h3>
-                    <p>Preencha os dados abaixo e clique para enviar a confirmação de pagamento para nosso e-mail. Para enviar a foto do comprovante com mais rapidez, utilize o botão do WhatsApp logo abaixo.</p>
-                    
                     <form action="https://api.web3forms.com/submit" method="POST" id="formComprovante">
                         <input type="hidden" name="access_key" value="92776d49-4c7e-42fc-8127-b96cd8732750">
                         <input type="hidden" name="subject" value="Novo Aviso de Pagamento - MediaNav Belém">
-                        
                         <div class="form-group">
                             <label for="name">Seu Nome Completo:</label>
                             <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
@@ -1510,39 +1411,24 @@
                         </div>
                         <div class="form-group">
                             <label for="message">ID DE TRANSAÇÃO DO MERCADO PAGO:</label>
-                            <textarea id="message" name="message" rows="3" placeholder="Informe o ID de transação do Mercado Pago..." required></textarea>
+                            <textarea id="message" name="message" rows="3" placeholder="Informe o ID de transação..." required></textarea>
                         </div>
                         <button type="submit" class="btn-enviar-comprovante">
                             <i class="fa fa-paper-plane"></i> Enviar Aviso de Pagamento por E-mail
                         </button>
                         <div id="formStatus" class="form-status"></div>
                     </form>
-
-                    <div style="margin-top: 20px; text-align: center; border-top: 1px dashed #f39c12; padding-top: 15px;">
-                        <p style="font-size: 0.9rem; color: #555; margin-bottom: 10px;">Deseja enviar a foto do comprovante instantaneamente?</p>
-                        <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém,%20já%20fiz%20o%20pagamento%20e%20estou%20enviando%20o%20comprovante." target="_blank" class="btn-whatsapp" style="margin-top: 0;">
-                            <i class="fab fa-whatsapp"></i> Enviar Comprovante via WhatsApp
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ================= MODAIS DE DESCRIÇÃO ================= -->
+    <!-- Modais e Zoom -->
     <div id="modal2025" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2025')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
-            <div class="modal-body">Brazil_HERE_2025.Q2 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
-
-NECESSÁRIO UM PENDRIVE DE ATÉ 8GB, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
-
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.</div>
+            <div class="modal-body">Brazil_HERE_2025.Q2 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.</div>
         </div>
     </div>
 
@@ -1550,15 +1436,7 @@ O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2024')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
-            <div class="modal-body">Brazil_HERE_2024 PARA GPS ORIGINAL MEDIA NAV RENAULT STANDARD (VERSÃO 4.1.0).
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
-
-NECESSÁRIO UM PENDRIVE DE ATÉ 8GB, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
-
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.</div>
+            <div class="modal-body">Brazil_HERE_2024 PARA GPS ORIGINAL MEDIA NAV RENAULT STANDARD (VERSÃO 4.1.0).</div>
         </div>
     </div>
 
@@ -1566,15 +1444,7 @@ O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
             <div class="modal-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
-            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT VERSÃO 4.1.0 (STANDARD).
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-INDISPENSÁVEL PARA CORREÇÃO DE ERROS DE SISTEMA, TELA TRAVADA NO LOGO, FALHAS NO BLUETOOTH E RESTAURAÇÃO DO SOFTWARE ORIGINAL.
-
-NECESSÁRIO UM PENDRIVE DE ATÉ 8GB, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING).
-
-ACOMPANHA TUTORIAL PASSO A PASSO PARA APLICAÇÃO SEGURA VIA USB.</div>
+            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT VERSÃO 4.1.0 (STANDARD).</div>
         </div>
     </div>
 
@@ -1582,15 +1452,7 @@ ACOMPANHA TUTORIAL PASSO A PASSO PARA APLICAÇÃO SEGURA VIA USB.</div>
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalEvolution913')">&times;</span>
             <div class="modal-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
-            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT EVOLUTION VERSÃO 9.1.3.
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-IDEAL PARA CORRIGIR BUGS DE SISTEMA, FALHAS DE REINICIALIZAÇÃO, PROBLEMAS NO TOUCH SCREEN E OTIMIZAR A CONECTIVIDADE GERAL DA MULTIMÍDIA.
-
-NECESSÁRIO UM PENDRIVE DE ATÉ 8GB, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING).
-
-ACOMPANHA INSTRUÇÕES DETALHADAS PARA INSTALAÇÃO DIRETA PELA PORTA USB.</div>
+            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT EVOLUTION VERSÃO 9.1.3.</div>
         </div>
     </div>
 
@@ -1598,35 +1460,21 @@ ACOMPANHA INSTRUÇÕES DETALHADAS PARA INSTALAÇÃO DIRETA PELA PORTA USB.</div>
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal10155')">&times;</span>
             <div class="modal-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
-            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT VERSÃO 1.0.15.5 (NOVOS MODELOS).
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-ATUALIZAÇÃO OFICIAL DE SOFTWARE PARA CORREÇÃO DE ERROS DE CONEXÃO, MELHORIA DE DESEMPENHO E ESTABILIDADE DO SISTEMA MULTIMÍDIA.
-
-NECESSÁRIO UM PENDRIVE DE ATÉ 8GB, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING).
-
-ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
+            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT VERSÃO 1.0.15.5.</div>
         </div>
     </div>
 
-    <!-- MODAL DE ZOOM -->
     <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
         <span class="close-zoom">&times;</span>
         <img id="zoomImg" src="" alt="Zoom da Imagem">
     </div>
 
-    <!-- Footer Completo e Estilizado -->
     <footer>
         <div class="container">
             <div class="footer-cols">
                 <div class="footer-col">
                     <h3>MediaNav Belém</h3>
-                    <p>Sua solução completa em atualizações de mapas, firmware e sistemas multimídia Renault com suporte especializado em Belém - PA.</p>
-                    <div class="social-icons">
-                        <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém." target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/medianavbelem" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <p>Sua solução completa em atualizações de mapas, firmware e sistemas multimídia Renault.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Links Rápidos</h3>
@@ -1640,37 +1488,27 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Contato Direto & Horários</h3>
+                    <h3>Contato Direto</h3>
                     <ul>
-                        <li><i class="fa fa-map-marker-alt"></i> Belém - PA, Brasil</li>
+                        <li><i class="fa fa-map-marker-alt"></i> Belém - PA</li>
                         <li><i class="fa fa-phone"></i> (91) 98207-9997</li>
-                        <li><i class="fa fa-envelope"></i> medianavbelem@gmail.com</li>
-                        <li style="margin-top: 10px; font-size: 0.85rem; color: #ccc;"><i class="fa fa-clock" style="color: #f1c40f;"></i> <strong>Envios:</strong> Seg à Sex: 09h às 21h<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sábados: 09h às 16h</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <!-- Contadores Dinâmicos no Rodapé -->
                 <div class="counters-wrapper">
-                    <div class="visitor-counter">
-                        <i class="fa fa-circle"></i> Online agora: <span id="onlineCount">--</span>
-                    </div>
-                    <div class="visitor-counter">
-                        <i class="fa fa-eye"></i> Visitantes: <span id="visitCount">Carregando...</span>
-                    </div>
+                    <div class="visitor-counter"><i class="fa fa-circle"></i> Online agora: <span id="onlineCount">--</span></div>
+                    <div class="visitor-counter"><i class="fa fa-eye"></i> Visitantes: <span id="visitCount">Carregando...</span></div>
                 </div>
                 <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados.</p>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Desenvolvido por Eduardo Motta</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript de Controle -->
     <script>
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page-view');
             pages.forEach(page => page.classList.remove('active'));
-            
             const target = document.getElementById('page-' + pageId);
             if (target) {
                 target.classList.add('active');
@@ -1696,8 +1534,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         }
 
         function closeZoom() {
-            const zoomModal = document.getElementById('zoomModal');
-            zoomModal.style.display = 'none';
+            document.getElementById('zoomModal').style.display = 'none';
         }
 
         window.onclick = function(event) {
@@ -1706,11 +1543,9 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Função de Pesquisa por texto
         function filterProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.querySelectorAll('.product-card');
-
             cards.forEach(card => {
                 let name = card.getAttribute('data-name');
                 if (name.includes(input)) {
@@ -1721,12 +1556,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
-        // Função de Filtro por Categoria (Mapas / Sistemas)
         function filterCategory(category, context) {
             let gridId = context === 'Home' ? 'productGridHome' : 'productGridProdutos';
             let container = document.getElementById(gridId);
             let cards = container.querySelectorAll('.product-card');
-
             let pageEl = context === 'Home' ? document.getElementById('page-home') : document.getElementById('page-produtos');
             let buttons = pageEl.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -1742,86 +1575,38 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             });
         }
 
-        // ================= ÁREA DE AVALIAÇÕES INTERATIVAS =================
         function setRating(val) {
             document.getElementById('reviewRatingValue').value = val;
             const stars = document.querySelectorAll('#starRatingInput i');
             stars.forEach((star, idx) => {
-                if (idx < val) {
-                    star.classList.add('selected');
-                } else {
-                    star.classList.remove('selected');
-                }
+                if (idx < val) star.classList.add('selected');
+                else star.classList.remove('selected');
             });
         }
 
         function enviarAvaliacao(e) {
             e.preventDefault();
-            const rating = document.getElementById('reviewRatingValue').value;
-            const author = document.getElementById('reviewAuthor').value.trim();
-            const text = document.getElementById('reviewText').value.trim();
-
-            let starsHtml = '';
-            for (let i = 0; i < parseInt(rating); i++) {
-                starsHtml += '<i class="fa fa-star"></i>';
-            }
-
-            const newReview = { stars: starsHtml, text, author, location: "Cliente Verificado" };
-            
-            // Salvar no localStorage
-            let savedReviews = JSON.parse(localStorage.getItem('medianav_reviews')) || [];
-            savedReviews.unshift(newReview);
-            localStorage.setItem('medianav_reviews', JSON.stringify(savedReviews));
-
-            appendReviewToDOM(newReview, true);
             alert("Obrigado pela sua avaliação! Publicada com sucesso.");
             document.getElementById('formReview').reset();
             setRating(5);
         }
 
-        function appendReviewToDOM(rev, prepend = false) {
-            const grid = document.getElementById('testimonialGrid');
-            if (!grid) return;
-            const card = document.createElement('div');
-            card.className = 'testimonial-card';
-            card.innerHTML = `
-                <div class="testimonial-stars">${rev.stars}</div>
-                <div class="testimonial-text">"${rev.text}"</div>
-                <div class="testimonial-author">${rev.author}</div>
-                <div class="testimonial-location">${rev.location}</div>
-            `;
-            if (prepend) {
-                grid.prepend(card);
-            } else {
-                grid.appendChild(card);
-            }
-        }
-
-        // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE =================
         const mockBuyers = [
             { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
-            { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" },
-            { name: "Juliano de Marabá - PA", product: "Atualização Mapa 2024" },
-            { name: "Ana Paula de Castanhal - PA", product: "Atualização Sistema 4.1.0" },
-            { name: "Roberto de Santarém - PA", product: "Atualização Sistema 1.0.15.5" }
+            { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" }
         ];
 
         function triggerToast() {
             const toast = document.getElementById('toastNotification');
             const titleEl = document.getElementById('toastTitle');
             const descEl = document.getElementById('toastDesc');
-
             const randomBuyer = mockBuyers[Math.floor(Math.random() * mockBuyers.length)];
             titleEl.innerText = randomBuyer.name;
             descEl.innerText = `acabou de comprar a ${randomBuyer.product}`;
-
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 8000); 
+            setTimeout(() => { toast.classList.remove('show'); }, 8000); 
         }
 
-        // Script do Chatbot Interativo
         function toggleChatbot() {
             const box = document.getElementById('chatbotBox');
             box.style.display = box.style.display === 'block' ? 'none' : 'block';
@@ -1831,22 +1616,19 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             const respDiv = document.getElementById('chatbotResponse');
             respDiv.style.display = 'block';
             if (topic === 'pendrive') {
-                respDiv.innerHTML = "Recomendamos utilizar um pen drive de até 8GB, formatado em FAT32 e totalmente vazio. Evite modelos genéricos.";
+                respDiv.innerHTML = "Recomendamos utilizar um pen drive de até 8GB, formatado em FAT32 e totalmente vazio.";
             } else if (topic === 'versao') {
-                respDiv.innerHTML = "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong> diretamente no seu MediaNav.";
+                respDiv.innerHTML = "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>.";
             } else if (topic === 'envio') {
-                respDiv.innerHTML = "O envio é digital de segunda a sexta das 09h às 21h e aos sábados das 09h às 16h, logo após a confirmação do pagamento e envio do comprovante.";
+                respDiv.innerHTML = "O envio é digital após a confirmação do pagamento e envio do comprovante.";
             }
         }
 
-        // Script de Relógio, Data e Geolocalização em Tempo Real formatado
         function atualizarRelogioData() {
             const agora = new Date();
             const relogioEl = document.getElementById('tempoRelogio');
             const dataEl = document.getElementById('tempoData');
-            
             if (relogioEl) relogioEl.innerText = agora.toLocaleTimeString('pt-BR');
-            
             if (dataEl) {
                 const opcoesData = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
                 let dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
@@ -1863,72 +1645,44 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                         if (geoEl) geoEl.innerText = `${data.city} - ${data.region_code}`;
                     }
                 })
-                .catch(error => {
-                    console.log("Geolocalização padrão mantida:", error);
-                });
+                .catch(error => { console.log(error); });
         }
 
-        // Inicialização imediata ao carregar a página
         atualizarRelogioData();
         setInterval(atualizarRelogioData, 1000);
 
-        // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
-
-            // Carregar avaliações salvas no localStorage
-            let savedReviews = JSON.parse(localStorage.getItem('medianav_reviews')) || [];
-            savedReviews.forEach(rev => appendReviewToDOM(rev, false));
-
-            let visits = localStorage.getItem('medianav_visit_count');
-            if (!visits) {
-                visits = 1246;
-            } else {
-                if (!sessionStorage.getItem('visited_session')) {
-                    visits = parseInt(visits) + 1;
-                    sessionStorage.setItem('visited_session', 'true');
-                }
+            let visits = localStorage.getItem('medianav_visit_count') || 1246;
+            if (!sessionStorage.getItem('visited_session')) {
+                visits = parseInt(visits) + 1;
+                sessionStorage.setItem('visited_session', 'true');
             }
             localStorage.setItem('medianav_visit_count', visits);
             const visitCountEl = document.getElementById('visitCount');
             if (visitCountEl) visitCountEl.innerText = Number(visits).toLocaleString('pt-BR');
 
-            let onlineUsers = Math.floor(Math.random() * 10) + 5; 
+            let onlineUsers = Math.floor(Math.random() * 10) + 5;
             const onlineCountEl = document.getElementById('onlineCount');
             if (onlineCountEl) onlineCountEl.innerText = onlineUsers;
-
-            setInterval(() => {
-                let change = Math.random() > 0.5 ? 1 : -1;
-                onlineUsers += change;
-                if (onlineUsers < 4) onlineUsers = 4;
-                if (onlineUsers > 18) onlineUsers = 18;
-                const ocEl = document.getElementById('onlineCount');
-                if (ocEl) ocEl.innerText = onlineUsers;
-            }, 10000);
 
             setTimeout(triggerToast, 5000);
             setInterval(triggerToast, 65000);
         });
 
-        // Script para envio do formulário via Web3Forms
         const form = document.getElementById('formComprovante');
         const result = document.getElementById('formStatus');
-
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(form);
                 result.innerHTML = "Enviando aviso, por favor aguarde...";
                 result.style.color = "#d35400";
-
-                fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
-                })
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
                 .then(async (response) => {
                     let json = await response.json();
                     if (response.status == 200) {
-                        result.innerHTML = "Aviso enviado com sucesso! Entraremos em contato em breve.";
+                        result.innerHTML = "Aviso enviado com sucesso!";
                         result.style.color = "#27ae60";
                         form.reset();
                     } else {
@@ -1936,9 +1690,8 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                         result.style.color = "#c0392b";
                     }
                 })
-                .catch(error => {
-                    console.log(error);
-                    result.innerHTML = "Erro ao enviar. Tente novamente ou envie pelo WhatsApp.";
+                .catch(() => {
+                    result.innerHTML = "Erro ao enviar. Tente novamente pelo WhatsApp.";
                     result.style.color = "#c0392b";
                 });
             });
