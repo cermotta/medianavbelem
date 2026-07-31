@@ -102,6 +102,20 @@
             color: #f1c40f;
         }
 
+        /* Botão Cadastre-se em Destaque no Menu */
+        .btn-nav-cadastre {
+            background: #f1c40f;
+            color: #111 !important;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-nav-cadastre:hover {
+            background: #f39c12;
+            transform: scale(1.05);
+        }
+
         /* Bloco de Geolocalização, Data e Hora posicionado na extrema direita */
         .nav-geo-datetime {
             display: flex;
@@ -748,6 +762,24 @@
             margin: 0 auto;
         }
 
+        /* Estilo do container do Google Forms via Iframe */
+        .iframe-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .google-form-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 6px;
+        }
+
         .comprovante-box, .cadastro-box {
             background: #fff8e1;
             padding: 25px;
@@ -1124,14 +1156,16 @@
         </div>
     </header>
 
-    <!-- Nav Menu com o Bloco de Geolocalização, Data e Hora na extrema direita -->
+    <!-- Nav Menu com Botão CADASTRE-SE em destaque -->
     <nav class="nav-menu">
         <div class="nav-links-wrapper">
             <a onclick="switchPage('home')">Início</a>
             <a onclick="switchPage('produtos')">Produtos</a>
             <a onclick="switchPage('quemsomos')">Quem Somos</a>
             <a onclick="switchPage('suporte')">Suporte / FAQ</a>
-            <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user-plus"></i> Meu Cadastro</a>
+            <!-- Botão Cadastre-se novo -->
+            <a onclick="switchPage('cadastre-se')" class="btn-nav-cadastre"><i class="fa fa-user-plus"></i> CADASTRE-SE</a>
+            <a onclick="switchPage('cadastro')" id="navCadastroLink"><i class="fa fa-user"></i> Meu Painel</a>
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
         </div>
         <!-- Bloco de Geolocalização, Data e Hora alinhado na extrema direita -->
@@ -1459,10 +1493,22 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: CADASTRO PRÉVIO / LOGIN ================= -->
+    <!-- ================= PAGE: CADASTRE-SE (GOOGLE FORMS IFRAME) ================= -->
+    <div id="page-cadastre-se" class="page-view">
+        <div class="container">
+            <h2 class="section-title">Formulário de Cadastro Exclusivo</h2>
+            <div class="iframe-container">
+                <p style="margin-bottom: 15px; color: #555;">Preencha seus dados abaixo para se cadastrar diretamente no nosso sistema:</p>
+                <!-- Iframe incorporado do Google Forms solicitado -->
+                <iframe class="google-form-iframe" src="https://forms.gle/yaoVngCuSBgbty5g8" title="Formulário de Cadastro MediaNav Belém">Carregando...</iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE: CADASTRO PRÉVIO / LOGIN LOCAL ================= -->
     <div id="page-cadastro" class="page-view">
         <div class="container">
-            <h2 class="section-title">Painel do Cliente & Login</h2>
+            <h2 class="section-title">Painel do Cliente & Login Local</h2>
             
             <div class="cadastro-container">
                 <!-- Seção para Novo Cadastro ou Login -->
@@ -1544,41 +1590,6 @@
                             <i class="fab fa-whatsapp"></i> Enviar Comprovante via WhatsApp
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= PAGE: DOWNLOAD EXCLUSIVO (ESCONDIDA) ================= -->
-    <div id="page-download" class="page-view">
-        <div class="container">
-            <h2 class="section-title"><i class="fa fa-download"></i> Área de Download Exclusiva</h2>
-            
-            <div class="comprovante-container" style="text-align: center;">
-                <div class="comprovante-box" id="downloadBoxValido">
-                    <h3 style="color: #27ae60;"><i class="fa fa-check-circle"></i> Pagamento Confirmado com Sucesso!</h3>
-                    <p>Seu link de download exclusivo foi gerado. Por questões de segurança, este link possui validade de uso e expirará em breve.</p>
-                    
-                    <div style="margin: 25px 0;">
-                        <div id="timerExpiracao" style="font-size: 1.1rem; font-weight: bold; color: #c0392b; margin-bottom: 15px;">
-                            <i class="fa fa-clock"></i> O link expira em: <span id="tempoRestante">15:00</span>
-                        </div>
-                        
-                        <!-- Link / Botão de Download Direto -->
-                        <a id="btnDownloadReal" href="#" class="btn-whatsapp" style="background-color: #2980b9; font-size: 1.1rem; padding: 15px 30px; display: inline-block;" onclick="consumirDownload()">
-                            <i class="fa fa-file-archive"></i> Baixar Arquivo de Atualização (.zip)
-                        </a>
-                    </div>
-                    <p style="font-size: 0.85rem; color: #666;">Dúvidas durante o processo? Chame no suporte do WhatsApp.</p>
-                </div>
-
-                <!-- Mensagem caso o link tenha expirado -->
-                <div class="comprovante-box" id="downloadBoxExpirado" style="display: none; background: #fadbd8; border-color: #e74c3c;">
-                    <h3 style="color: #c0392b;"><i class="fa fa-exclamation-triangle"></i> Link Expirado ou Inválido</h3>
-                    <p>Este link de download expirou por segurança ou já foi utilizado. Caso precise de um novo link, entre em contato com o suporte informando o número do seu pedido.</p>
-                    <a href="https://wa.me/5591982079997?text=Olá,%20meu%20link%20de%20download%20expirou%20e%20preciso%20de%20um%20novo%20acesso." target="_blank" class="btn-whatsapp" style="background-color: #27ae60;">
-                        <i class="fab fa-whatsapp"></i> Solicitar Novo Link no WhatsApp
-                    </a>
                 </div>
             </div>
         </div>
@@ -1690,7 +1701,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                         <li><a onclick="switchPage('produtos')">Produtos</a></li>
                         <li><a onclick="switchPage('quemsomos')">Quem Somos</a></li>
                         <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
-                        <li><a onclick="switchPage('cadastro')">Meu Cadastro</a></li>
+                        <li><a onclick="switchPage('cadastre-se')">Cadastre-se</a></li>
                         <li><a onclick="switchPage('comprovante')">Enviar Comprovante</a></li>
                     </ul>
                 </div>
@@ -1730,11 +1741,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             if (target) {
                 target.classList.add('active');
                 window.scrollTo(0, 0);
-
-                // Se abrir a página de download escondida, inicia o temporizador de expiração
-                if (pageId === 'download') {
-                    iniciarContadorDownload();
-                }
             }
         }
 
@@ -1828,7 +1834,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
 
             const newReview = { stars: starsHtml, text, author, location: "Cliente Verificado" };
             
-            // Salvar no localStorage
             let savedReviews = JSON.parse(localStorage.getItem('medianav_reviews')) || [];
             savedReviews.unshift(newReview);
             localStorage.setItem('medianav_reviews', JSON.stringify(savedReviews));
@@ -1855,56 +1860,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             } else {
                 grid.appendChild(card);
             }
-        }
-
-        // ================= CONTROLE DA PÁGINA DE DOWNLOAD COM EXPIRAÇÃO =================
-        let tempoRestanteSegundos = 900; // 15 minutos de validade (900 segundos)
-        let timerInterval;
-
-        function iniciarContadorDownload() {
-            const timerEl = document.getElementById('tempoRestante');
-            const boxValido = document.getElementById('downloadBoxValido');
-            const boxExpirado = document.getElementById('downloadBoxExpirado');
-
-            // Verifica se o link já foi usado ou expirado no localStorage
-            const statusDownload = localStorage.getItem('medianav_download_status');
-            if (statusDownload === 'expirado' || statusDownload === 'usado') {
-                boxValido.style.display = 'none';
-                boxExpirado.style.display = 'block';
-                return;
-            }
-
-            // Inicia contagem regressiva
-            timerInterval = setInterval(() => {
-                let minutos = Math.floor(tempoRestanteSegundos / 60);
-                let segundos = tempoRestanteSegundos % 60;
-
-                timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
-
-                if (tempoRestanteSegundos <= 0) {
-                    clearInterval(timerInterval);
-                    localStorage.setItem('medianav_download_status', 'expirado');
-                    boxValido.style.display = 'none';
-                    boxExpirado.style.display = 'block';
-                }
-                tempoRestanteSegundos--;
-            }, 1000);
-        }
-
-        function consumirDownload() {
-            // Ação ao clicar no botão de baixar (expira imediatamente após o 1º clique)
-            localStorage.setItem('medianav_download_status', 'usado');
-            
-            // Defina aqui o link direto do arquivo (.zip) hospedado (ex: OneDrive, Google Drive, Mega)
-            document.getElementById('btnDownloadReal').setAttribute('href', 'https://1drv.ms/u/s!AexemploDeLinkDiretoDoArquivo');
-            
-            setTimeout(() => {
-                const boxValido = document.getElementById('downloadBoxValido');
-                const boxExpirado = document.getElementById('downloadBoxExpirado');
-                clearInterval(timerInterval);
-                boxValido.style.display = 'none';
-                boxExpirado.style.display = 'block';
-            }, 2000);
         }
 
         // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE =================
@@ -1966,7 +1921,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
-        // Script de Relógio, Data e Geolocalização em Tempo Real formatado (Cidade, Dia, Mês, Ano)
+        // Script de Relógio, Data e Geolocalização em Tempo Real formatado
         function atualizarRelogioData() {
             const agora = new Date();
             const relogioEl = document.getElementById('tempoRelogio');
@@ -2021,14 +1976,12 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         function atualizarAreaCliente() {
             const dadosSalvos = localStorage.getItem('medianav_cliente');
             const userMenuArea = document.getElementById('userMenuArea');
-            const navCadastroLink = document.getElementById('navCadastroLink');
             const boxFormulario = document.getElementById('boxFormularioCadastro');
             const boxLogado = document.getElementById('boxLogadoInfo');
             const infoLogadoTexto = document.getElementById('infoLogadoTexto');
 
             if (dadosSalvos) {
                 const cliente = JSON.parse(dadosSalvos);
-                if (navCadastroLink) navCadastroLink.innerHTML = '<i class="fa fa-user"></i> Meu Perfil';
                 if (userMenuArea) {
                     userMenuArea.innerHTML = `
                         <div class="user-greeting">
@@ -2049,7 +2002,6 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (emailInput && !emailInput.value) emailInput.value = cliente.email;
                 if (whatsInput && !whatsInput.value) whatsInput.value = cliente.telefone;
             } else {
-                if (navCadastroLink) navCadastroLink.innerHTML = '<i class="fa fa-user-plus"></i> Meu Cadastro';
                 if (userMenuArea) userMenuArea.innerHTML = '';
                 if (boxFormulario) boxFormulario.style.display = 'block';
                 if (boxLogado) boxLogado.style.display = 'none';
@@ -2067,12 +2019,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
         atualizarRelogioData();
         setInterval(atualizarRelogioData, 1000);
 
-        // Script para o Contador de Visitas Totais e Pessoas Online
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
             setupContactRecovery();
 
-            // Carregar avaliações salvas no localStorage
             let savedReviews = JSON.parse(localStorage.getItem('medianav_reviews')) || [];
             savedReviews.forEach(rev => appendReviewToDOM(rev, false));
 
@@ -2102,16 +2052,10 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (ocEl) ocEl.innerText = onlineUsers;
             }, 10000);
 
-            // Disparar Toast de compras recentes a cada 65 segundos
             setTimeout(triggerToast, 5000);
             setInterval(triggerToast, 65000);
 
             atualizarAreaCliente();
-
-            // Roteamento simples por Hash para abrir a página escondida via link (ex: seosuite.com/#download)
-            if (window.location.hash === '#download') {
-                switchPage('download');
-            }
         });
 
         // Script para envio do formulário via Web3Forms
