@@ -244,15 +244,15 @@
         <!-- Caixa do Temporizador -->
         <div class="timer-box">
             <h3><i class="fa fa-clock"></i> Liberação do Link em:</h3>
-            <div class="countdown-display" id="countdownTimer">00:30</div>
+            <div class="countdown-display" id="countdownTimer">--:--</div>
             <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="progressBarFill"></div>
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 100%;"></div>
             </div>
         </div>
 
         <!-- Botão de Download (inicialmente desativado) -->
         <a id="downloadBtn" href="#" onclick="iniciarDownload(event)" class="btn-download">
-            <i class="fa fa-download"></i> Baixar Arquivo Agora
+            <i class="fa fa-download"></i> Carregando sistema...
         </a>
 
         <!-- Instruções -->
@@ -275,53 +275,59 @@
         <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados. Desenvolvido por Eduardo Motta</p>
     </footer>
 
-    <!-- Script de Contagem Regressiva -->
+    <!-- Script de Contagem Regressiva Dinâmica via config.json -->
     <script>
-        // Defina o tempo de espera em segundos (ex: 30 segundos)
-        let tempoRestante = 30;
-        const tempoTotal = 30;
-        
-        // URL real do arquivo para download (coloque o link direto do seu arquivo .zip / .rar ou Google Drive / Mega)
-        const linkArquivoDownload = "#"; // Substitua pelo link direto do arquivo zipado da atualização
-
         const timerEl = document.getElementById('countdownTimer');
         const progressFill = document.getElementById('progressBarFill');
         const downloadBtn = document.getElementById('downloadBtn');
 
-        const intervalo = setInterval(() => {
-            tempoRestante--;
+        // Carregar configurações dinâmicas do config.json
+        fetch('config.json')
+            .then(response => response.json())
+            .then(config => {
+                let tempoRestante = config.tempo_espera_segundos || 30;
+                const tempoTotal = tempoRestante;
+                const linkArquivoDownload = config.link_download;
 
-            // Formatar minutos e segundos
-            let minutos = Math.floor(tempoRestante / 60);
-            let segundos = tempoRestante % 60;
-            timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+                // Formatar exibição inicial
+                let minInit = Math.floor(tempoRestante / 60);
+                let segInit = tempoRestante % 60;
+                timerEl.innerText = `${minInit.toString().padStart(2, '0')}:${segInit.toString().padStart(2, '0')}`;
 
-            // Atualizar barra de progresso
-            let porcentagem = (tempoRestante / tempoTotal) * 100;
-            progressFill.style.width = porcentagem + '%';
+                const intervalo = setInterval(() => {
+                    tempoRestante--;
 
-            if (tempoRestante <= 0) {
-                clearInterval(intervalo);
-                timerEl.innerText = "00:00";
-                progressFill.style.width = '0%';
-                
-                // Ativar botão de download
-                downloadBtn.classList.add('active');
-                downloadBtn.style.cursor = 'pointer';
-                downloadBtn.setAttribute('href', linkArquivoDownload);
-                
-                // Atualizar texto do botão
-                downloadBtn.innerHTML = '<i class="fa fa-check-circle"></i> Clique Aqui Para Baixar';
-            }
-        }, 1000);
+                    let minutos = Math.floor(tempoRestante / 60);
+                    let segundos = tempoRestante % 60;
+                    timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+                    let porcentagem = (tempoRestante / tempoTotal) * 100;
+                    progressFill.style.width = porcentagem + '%';
+
+                    if (tempoRestante <= 0) {
+                        clearInterval(intervalo);
+                        timerEl.innerText = "00:00";
+                        progressFill.style.width = '0%';
+                        
+                        // Ativar botão e injetar o link vindo do JSON
+                        downloadBtn.classList.add('active');
+                        downloadBtn.style.cursor = 'pointer';
+                        downloadBtn.setAttribute('href', linkArquivoDownload);
+                        downloadBtn.setAttribute('target', '_blank');
+                        downloadBtn.innerHTML = '<i class="fa fa-check-circle"></i> Clique Aqui Para Baixar';
+                    }
+                }, 1000);
+            })
+            .catch(error => {
+                console.error('Erro ao carregar configurações:', error);
+                timerEl.innerText = "Erro";
+                downloadBtn.innerHTML = '<i class="fa fa-exclamation-triangle"></i> Erro ao carregar link';
+            });
 
         function iniciarDownload(e) {
             if (!downloadBtn.classList.contains('active')) {
                 e.preventDefault();
                 alert("Por favor, aguarde o término da contagem regressiva para realizar o download.");
-            } else {
-                // Se o link for válido, simula ou dispara o download
-                // alert("Iniciando o download do seu pacote MediaNav Belém!");
             }
         }
     </script>
