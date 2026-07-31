@@ -1,4 +1,4 @@
-html_code = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -244,7 +244,7 @@ html_code = """<!DOCTYPE html>
         <!-- Caixa do Temporizador -->
         <div class="timer-box">
             <h3><i class="fa fa-clock"></i> Liberação do Link em:</h3>
-            <div class="countdown-display" id="countdownTimer">--:--</div>
+            <div class="countdown-display" id="countdownTimer">00:10</div>
             <div class="progress-bar-container">
                 <div class="progress-bar-fill" id="progressBarFill" style="width: 100%;"></div>
             </div>
@@ -252,7 +252,7 @@ html_code = """<!DOCTYPE html>
 
         <!-- Botão de Download (inicialmente desativado) -->
         <a id="downloadBtn" href="#" onclick="iniciarDownload(event)" class="btn-download">
-            <i class="fa fa-download"></i> Carregando sistema...
+            <i class="fa fa-download"></i> Aguarde a liberação...
         </a>
 
         <!-- Instruções -->
@@ -275,54 +275,41 @@ html_code = """<!DOCTYPE html>
         <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados. Desenvolvido por Eduardo Motta</p>
     </footer>
 
-    <!-- Script de Contagem Regressiva Dinâmica via config.json -->
+    <!-- Script de Contagem Regressiva Autônomo -->
     <script>
         const timerEl = document.getElementById('countdownTimer');
         const progressFill = document.getElementById('progressBarFill');
         const downloadBtn = document.getElementById('downloadBtn');
 
-        // Carregar configurações dinâmicas do config.json
-        fetch('config.json')
-            .then(response => response.json())
-            .then(config => {
-                let tempoRestante = config.tempo_espera_segundos || 10;
-                const tempoTotal = tempoRestante;
-                const linkArquivoDownload = config.link_download;
+        // BASTA ALTERAR O LINK ABAIXO PARA O LINK DO SEU ARQUIVO (Google Drive, Mega, MediaFire, etc.)
+        const linkArquivoDownload = "https://seu-link-de-download-aqui.com"; 
 
-                // Formatar exibição inicial
-                let minInit = Math.floor(tempoRestante / 60);
-                let segInit = tempoRestante % 60;
-                timerEl.innerText = `${minInit.toString().padStart(2, '0')}:${segInit.toString().padStart(2, '0')}`;
+        let tempoRestante = 10; // 10 segundos exatos
+        const tempoTotal = 10;
 
-                const intervalo = setInterval(() => {
-                    tempoRestante--;
+        const intervalo = setInterval(() => {
+            tempoRestante--;
 
-                    let minutos = Math.floor(tempoRestante / 60);
-                    let segundos = tempoRestante % 60;
-                    timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+            let minutos = Math.floor(tempoRestante / 60);
+            let segundos = tempoRestante % 60;
+            timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 
-                    let porcentagem = (tempoRestante / tempoTotal) * 100;
-                    progressFill.style.width = porcentagem + '%';
+            let porcentagem = (tempoRestante / tempoTotal) * 100;
+            progressFill.style.width = porcentagem + '%';
 
-                    if (tempoRestante <= 0) {
-                        clearInterval(intervalo);
-                        timerEl.innerText = "00:00";
-                        progressFill.style.width = '0%';
-                        
-                        // Ativar botão e injetar o link vindo do JSON
-                        downloadBtn.classList.add('active');
-                        downloadBtn.style.cursor = 'pointer';
-                        downloadBtn.setAttribute('href', linkArquivoDownload);
-                        downloadBtn.setAttribute('target', '_blank');
-                        downloadBtn.innerHTML = '<i class="fa fa-check-circle"></i> Clique Aqui Para Baixar';
-                    }
-                }, 1000);
-            })
-            .catch(error => {
-                console.error('Erro ao carregar configurações:', error);
-                timerEl.innerText = "Erro";
-                downloadBtn.innerHTML = '<i class="fa fa-exclamation-triangle"></i> Erro ao carregar link';
-            });
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                timerEl.innerText = "00:00";
+                progressFill.style.width = '0%';
+                
+                // Ativar botão e injetar o link de download
+                downloadBtn.classList.add('active');
+                downloadBtn.style.cursor = 'pointer';
+                downloadBtn.setAttribute('href', linkArquivoDownload);
+                downloadBtn.setAttribute('target', '_blank');
+                downloadBtn.innerHTML = '<i class="fa fa-check-circle"></i> Clique Aqui Para Baixar';
+            }
+        }, 1000);
 
         function iniciarDownload(e) {
             if (!downloadBtn.classList.contains('active')) {
@@ -333,7 +320,3 @@ html_code = """<!DOCTYPE html>
     </script>
 </body>
 </html>
-"""
-with open("download.html", "w", encoding="utf-8") as f:
-    f.write(html_code)
-print("Gerado com sucesso!")
