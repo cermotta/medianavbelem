@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download UPGRADE 4.1.0 - MediaNav Belém</title>
+    <link rel="icon" type="image/png" href="medianavbelem.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: #111;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 90px;
+            object-fit: contain;
+            filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));
+        }
+
+        .top-right-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #111;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        /* Main Container */
+        .download-container {
+            max-width: 750px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 5px solid #f1c40f;
+            width: 90%;
+        }
+
+        .download-icon {
+            font-size: 3.5rem;
+            color: #f39c12;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Timer Box */
+        .timer-box {
+            background: #fff8e1;
+            border: 2px dashed #f39c12;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .timer-box h3 {
+            font-size: 1.1rem;
+            color: #d35400;
+            margin-bottom: 10px;
+        }
+
+        .countdown-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            font-family: monospace;
+        }
+
+        /* Barra de Progresso do Tempo */
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #27ae60;
+            width: 100%;
+            transition: width 1s linear;
+        }
+
+        /* Botão de Download */
+        .btn-download {
+            background-color: #bdc3c7;
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: not-allowed;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-download.active {
+            background-color: #27ae60;
+            cursor: pointer;
+        }
+
+        .btn-download.active:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        /* Instruções Importantes */
+        .instructions-box {
+            margin-top: 35px;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #34495e;
+        }
+
+        .instructions-box h4 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .instructions-box ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .instructions-box ul li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .instructions-box ul li i {
+            color: #f39c12;
+            margin-top: 4px;
+        }
+
+        /* Suporte WhatsApp extra */
+        .support-strip {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .support-strip a {
+            color: #25d366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .support-strip a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            border-top: 3px solid #f1c40f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="logo-area">
+            <img src="medianavbelem.png" alt="MediaNav Belém Logo">
+        </div>
+        <div class="top-right-info">
+            <span><i class="fa fa-shield-alt" style="color: #27ae60;"></i> Link Seguro Verificado</span>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="download-container">
+        <div class="download-icon">
+            <i class="fa fa-cloud-download-alt"></i>
+        </div>
+        <h1>UPGRADE 4.1.0</h1>
+        <p class="subtitle">Obrigado por adquirir com o <strong>MediaNav Belém</strong>! Por favor, aguarde o contador abaixo finalizar para liberar o botão de download do seu pacote.</p>
+
+        <!-- Caixa do Temporizador -->
+        <div class="timer-box">
+            <h3><i class="fa fa-clock"></i> Liberação do Link em:</h3>
+            <div class="countdown-display" id="countdownTimer">00:10</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- Botão de Download (inicialmente desativado) -->
+        <a id="downloadBtn" href="#" onclick="iniciarDownload(event)" class="btn-download">
+            <i class="fa fa-download"></i> Aguarde a liberação...
+        </a>
+
+        <!-- Instruções -->
+        <div class="instructions-box">
+            <h4><i class="fa fa-info-circle" style="color: #34495e;"></i> Recomendações antes da instalação:</h4>
+            <ul>
+                <li><i class="fa fa-check-circle"></i> Utilize um pen drive de até 8GB formatado estritamente em <strong>FAT32</strong> e vazio.</li>
+                <li><i class="fa fa-check-circle"></i> Extraia o conteúdo baixado diretamente na raiz do pen drive.</li>
+                <li><i class="fa fa-check-circle"></i> Em caso de dúvidas durante o procedimento, fale com nosso suporte via WhatsApp.</li>
+            </ul>
+        </div>
+
+        <div class="support-strip">
+            Dificuldades com o download? <a href="https://wa.me/5591982079997?text=Olá,%20estou%20com%20dúvidas%20no%20download%20do%20arquivo%20UPGRADE 4.1.0." target="_blank"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados. Desenvolvido por Eduardo Motta</p>
+    </footer>
+
+    <!-- Script de Contagem Regressiva Autônomo -->
+    <script>
+        const timerEl = document.getElementById('countdownTimer');
+        const progressFill = document.getElementById('progressBarFill');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        const linkArquivoDownload = "https://seu-link-aqui.com/upgrade-4-1-0"; 
+
+        let tempoRestante = 10;
+        const tempoTotal = 10;
+
+        const intervalo = setInterval(() => {
+            tempoRestante--;
+
+            let minutos = Math.floor(tempoRestante / 60);
+            let segundos = tempoRestante % 60;
+            timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+            let porcentagem = (tempoRestante / tempoTotal) * 100;
+            progressFill.style.width = porcentagem + '%';
+
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                timerEl.innerText = "00:00";
+                progressFill.style.width = '0%';
+                
+                downloadBtn.classList.add('active');
+                downloadBtn.style.cursor = 'pointer';
+                downloadBtn.setAttribute('href', linkArquivoDownload);
+                downloadBtn.setAttribute('target', '_blank');
+                downloadBtn.innerHTML = '<i class="fa fa-check-circle"></i> Clique Aqui Para Baixar';
+            }
+        }, 1000);
+
+        function iniciarDownload(e) {
+            if (!downloadBtn.classList.contains('active')) {
+                e.preventDefault();
+                alert("Por favor, aguarde o término da contagem regressiva para realizar o download.");
+            }
+        }
+    </script>
+</body>
+</html>
