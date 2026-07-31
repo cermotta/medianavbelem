@@ -1549,6 +1549,41 @@
         </div>
     </div>
 
+    <!-- ================= PAGE: DOWNLOAD EXCLUSIVO (ESCONDIDA) ================= -->
+    <div id="page-download" class="page-view">
+        <div class="container">
+            <h2 class="section-title"><i class="fa fa-download"></i> Área de Download Exclusiva</h2>
+            
+            <div class="comprovante-container" style="text-align: center;">
+                <div class="comprovante-box" id="downloadBoxValido">
+                    <h3 style="color: #27ae60;"><i class="fa fa-check-circle"></i> Pagamento Confirmado com Sucesso!</h3>
+                    <p>Seu link de download exclusivo foi gerado. Por questões de segurança, este link possui validade de uso e expirará em breve.</p>
+                    
+                    <div style="margin: 25px 0;">
+                        <div id="timerExpiracao" style="font-size: 1.1rem; font-weight: bold; color: #c0392b; margin-bottom: 15px;">
+                            <i class="fa fa-clock"></i> O link expira em: <span id="tempoRestante">15:00</span>
+                        </div>
+                        
+                        <!-- Link / Botão de Download Direto -->
+                        <a id="btnDownloadReal" href="#" class="btn-whatsapp" style="background-color: #2980b9; font-size: 1.1rem; padding: 15px 30px; display: inline-block;" onclick="consumirDownload()">
+                            <i class="fa fa-file-archive"></i> Baixar Arquivo de Atualização (.zip)
+                        </a>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666;">Dúvidas durante o processo? Chame no suporte do WhatsApp.</p>
+                </div>
+
+                <!-- Mensagem caso o link tenha expirado -->
+                <div class="comprovante-box" id="downloadBoxExpirado" style="display: none; background: #fadbd8; border-color: #e74c3c;">
+                    <h3 style="color: #c0392b;"><i class="fa fa-exclamation-triangle"></i> Link Expirado ou Inválido</h3>
+                    <p>Este link de download expirou por segurança ou já foi utilizado. Caso precise de um novo link, entre em contato com o suporte informando o número do seu pedido.</p>
+                    <a href="https://wa.me/5591982079997?text=Olá,%20meu%20link%20de%20download%20expirou%20e%20preciso%20de%20um%20novo%20acesso." target="_blank" class="btn-whatsapp" style="background-color: #27ae60;">
+                        <i class="fab fa-whatsapp"></i> Solicitar Novo Link no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= MODAIS DE DESCRIÇÃO ================= -->
     <div id="modal2025" class="modal">
         <div class="modal-content">
@@ -1695,6 +1730,11 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             if (target) {
                 target.classList.add('active');
                 window.scrollTo(0, 0);
+
+                // Se abrir a página de download escondida, inicia o temporizador de expiração
+                if (pageId === 'download') {
+                    iniciarContadorDownload();
+                }
             }
         }
 
@@ -1817,6 +1857,56 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             }
         }
 
+        // ================= CONTROLE DA PÁGINA DE DOWNLOAD COM EXPIRAÇÃO =================
+        let tempoRestanteSegundos = 900; // 15 minutos de validade (900 segundos)
+        let timerInterval;
+
+        function iniciarContadorDownload() {
+            const timerEl = document.getElementById('tempoRestante');
+            const boxValido = document.getElementById('downloadBoxValido');
+            const boxExpirado = document.getElementById('downloadBoxExpirado');
+
+            // Verifica se o link já foi usado ou expirado no localStorage
+            const statusDownload = localStorage.getItem('medianav_download_status');
+            if (statusDownload === 'expirado' || statusDownload === 'usado') {
+                boxValido.style.display = 'none';
+                boxExpirado.style.display = 'block';
+                return;
+            }
+
+            // Inicia contagem regressiva
+            timerInterval = setInterval(() => {
+                let minutos = Math.floor(tempoRestanteSegundos / 60);
+                let segundos = tempoRestanteSegundos % 60;
+
+                timerEl.innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+                if (tempoRestanteSegundos <= 0) {
+                    clearInterval(timerInterval);
+                    localStorage.setItem('medianav_download_status', 'expirado');
+                    boxValido.style.display = 'none';
+                    boxExpirado.style.display = 'block';
+                }
+                tempoRestanteSegundos--;
+            }, 1000);
+        }
+
+        function consumirDownload() {
+            // Ação ao clicar no botão de baixar (expira imediatamente após o 1º clique)
+            localStorage.setItem('medianav_download_status', 'usado');
+            
+            // Defina aqui o link direto do arquivo (.zip) hospedado (ex: OneDrive, Google Drive, Mega)
+            document.getElementById('btnDownloadReal').setAttribute('href', 'https://1drv.ms/u/s!AexemploDeLinkDiretoDoArquivo');
+            
+            setTimeout(() => {
+                const boxValido = document.getElementById('downloadBoxValido');
+                const boxExpirado = document.getElementById('downloadBoxExpirado');
+                clearInterval(timerInterval);
+                boxValido.style.display = 'none';
+                boxExpirado.style.display = 'block';
+            }, 2000);
+        }
+
         // ================= NOTIFICAÇÃO TOAST DE COMPRA RECENTE =================
         const mockBuyers = [
             { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
@@ -1838,7 +1928,7 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 8000); // Tempo que o toast fica visível na tela aumentado para 8 segundos
+            }, 8000);
         }
 
         // ================= RECUPERAÇÃO DE CONTATO =================
@@ -2012,11 +2102,16 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
                 if (ocEl) ocEl.innerText = onlineUsers;
             }, 10000);
 
-            // Disparar Toast de compras recentes a cada 65 segundos (intervalo ajustado para ~1 minuto para maior naturalidade)
+            // Disparar Toast de compras recentes a cada 65 segundos
             setTimeout(triggerToast, 5000);
             setInterval(triggerToast, 65000);
 
             atualizarAreaCliente();
+
+            // Roteamento simples por Hash para abrir a página escondida via link (ex: seosuite.com/#download)
+            if (window.location.hash === '#download') {
+                switchPage('download');
+            }
         });
 
         // Script para envio do formulário via Web3Forms
@@ -2055,4 +2150,3 @@ ACOMPANHA GUIA COMPLETO DE PROCEDIMENTO VIA USB.</div>
     </script>
 </body>
 </html>
-```[cite: 7]
