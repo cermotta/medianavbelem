@@ -198,7 +198,7 @@
             border-color: #f39c12;
         }
 
-        /* Estilos Melhorados do Quem Somos */
+        /* Seção Quem Somos */
         .about-section {
             background: white;
             padding: 40px;
@@ -1112,7 +1112,7 @@
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
         </div>
         <div class="nav-geo-datetime">
-            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Belém - PA</span></span>
+            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Detectando localização...</span></span>
             <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">Carregando data...</span></span>
             <span><i class="fa fa-clock"></i> <span id="tempoRelogio">--:--:--</span></span>
         </div>
@@ -1321,7 +1321,7 @@
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img" onclick="openZoom(this.src)">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp" alt="Atualização Medianav Renault 4.1.0 Sistema" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
                         <div class="product-price">R$ 55,00</div>
                     </div>
@@ -1360,7 +1360,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: QUEM SOMOS (REFORMULADO) ================= -->
+    <!-- ================= PAGE: QUEM SOMOS ================= -->
     <div id="page-quemsomos" class="page-view">
         <div class="container">
             <div class="about-section">
@@ -1387,7 +1387,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: SUPORTE / FAQ (REFORMULADO) ================= -->
+    <!-- ================= PAGE: SUPORTE / FAQ ================= -->
     <div id="page-suporte" class="page-view">
         <div class="container">
             <h2 class="section-title">Central de Ajuda & Perguntas Frequentes (FAQ)</h2>
@@ -1719,16 +1719,35 @@ VERSÕES COMPATÍVEIS:
             }
         }
 
+        /* Geolocalização Dinâmica em Tempo Real por IP */
         function carregarGeolocalizacao() {
+            const geoEl = document.getElementById('geoLocalizacao');
+            
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
                 .then(data => {
-                    if (data && data.city && data.region_code) {
-                        const geoEl = document.getElementById('geoLocalizacao');
-                        if (geoEl) geoEl.innerText = `${data.city} - ${data.region_code}`;
+                    if (data && data.city && (data.region_code || data.region)) {
+                        const estado = data.region_code || data.region;
+                        if (geoEl) geoEl.innerText = `${data.city} - ${estado}`;
+                    } else {
+                        throw new Error('IPAPI incompleto');
                     }
                 })
-                .catch(error => { console.log(error); });
+                .catch(() => {
+                    /* Fallback via ip-api caso a primeira API esteja indisponível */
+                    fetch('https://ip-api.com/json/')
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data && data.city && data.region) {
+                                if (geoEl) geoEl.innerText = `${data.city} - ${data.region}`;
+                            } else {
+                                if (geoEl) geoEl.innerText = "Brasil";
+                            }
+                        })
+                        .catch(() => {
+                            if (geoEl) geoEl.innerText = "Brasil";
+                        });
+                });
         }
 
         atualizarRelogioData();
@@ -1736,6 +1755,7 @@ VERSÕES COMPATÍVEIS:
 
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
+
             let visits = localStorage.getItem('medianav_visit_count') || 1246;
             if (!sessionStorage.getItem('visited_session')) {
                 visits = parseInt(visits) + 1;
