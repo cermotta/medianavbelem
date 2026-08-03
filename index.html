@@ -198,7 +198,7 @@
             border-color: #f39c12;
         }
 
-        /* Seção Quem Somos */
+        /* Quem Somos Estilizado */
         .about-section {
             background: white;
             padding: 40px;
@@ -255,27 +255,30 @@
         }
 
         .about-badge {
-            background: linear-gradient(135deg, #f1c40f, #f39c12);
-            padding: 30px;
+            background: linear-gradient(135deg, #1a252f, #2c3e50);
+            padding: 35px;
             border-radius: 8px;
-            color: #111;
+            color: #fff;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #f1c40f;
         }
 
         .about-badge i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
+            color: #f1c40f;
         }
 
         .about-badge h4 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 10px;
         }
 
         .about-badge p {
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: #ddd;
         }
 
         .product-grid {
@@ -630,7 +633,7 @@
 
         .faq-answer {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .whatsapp-box {
@@ -1112,7 +1115,7 @@
             <a onclick="switchPage('comprovante')" style="color: #f1c40f; font-weight: bold;"><i class="fa fa-paper-plane"></i> Enviar Comprovante</a>
         </div>
         <div class="nav-geo-datetime">
-            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Detectando localização...</span></span>
+            <span><i class="fa fa-map-marker-alt"></i> <span id="geoLocalizacao">Localizando...</span></span>
             <span><i class="fa fa-calendar-alt"></i> <span id="tempoData">Carregando data...</span></span>
             <span><i class="fa fa-clock"></i> <span id="tempoRelogio">--:--:--</span></span>
         </div>
@@ -1138,7 +1141,8 @@
             </div>
 
             <div class="product-grid" id="productGridHome">
-                <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault" data-category="mapa">
+                <!-- PRODUTO 1: MAPA 2025 EVOLUTION -->
+                <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
@@ -1151,6 +1155,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 2: MAPA 2025 STANDARD (NOVO) -->
                 <div class="product-card" data-name="atualização mapa brasil 2025 renault media nav standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1159,12 +1164,13 @@
                         <div class="product-price">R$ 135,00</div>
                     </div>
                     <div>
-                        <button class="btn-desc" onclick="openModal('modalStandard2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <button class="btn-desc" onclick="openModal('modal2025Standard')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2P4tRx3" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
                     </div>
                 </div>
 
-                <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault" data-category="mapa">
+                <!-- PRODUTO 3: MAPA 2024 STANDARD -->
+                <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img" onclick="openZoom(this.src)">
@@ -1177,6 +1183,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 4: SISTEMA 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1190,6 +1197,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 5: SISTEMA EVOLUTION 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1203,6 +1211,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 6: SISTEMA 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1279,7 +1288,8 @@
             </div>
 
             <div class="product-grid" id="productGridProdutos">
-                <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault" data-category="mapa">
+                <!-- PRODUTO 1: MAPA 2025 EVOLUTION -->
+                <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
@@ -1292,6 +1302,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 2: MAPA 2025 STANDARD (NOVO) -->
                 <div class="product-card" data-name="atualização mapa brasil 2025 renault media nav standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1300,12 +1311,13 @@
                         <div class="product-price">R$ 135,00</div>
                     </div>
                     <div>
-                        <button class="btn-desc" onclick="openModal('modalStandard2025')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
+                        <button class="btn-desc" onclick="openModal('modal2025Standard')"><i class="fa fa-info-circle"></i> Ver Descrição</button>
                         <a href="https://mpago.la/2P4tRx3" target="_blank" class="btn-buy">Comprar com Mercado Pago</a>
                     </div>
                 </div>
 
-                <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault" data-category="mapa">
+                <!-- PRODUTO 3: MAPA 2024 STANDARD -->
+                <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
                         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp" alt="Atualização Mapa do Brasil Renault Media Nav Standard" class="product-img" onclick="openZoom(this.src)">
@@ -1318,6 +1330,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 4: SISTEMA 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1331,6 +1344,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 5: SISTEMA EVOLUTION 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1344,6 +1358,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 6: SISTEMA 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1360,64 +1375,59 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: QUEM SOMOS ================= -->
+    <!-- ================= PAGE: QUEM SOMOS (REFORMULADO) ================= -->
     <div id="page-quemsomos" class="page-view">
         <div class="container">
             <div class="about-section">
                 <div class="about-grid">
                     <div class="about-text">
-                        <h3>Sobre a MediaNav Belém</h3>
-                        <p>A <strong>MediaNav Belém</strong> é uma empresa consolidada e referência nacional em soluções de atualização, manutenção lógica e otimização de sistemas multimídia originais para a linha Renault e Dacia.</p>
-                        <p>Nossa missão é garantir que condutores de todo o Brasil naveguem com segurança, precisão e autonomia, disponibilizando mapas atualizados (HERE), radares, pontos de interesse (POI) e correções de firmware essenciais para o perfeito funcionamento da sua central multimídia.</p>
-                        <p>Com atendimento especializado via WhatsApp e envio digital imediato, oferecemos todo o auxílio necessário desde a verificação da versão da sua multimídia até a conclusão da instalação passo a passo por vídeo aula.</p>
+                        <h3>Quem Somos</h3>
+                        <p>O <strong>MediaNav Belém</strong> é uma empresa especializada no desenvolvimento e fornecimento de soluções de software, atualização de mapas GPS HERE e otimização de firmewares para centrais multimídia da linha Renault e Dacia.</p>
+                        <p>Nossa missão é proporcionar autonomia, praticidade e segurança aos condutores, garantindo que seu sistema de navegação utilize sempre os mapas e radares mais atualizados do Brasil, com arquivos seguros e procedimentos passo a passo totalmente em vídeo tutorial.</p>
                         <div class="about-features">
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Envio Digital Imediato</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Suporte Técnico Individual</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Suporte Técnico Especializado</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Envio 100% Digital e Rápido</div>
                             <div class="feature-item"><i class="fa fa-check-circle"></i> Vídeos Tutoriais Exclusivos</div>
-                            <div class="feature-item"><i class="fa fa-check-circle"></i> Pagamento Seguro via Mercado Pago</div>
+                            <div class="feature-item"><i class="fa fa-check-circle"></i> Processo Seguro via USB</div>
                         </div>
                     </div>
                     <div class="about-badge">
-                        <i class="fa fa-shield-alt"></i>
-                        <h4>Garantia & Segurança</h4>
-                        <p>Com milhares de clientes atendidos em todo o território nacional, prezamos pela excelência e integridade dos sistemas originais do seu veículo.</p>
+                        <i class="fa fa-shield-halved"></i>
+                        <h4>Excelência & Confiança</h4>
+                        <p>Atendendo com máxima eficiência e credibilidade clientes em todo o Brasil. Garantia de funcionamento para todas as versões homologadas MediaNav.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ================= PAGE: SUPORTE / FAQ ================= -->
+    <!-- ================= PAGE: SUPORTE / FAQ (REFORMULADO) ================= -->
     <div id="page-suporte" class="page-view">
         <div class="container">
-            <h2 class="section-title">Central de Ajuda & Perguntas Frequentes (FAQ)</h2>
+            <h2 class="section-title">Perguntas Frequentes (FAQ) & Suporte Técnico</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question"><i class="fa fa-question-circle" style="color: #f1c40f;"></i> 1. Como funciona a entrega após o pagamento?</div>
-                    <div class="faq-answer">O procedimento é 100% digital. Após o pagamento via Mercado Pago, basta nos enviar o comprovante ou informar o ID de transação. Você receberá os links para download com as instruções detalhadas e vídeos tutoriais passo a passo.</div>
+                    <div class="faq-question"><i class="fa fa-usb" style="color: #f1c40f;"></i> 1. Qual tipo de Pen Drive devo utilizar para o procedimento?</div>
+                    <div class="faq-answer">É obrigatório o uso de um pen drive USB 2.0 com capacidade entre <strong>4GB e 8GB</strong>, totalmente formatado em <strong>FAT32</strong> e vazio. Não utilize pen drives de marcas genéricas ("xing-ling") ou com capacidade superior a 32GB para evitar falhas de leitura no MediaNav.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><i class="fa fa-question-circle" style="color: #f1c40f;"></i> 2. Qual o pen drive recomendado para realizar o procedimento?</div>
-                    <div class="faq-answer">É necessário utilizar um pendrive de no mínimo 4GB e no máximo 32GB, versão USB 2.0, formatado no sistema de arquivos FAT32 e totalmente vazio. Recomendamos marcas de boa procedência (Sandisk, Kingston) e evitar unidades falsificadas ("xing ling").</div>
+                    <div class="faq-question"><i class="fa fa-download" style="color: #f1c40f;"></i> 2. Como recebo os arquivos de atualização após a compra?</div>
+                    <div class="faq-answer">O envio é feito de forma 100% digital diretamente no seu e-mail ou WhatsApp após a confirmação do pagamento. Você receberá os links de download junto com o tutorial em vídeo com todo o passo a passo.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><i class="fa fa-question-circle" style="color: #f1c40f;"></i> 3. Como posso verificar a versão do meu Media Nav?</div>
-                    <div class="faq-answer">Ligue a central multimídia, acesse o menu <strong>Configurações > Sistema > Versão do Sistema</strong>. A versão exibida na tela determinará qual o arquivo exato necessário para a sua atualização. Em caso de dúvidas, envie uma foto da tela para nosso suporte via WhatsApp.</div>
+                    <div class="faq-question"><i class="fa fa-info-circle" style="color: #f1c40f;"></i> 3. Como identifico a versão do meu MediaNav?</div>
+                    <div class="faq-answer">Na tela da sua multimídia, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>. Anote os números exibidos (Ex: 4.0.6, 9.1.3, 1.0.15.5) para adquirir o produto correto ou informar na mensagem após a compra.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><i class="fa fa-question-circle" style="color: #f1c40f;"></i> 4. Os mapas ficam salvos na memória do aparelho?</div>
-                    <div class="faq-answer">Sim! Os arquivos do mapa ficam gravados permanentemente na memória interna do Media Nav. O pendrive serve apenas para transferir a atualização para o aparelho.</div>
+                    <div class="faq-question"><i class="fa fa-microchip" style="color: #f1c40f;"></i> 4. O procedimento afeta o funcionamento original do carro?</div>
+                    <div class="faq-answer">Não. A instalação atualiza os arquivos internos de navegação salvos na memória interna do aparelho sem alterar o restante da multimídia ou perder funções originais.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question"><i class="fa fa-question-circle" style="color: #f1c40f;"></i> 5. O procedimento é realizado pelo site oficial da Renault?</div>
-                    <div class="faq-answer">Não. Trata-se de um procedimento de desbloqueio lógico por arquivos via pen drive que permite ao seu GPS original aceitar a instalação e atualização dos mapas externos mais recentes.</div>
-                </div>
-                
+
                 <div class="whatsapp-box">
-                    <h3>Ainda possui dúvidas ou precisa de auxílio durante a instalação?</h3>
-                    <p style="color: #555; margin-top: 5px;">Nossa equipe técnica está disponível para atende-lo diretamente no WhatsApp.</p>
+                    <h3>Precisa de suporte personalizado direto pelo WhatsApp?</h3>
+                    <p style="color: #555; margin-top: 5px;">Caso tenha alguma dúvida específica sobre a versão do seu aparelho, converse direto com nossos técnicos.</p>
                     <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20suporte." target="_blank" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Falar com o Suporte Técnico no WhatsApp
+                        <i class="fab fa-whatsapp"></i> Falar com o Suporte Técnico
                     </a>
                 </div>
             </div>
@@ -1471,18 +1481,48 @@
         </div>
     </div>
 
-    <!-- Modais e Zoom -->
+    <!-- Modais dos Produtos -->
+
+    <!-- MODAL 1: MAPA 2025 EVOLUTION -->
     <div id="modal2025" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2025')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
-            <div class="modal-body">Brazil_HERE_2025.Q2 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.</div>
+            <div class="modal-body">Brazil_HERE_2025.Q2 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.
+
+***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
+
+PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
+
+NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
+
+O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
+
+OBSERVAÇÕES:
+
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
+
+CARACTERÍSTICAS:
+
+MODELO: MEDIA NAV
+MARCA: RENAULT / DACIA
+
+DESCRIÇÃO:
+
+GPS COMPATÍVEL COM MEDIA NAV EVOLUTION RENAULT / DACIA
+
+#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN # KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
+
+VERSÕES COMPATÍVEIS:
+
+*** 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3 ***</div>
         </div>
     </div>
 
-    <div id="modalStandard2025" class="modal">
+    <!-- MODAL 2: MAPA 2025 STANDARD (NOVO) -->
+    <div id="modal2025Standard" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modalStandard2025')">&times;</span>
+            <span class="close-modal" onclick="closeModal('modal2025Standard')">&times;</span>
             <div class="modal-title">Atualização Mapa Brasil 2025 - Renault Media Nav Standard</div>
             <div class="modal-body">MAPA BRASIL HERE 2025.Q4_260106 PARA GPS ORIGINAL MEDIANAV RENAULT STANDARD.
 
@@ -1515,35 +1555,99 @@ VERSÕES COMPATÍVEIS:
         </div>
     </div>
 
+    <!-- MODAL 3: MAPA 2024 STANDARD -->
     <div id="modal2024" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2024')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
-            <div class="modal-body">Brazil_HERE_2024 PARA GPS ORIGINAL MEDIA NAV RENAULT STANDARD (VERSÃO 4.1.0).</div>
+            <div class="modal-body">MAPA BRASIL HERE 2024.Q2 PARA GPS ORIGINAL MEDIANAV RENAULT STANDARD.
+
+***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
+
+PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
+
+NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
+
+O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
+
+OBSERVAÇÕES:
+
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
+
+CARACTERÍSTICAS:
+
+MODELO: MEDIA NAV
+MARCA: RENAULT / DACIA
+
+DESCRIÇÃO:
+
+GPS COMPATÍVEL COM MEDIA NAV STANDARD RENAULT / DACIA
+
+#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN # KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
+
+VERSÕES COMPATÍVEIS:
+
+*** 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 ***</div>
         </div>
     </div>
 
+    <!-- MODAL 4: SISTEMA 4.1.0 -->
     <div id="modalFirmware" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
-            <div class="modal-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
-            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT VERSÃO 4.1.0 (STANDARD).</div>
+            <div class="modal-title">Atualização Medianav Renault - 4.1.0</div>
+            <div class="modal-body">Atualização para MEDIANAV RENAULT STANDARD para a versão mais atual 4.1.0
+
+PARA MEDIANAV COM AS VERSÕES - 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6
+
+ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS</div>
         </div>
     </div>
 
+    <!-- MODAL 5: SISTEMA 9.1.3 -->
     <div id="modalEvolution913" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalEvolution913')">&times;</span>
-            <div class="modal-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
-            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT EVOLUTION VERSÃO 9.1.3.</div>
+            <div class="modal-title">Atualização Medianav Renault Evolution - 9.1.3</div>
+            <div class="modal-body">Atualização MEDIANAV RENAULT EVOLUTION para a versão mais atual 9.1.3
+
+PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1
+
+** ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS**</div>
         </div>
     </div>
 
+    <!-- MODAL 6: SISTEMA 1.0.15.5 -->
     <div id="modal10155" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal10155')">&times;</span>
-            <div class="modal-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
-            <div class="modal-body">ATUALIZAÇÃO DE SISTEMA FIRMWARE PARA MEDIA NAV RENAULT VERSÃO 1.0.15.5.</div>
+            <div class="modal-title">Atualização Medianav Renault - 1.0.15.5</div>
+            <div class="modal-body">Atualização MEDIANAV RENAULT EVO para a versão mais atual 1.0.15.5
+
+PARA MEDIANAV COM AS VERSÕES - 1.0.13.1
+
+* ESTA ATUALIZAÇÃO NÃO SERVE NAS VERSÕES: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3
+
+- Principais Vantagens da Atualização para a 1.0.15.5 -
+
+1. - Compatibilidade com Android Auto e Apple CarPlay
+- Disponível em algumas versões do MediaNav Evolution 2 com hardware compatível. A atualização prepara o sistema para ativar esse recurso (pode depender do desbloqueio posterior).
+
+2. - Correções de bugs e maior estabilidade
+- Problemas comuns de travamento, reinicializações ou lentidão são reduzidos.
+
+3. - Interface mais fluida e responsiva
+- Pequenas melhorias visuais e melhor tempo de resposta nos comandos.
+
+4. - Atualização de compatibilidade com mídias
+- Reconhecimento de mais formatos de áudio/vídeo via USB.
+- Maior compatibilidade com celulares e pendrives.
+
+5. - Preparação para atualizações futuras de mapa
+- Alguns mapas mais novos exigem versões recentes do sistema para serem instalados.
+
+6. - Melhoria na conexão Bluetooth e chamadas
+- Redução de falhas ao parear celulares, chamadas mais estáveis e maior compatibilidade com modelos recentes.</div>
         </div>
     </div>
 
@@ -1675,8 +1779,9 @@ VERSÕES COMPATÍVEIS:
         }
 
         const mockBuyers = [
-            { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
-            { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" }
+            { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025 Standard" },
+            { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" },
+            { name: "João de Castanhal - PA", product: "Atualização Mapa 2025 Evolution" }
         ];
 
         function triggerToast() {
@@ -1699,7 +1804,7 @@ VERSÕES COMPATÍVEIS:
             const respDiv = document.getElementById('chatbotResponse');
             respDiv.style.display = 'block';
             if (topic === 'pendrive') {
-                respDiv.innerHTML = "Recomendamos utilizar um pen drive de até 8GB, formatado em FAT32 e totalmente vazio.";
+                respDiv.innerHTML = "Recomendamos utilizar um pen drive de <strong>4GB a 8GB</strong>, USB 2.0, formatado em FAT32 e totalmente vazio.";
             } else if (topic === 'versao') {
                 respDiv.innerHTML = "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>.";
             } else if (topic === 'envio') {
@@ -1719,34 +1824,53 @@ VERSÕES COMPATÍVEIS:
             }
         }
 
-        /* Geolocalização Dinâmica em Tempo Real por IP */
+        /* LÓGICA DE GEOLOCALIZAÇÃO COM PERMISSÃO DE GPS + FALLBACK DE IP */
         function carregarGeolocalizacao() {
             const geoEl = document.getElementById('geoLocalizacao');
             
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.address) {
+                                    const cidade = data.address.city || data.address.town || data.address.village || data.address.municipality || "Belém";
+                                    const estado = data.address.state || "PA";
+                                    if (geoEl) geoEl.innerText = `${cidade} - ${estado}`;
+                                } else {
+                                    carregarGeoPorIP();
+                                }
+                            })
+                            .catch(() => carregarGeoPorIP());
+                    },
+                    error => {
+                        carregarGeoPorIP();
+                    },
+                    { timeout: 10000, enableHighAccuracy: true }
+                );
+            } else {
+                carregarGeoPorIP();
+            }
+        }
+
+        function carregarGeoPorIP() {
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
                 .then(data => {
-                    if (data && data.city && (data.region_code || data.region)) {
-                        const estado = data.region_code || data.region;
-                        if (geoEl) geoEl.innerText = `${data.city} - ${estado}`;
+                    if (data && data.city && data.region_code) {
+                        const geoEl = document.getElementById('geoLocalizacao');
+                        if (geoEl) geoEl.innerText = `${data.city} - ${data.region_code}`;
                     } else {
-                        throw new Error('IPAPI incompleto');
+                        const geoEl = document.getElementById('geoLocalizacao');
+                        if (geoEl) geoEl.innerText = "Belém - PA";
                     }
                 })
                 .catch(() => {
-                    /* Fallback via ip-api caso a primeira API esteja indisponível */
-                    fetch('https://ip-api.com/json/')
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data && data.city && data.region) {
-                                if (geoEl) geoEl.innerText = `${data.city} - ${data.region}`;
-                            } else {
-                                if (geoEl) geoEl.innerText = "Brasil";
-                            }
-                        })
-                        .catch(() => {
-                            if (geoEl) geoEl.innerText = "Brasil";
-                        });
+                    const geoEl = document.getElementById('geoLocalizacao');
+                    if (geoEl) geoEl.innerText = "Belém - PA";
                 });
         }
 
@@ -1755,7 +1879,6 @@ VERSÕES COMPATÍVEIS:
 
         window.addEventListener('DOMContentLoaded', () => {
             carregarGeolocalizacao();
-
             let visits = localStorage.getItem('medianav_visit_count') || 1246;
             if (!sessionStorage.getItem('visited_session')) {
                 visits = parseInt(visits) + 1;
