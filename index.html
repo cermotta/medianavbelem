@@ -1140,7 +1140,7 @@
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
                         <div class="product-price">R$ 135,00</div>
                     </div>
@@ -1268,7 +1268,7 @@
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_635925-MLB103257887396_012026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp" alt="Atualização Mapa do Brasil 2025 Renault Evolution" class="product-img" onclick="openZoom(this.src)">
                         <div class="product-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
                         <div class="product-price">R$ 135,00</div>
                     </div>
@@ -1593,7 +1593,7 @@
 
         const mockBuyers = [
             { name: "Carlos de Belém - PA", product: "Atualização Mapa 2025" },
-            { name: "Marcos de Belém - PA", product: "Atualização Sistema Evolution 9.1.3" }
+            { name: "Marcos de Ananindeua - PA", product: "Atualização Sistema Evolution 9.1.3" }
         ];
 
         function triggerToast() {
@@ -1636,34 +1636,16 @@
             }
         }
 
-        // Função corrigida para usar geolocalização real do navegador (com fallback para Belém - PA)
         function carregarGeolocalizacao() {
-            const geoEl = document.getElementById('geoLocalizacao');
-            if (!navigator.geolocation) {
-                if (geoEl) geoEl.innerText = "Belém - PA";
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                async (position) => {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    try {
-                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`);
-                        const data = await response.json();
-                        const address = data.address || {};
-                        const cidade = address.city || address.town || address.village || address.municipality || "Belém";
-                        const estado = address.state_code || (address.state ? address.state.substring(0,2).toUpperCase() : "PA");
-                        if (geoEl) geoEl.innerText = `${cidade} - ${estado}`;
-                    } catch (error) {
-                        if (geoEl) geoEl.innerText = "Belém - PA";
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.city && data.region_code) {
+                        const geoEl = document.getElementById('geoLocalizacao');
+                        if (geoEl) geoEl.innerText = `${data.city} - ${data.region_code}`;
                     }
-                },
-                (error) => {
-                    if (geoEl) geoEl.innerText = "Belém - PA";
-                },
-                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-            );
+                })
+                .catch(error => { console.log(error); });
         }
 
         atualizarRelogioData();
