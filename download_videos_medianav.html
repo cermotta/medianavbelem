@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Upgrade Reprodução de Vídeos - MediaNav Belém</title>
+    <link rel="icon" type="image/png" href="medianavbelem.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .top-bar {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 90px;
+            object-fit: contain;
+            filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.3));
+        }
+
+        .top-right-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .download-container {
+            max-width: 750px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 5px solid #27ae60;
+            width: 90%;
+        }
+
+        .download-icon {
+            font-size: 3.5rem;
+            color: #27ae60;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .timer-box {
+            background: #e8f5e9;
+            border: 2px dashed #27ae60;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .timer-box h3 {
+            font-size: 1.1rem;
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        .countdown-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            font-family: monospace;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #27ae60;
+            width: 100%;
+            transition: width 1s linear;
+        }
+
+        .btn-download {
+            background-color: #bdc3c7;
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: not-allowed;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-download.active {
+            background-color: #27ae60;
+            cursor: pointer;
+        }
+
+        .btn-download.active:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .instructions-box {
+            margin-top: 35px;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .instructions-box h4 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .instructions-box ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .instructions-box ul li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .instructions-box ul li i {
+            color: #27ae60;
+            margin-top: 4px;
+        }
+
+        .support-strip {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .support-strip a {
+            color: #25d366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            border-top: 3px solid #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="logo-area">
+            <img src="medianavbelem.png" alt="MediaNav Belém Logo">
+        </div>
+        <div class="top-right-info">
+            <span><i class="fa fa-video" style="color: #27ae60;"></i> Ativação de Vídeos</span>
+        </div>
+    </header>
+
+    <div class="download-container">
+        <div class="download-icon">
+            <i class="fa fa-play-circle"></i>
+        </div>
+        <h1>UPGRADE: REPRODUÇÃO DE VÍDEOS</h1>
+        <p class="subtitle">Obrigado por adquirir o pacote de <strong>Reprodução de Vídeos para MediaNav</strong> com o <strong>MediaNav Belém</strong>! Aguarde o contador para liberar o download.</p>
+
+        <div class="timer-box">
+            <h3><i class="fa fa-clock"></i> Liberação do Link em:</h3>
+            <div class="countdown-display" id="countdownTimer">00:10</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 100%;"></div>
+            </div>
+        </div>
+
+        <a id="downloadBtn" href="#" onclick="iniciarDownload(event)" class="btn-download">
+            <i class="fa fa-download"></i> Aguarde a liberação...
+        </a>
+
+        <div class="instructions-box">
+            <h4><i class="fa fa-info-circle"></i> Preparação para a ativação:</h4>
+            <ul>
+                <li><i class="fa fa-check-circle"></i> Certifique-se de que sua versão do MediaNav seja compatível.</li>
+                <li><i class="fa fa-check-circle"></i> Use um pen drive <strong>FAT32</strong> de alta qualidade.</li>
+                <li><i class="fa fa-check-circle"></i> Siga as instruções de vídeo enviadas para realizar a ativação do codec de vídeo.</li>
+            </ul>
+        </div>
+
+        <div class="support-strip">
+            Dúvidas na instalação? <a href="https://wa.me/5591982079997?text=Olá,%20preciso%20de%20ajuda%20com%20a%20instalação%20do%20pacote%20de%20vídeos." target="_blank"><i class="fab fa-whatsapp"></i> Suporte MediaNav Belém</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MediaNav Belém. Todos os direitos reservados. Desenvolvido por Eduardo Motta</p>
+    </footer>
+
+    <script>
+        const timerEl = document.getElementById('countdownTimer');
+        const progressFill = document.getElementById('progressBarFill');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        const linkArquivoDownload = "https://shre.ink/vmn913"; // Substitua pelo link real
+
+        let tempoRestante = 10;
+        const tempoTotal = 10;
+
+        const intervalo = setInterval(() => {
+            tempoRestante--;
+
+            let segundos = tempoRestante % 60;
+            timerEl.innerText = `00:${segundos.toString().padStart(2, '0')}`;
+
+            let porcentagem = (tempoRestante / tempoTotal) * 100;
+            progressFill.style.width = porcentagem + '%';
+
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                timerEl.innerText = "00:00";
+                progressFill.style.width = '0%';
+                
+                downloadBtn.classList.add('active');
+                downloadBtn.style.cursor = 'pointer';
+                downloadBtn.setAttribute('href', linkArquivoDownload);
+                downloadBtn.setAttribute('target', '_blank');
+                downloadBtn.innerHTML = '<i class="fa fa-check-circle"></i> Baixar Pacote de Vídeos';
+            }
+        }, 1000);
+
+        function iniciarDownload(e) {
+            if (!downloadBtn.classList.contains('active')) {
+                e.preventDefault();
+                alert("Aguarde o contador terminar para liberar o download.");
+            }
+        }
+    </script>
+</body>
+</html>
