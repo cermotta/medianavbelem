@@ -8,39 +8,16 @@
     <link rel="icon" type="image/png" href="medianavbelem.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #f4f6f9;
-            --text-color: #333;
-            --card-bg: #fff;
-            --nav-bg: #000;
-            --header-border: #222;
-            --input-bg: #fff;
-            --modal-bg: #fff;
-            --modal-text: #444;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --card-bg: #1e1e1e;
-            --nav-bg: #0a0a0a;
-            --header-border: #333;
-            --input-bg: #2a2a2a;
-            --modal-bg: #1e1e1e;
-            --modal-text: #ccc;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #f4f6f9;
+            color: #333;
             scroll-behavior: smooth;
         }
 
@@ -69,12 +46,12 @@
         .top-bar-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         .search-box {
             position: relative;
-            width: 260px;
+            width: 300px;
         }
 
         .search-box input {
@@ -95,34 +72,13 @@
             color: #666;
         }
 
-        /* Botão de Alternar Tema (Dark/Light) */
-        .theme-toggle-btn {
-            background: #111;
-            color: #f1c40f;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-        }
-
         /* Navigation Menu */
         .nav-menu {
-            background-color: var(--nav-bg);
+            background-color: #000;
             padding: 12px 5%;
             display: flex;
             gap: 25px;
-            border-top: 1px solid var(--header-border);
+            border-top: 1px solid #222;
             flex-wrap: wrap;
             align-items: center;
         }
@@ -146,7 +102,7 @@
             color: #f1c40f;
         }
 
-        /* Bloco de Geolocalização, Data e Hora */
+        /* Bloco de Geolocalização, Data e Hora posicionado na extrema direita */
         .nav-geo-datetime {
             display: flex;
             align-items: center;
@@ -211,77 +167,9 @@
         h2.section-title {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: var(--text-color);
+            color: #222;
             border-left: 4px solid #f1c40f;
             padding-left: 10px;
-        }
-
-        /* Ferramenta Interativa: Descubra seu Mapa Ideal */
-        .finder-box {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            margin-bottom: 35px;
-            border: 1px solid #f1c40f;
-        }
-
-        .finder-box h3 {
-            color: #f39c12;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .finder-box .instruction-step {
-            background: rgba(241, 196, 15, 0.12);
-            border-left: 3px solid #f39c12;
-            padding: 8px 12px;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            border-radius: 4px;
-            color: var(--text-color);
-            line-height: 1.4;
-        }
-
-        .finder-controls {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .finder-select {
-            flex: 1;
-            min-width: 220px;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            background: var(--input-bg);
-            color: var(--text-color);
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .btn-find {
-            background-color: #f1c40f;
-            color: #111;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-find:hover {
-            background-color: #f39c12;
-        }
-
-        .finder-result {
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #27ae60;
         }
 
         /* Filtros de Categoria */
@@ -293,14 +181,14 @@
         }
 
         .filter-btn {
-            background-color: var(--card-bg);
+            background-color: #fff;
             border: 1px solid #ccc;
             padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-color);
+            color: #444;
             transition: all 0.3s;
         }
 
@@ -312,7 +200,7 @@
 
         /* Quem Somos Estilizado */
         .about-section {
-            background: var(--card-bg);
+            background: white;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -334,16 +222,15 @@
 
         .about-text h3 {
             font-size: 1.8rem;
-            color: #f39c12;
+            color: #2c3e50;
             margin-bottom: 15px;
         }
 
         .about-text p {
             font-size: 1rem;
-            color: var(--text-color);
+            color: #555;
             line-height: 1.7;
             margin-bottom: 15px;
-            opacity: 0.85;
         }
 
         .about-features {
@@ -358,7 +245,7 @@
             align-items: center;
             gap: 10px;
             font-weight: 600;
-            color: var(--text-color);
+            color: #333;
             font-size: 0.95rem;
         }
 
@@ -402,26 +289,20 @@
         }
 
         .product-card {
-            background: var(--card-bg);
+            background: white;
             border-radius: 8px;
             padding: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
             position: relative;
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .digital-badge {
@@ -454,7 +335,7 @@
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 8px;
-            color: var(--text-color);
+            color: #333;
             height: 40px;
             overflow: hidden;
         }
@@ -507,7 +388,7 @@
             position: fixed;
             bottom: 30px;
             left: 30px;
-            background: var(--card-bg);
+            background: #fff;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
@@ -542,13 +423,13 @@
 
         .toast-content h4 {
             font-size: 0.85rem;
-            color: var(--text-color);
+            color: #2c3e50;
             margin-bottom: 2px;
         }
 
         .toast-content p {
             font-size: 0.8rem;
-            color: #888;
+            color: #666;
         }
 
         /* Chatbot Widget Flutuante */
@@ -585,12 +466,12 @@
             bottom: 60px;
             right: 0;
             width: 320px;
-            background: var(--card-bg);
+            background: white;
             border-radius: 8px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.2);
             overflow: hidden;
             animation: fadeIn 0.3s;
-            border: 1px solid #444;
+            border: 1px solid #ddd;
         }
 
         .chatbot-header {
@@ -620,7 +501,7 @@
             max-height: 250px;
             overflow-y: auto;
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: #444;
         }
 
         .chatbot-options {
@@ -631,20 +512,19 @@
         }
 
         .chatbot-option-btn {
-            background: var(--input-bg);
+            background: #f4f6f9;
             border: 1px solid #ccc;
             padding: 8px 10px;
             border-radius: 4px;
             cursor: pointer;
             text-align: left;
             font-size: 0.85rem;
-            color: var(--text-color);
+            color: #333;
             transition: background 0.2s;
         }
 
         .chatbot-option-btn:hover {
             background: #f1c40f;
-            color: #111;
             border-color: #f39c12;
             font-weight: 600;
         }
@@ -652,13 +532,13 @@
         .chatbot-response {
             margin-top: 10px;
             padding: 10px;
-            background: rgba(0,0,0,0.05);
+            background: #eef2f7;
             border-radius: 4px;
             font-size: 0.85rem;
             line-height: 1.4;
         }
 
-        /* Seção de Depoimentos e FAQ */
+        /* Seção de Depoimentos */
         .testimonials-section {
             margin-top: 50px;
             margin-bottom: 40px;
@@ -671,7 +551,7 @@
         }
 
         .testimonial-card {
-            background: var(--card-bg);
+            background: white;
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -686,16 +566,15 @@
 
         .testimonial-text {
             font-size: 0.95rem;
-            color: var(--text-color);
+            color: #555;
             line-height: 1.6;
             margin-bottom: 15px;
             font-style: italic;
-            opacity: 0.9;
         }
 
         .testimonial-author {
             font-weight: bold;
-            color: var(--text-color);
+            color: #2c3e50;
             font-size: 0.9rem;
         }
 
@@ -704,13 +583,19 @@
             color: #888;
         }
 
-        .review-form-box, .faq-container, .comprovante-container, .forms-container {
-            background: var(--card-bg);
+        .review-form-box {
+            background: #fff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             margin-top: 40px;
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+        }
+
+        .review-form-box h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
         }
 
         .star-rating-input {
@@ -726,32 +611,37 @@
             color: #f39c12;
         }
 
+        .faq-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
         .faq-item {
             margin-bottom: 20px;
-            border-bottom: 1px solid rgba(128,128,128,0.2);
+            border-bottom: 1px solid #eee;
             padding-bottom: 15px;
         }
 
         .faq-question {
             font-weight: 600;
             font-size: 1.1rem;
-            color: var(--text-color);
+            color: #2c3e50;
             margin-bottom: 8px;
         }
 
         .faq-answer {
-            color: var(--text-color);
-            opacity: 0.8;
+            color: #666;
             line-height: 1.5;
         }
 
         .whatsapp-box {
             text-align: center;
             margin-top: 30px;
-            background: rgba(37, 211, 102, 0.1);
+            background: #e1f5fe;
             padding: 20px;
             border-radius: 8px;
-            border: 1px solid #25d366;
         }
 
         .btn-whatsapp {
@@ -770,17 +660,17 @@
             background-color: #1ebd59;
         }
 
-        .whatsapp-float, .back-to-top {
+        .whatsapp-float {
             position: fixed;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             bottom: 30px;
             right: 30px;
             background-color: #25d366;
             color: #fff;
             border-radius: 50px;
             text-align: center;
-            font-size: 26px;
+            font-size: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 999;
             display: flex;
@@ -792,23 +682,56 @@
 
         .whatsapp-float:hover {
             transform: scale(1.1);
+            color: #fff;
         }
 
         .back-to-top {
-            right: 95px;
+            position: fixed;
             width: 45px;
             height: 45px;
+            bottom: 30px;
+            left: 30px;
             background-color: #34495e;
-            font-size: 18px;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
         .back-to-top:hover {
             transform: scale(1.1);
             background-color: #2c3e50;
+            color: #fff;
+        }
+
+        .comprovante-container {
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .forms-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .comprovante-box {
-            background: rgba(241, 196, 15, 0.08);
+            background: #fff8e1;
             padding: 25px;
             border-radius: 8px;
             border: 1px dashed #f39c12;
@@ -821,6 +744,13 @@
             font-size: 1.2rem;
         }
 
+        .comprovante-box p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
         .form-group {
             margin-bottom: 15px;
             text-align: left;
@@ -830,7 +760,7 @@
             display: block;
             font-weight: 600;
             margin-bottom: 5px;
-            color: var(--text-color);
+            color: #333;
             font-size: 0.9rem;
         }
 
@@ -841,8 +771,6 @@
             border-radius: 4px;
             font-size: 0.95rem;
             outline: none;
-            background: var(--input-bg);
-            color: var(--text-color);
         }
 
         .btn-enviar-comprovante {
@@ -886,8 +814,7 @@
         }
 
         .modal-content {
-            background-color: var(--modal-bg);
-            color: var(--text-color);
+            background-color: #fff;
             margin: 5% auto;
             padding: 30px;
             border-radius: 8px;
@@ -911,15 +838,16 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s;
         }
 
         .close-modal:hover {
-            color: var(--text-color);
+            color: #000;
         }
 
         .modal-title {
             font-size: 1.3rem;
-            color: #f39c12;
+            color: #2c3e50;
             margin-bottom: 15px;
             border-bottom: 2px solid #f1c40f;
             padding-bottom: 8px;
@@ -927,7 +855,7 @@
 
         .modal-body {
             font-size: 0.95rem;
-            color: var(--modal-text);
+            color: #444;
             line-height: 1.6;
             max-height: 60vh;
             overflow-y: auto;
@@ -955,6 +883,12 @@
             object-fit: contain;
             border-radius: 6px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .close-zoom {
@@ -965,6 +899,7 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s;
         }
 
         .close-zoom:hover {
@@ -998,6 +933,13 @@
         .visitor-counter i.fa-circle {
             color: #27ae60;
             font-size: 0.5rem;
+            animation: pulseDot 1.5s infinite;
+        }
+
+        @keyframes pulseDot {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
         }
 
         .visitor-counter span {
@@ -1038,13 +980,11 @@
             background-color: #f1c40f;
         }
 
-        .footer-col p, .footer-col ul li a {
+        .footer-col p {
             font-size: 0.9rem;
             line-height: 1.6;
             color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s;
+            margin-bottom: 15px;
         }
 
         .footer-col ul {
@@ -1055,9 +995,42 @@
             margin-bottom: 10px;
         }
 
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
         .footer-col ul li a:hover {
             color: #f1c40f;
             padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            background-color: #222;
+            color: #f1c40f;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: background 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: #f1c40f;
+            color: #111;
         }
 
         .footer-bottom {
@@ -1073,7 +1046,7 @@
         }
     </style>
 </head>
-<body data-theme="light">
+<body>
 
     <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20ajuda." target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">
@@ -1128,9 +1101,6 @@
                 <i class="fa fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Pesquisar produtos..." onkeyup="filterProducts()">
             </div>
-            <button class="theme-toggle-btn" onclick="toggleTheme()" title="Alternar Modo Escuro/Claro">
-                <i class="fa fa-moon" id="themeIcon"></i>
-            </button>
         </div>
     </header>
 
@@ -1162,26 +1132,6 @@
     <!-- ================= PAGE: INÍCIO ================= -->
     <div id="page-home" class="page-view active">
         <div class="container">
-            
-            <!-- Ferramenta Interativa: Descubra sua Versão -->
-            <div class="finder-box">
-                <h3><i class="fa fa-wand-magic-sparkles"></i> Descubra a Atualização Ideal para o seu Carro</h3>
-                <div class="instruction-step">
-                    <i class="fa fa-info-circle" style="color: #f39c12;"></i> Para verificar a sua versão atual na central, acesse no MediaNav: <strong>CONFIGURAÇÕES > SISTEMA > VERSÃO DO SISTEMA</strong>.
-                </div>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Selecione a versão atual da sua central para receber a recomendação exata:</p>
-                <div class="finder-controls">
-                    <select id="versaoSelect" class="finder-select">
-                        <option value="">Selecione sua versão atual...</option>
-                        <option value="standard">Standard (Ex: 4.0.3, 4.0.6, 4.1.0)</option>
-                        <option value="evolution">Evolution (Ex: 9.1.3, 8.0.5, 7.0.5)</option>
-                        <option value="evo2">Novo Evolution (Ex: 1.0.13.1)</option>
-                    </select>
-                    <button class="btn-find" onclick="recomendarProduto()">Ver Recomendação</button>
-                </div>
-                <div id="finderResult" class="finder-result" style="display: none;"></div>
-            </div>
-
             <h2 class="section-title">Destaques & Produtos Populares</h2>
             
             <div class="category-filters">
@@ -1205,7 +1155,7 @@
                     </div>
                 </div>
 
-                <!-- PRODUTO 2: MAPA 2025 STANDARD -->
+                <!-- PRODUTO 2: MAPA 2025 STANDARD (NOVO) -->
                 <div class="product-card" data-name="atualização mapa brasil 2025 renault media nav standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1278,7 +1228,7 @@
 
             <div class="testimonials-section">
                 <h2 class="section-title">O que dizem nossos clientes</h2>
-                <div class="testimonial-grid">
+                <div class="testimonial-grid" id="testimonialGrid">
                     <div class="testimonial-card">
                         <div class="testimonial-stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
                         <div class="testimonial-text">"A atualização funcionou corretamente. No mapa aparecem as edificações em 3d, funciona perfeitamente. A instalação demora em torno de 10-15 minutos. Recomendo muito!"</div>
@@ -1295,7 +1245,7 @@
 
                 <div class="review-form-box">
                     <h3>Deixe sua Avaliação / Depoimento</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px;">Sua opinião é fundamental para nossa prova social. Avalie nosso serviço!</p>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Sua opinião é fundamental para nossa prova social. Avalie nosso serviço!</p>
                     <form id="formReview" onsubmit="enviarAvaliacao(event)">
                         <div class="form-group">
                             <label>Sua Nota (1 a 5 estrelas):</label>
@@ -1338,7 +1288,7 @@
             </div>
 
             <div class="product-grid" id="productGridProdutos">
-                <!-- Mesmos produtos repetidos para catálogo -->
+                <!-- PRODUTO 1: MAPA 2025 EVOLUTION -->
                 <div class="product-card" data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1352,6 +1302,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 2: MAPA 2025 STANDARD (NOVO) -->
                 <div class="product-card" data-name="atualização mapa brasil 2025 renault media nav standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1365,6 +1316,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 3: MAPA 2024 STANDARD -->
                 <div class="product-card" data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard" data-category="mapa">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1378,6 +1330,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 4: SISTEMA 4.1.0 -->
                 <div class="product-card" data-name="atualização medianav renault 4.1.0 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1391,6 +1344,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 5: SISTEMA EVOLUTION 9.1.3 -->
                 <div class="product-card" data-name="atualização medianav renault evolution 9.1.3 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1404,6 +1358,7 @@
                     </div>
                 </div>
 
+                <!-- PRODUTO 6: SISTEMA 1.0.15.5 -->
                 <div class="product-card" data-name="atualização medianav renault 1.0.15.5 sistema" data-category="sistema">
                     <div>
                         <span class="digital-badge"><i class="fa fa-bolt"></i> Envio Digital Imediato</span>
@@ -1420,7 +1375,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: QUEM SOMOS ================= -->
+    <!-- ================= PAGE: QUEM SOMOS (REFORMULADO) ================= -->
     <div id="page-quemsomos" class="page-view">
         <div class="container">
             <div class="about-section">
@@ -1446,7 +1401,7 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: SUPORTE / FAQ ================= -->
+    <!-- ================= PAGE: SUPORTE / FAQ (REFORMULADO) ================= -->
     <div id="page-suporte" class="page-view">
         <div class="container">
             <h2 class="section-title">Perguntas Frequentes (FAQ) & Suporte Técnico</h2>
@@ -1461,7 +1416,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question"><i class="fa fa-info-circle" style="color: #f1c40f;"></i> 3. Como identifico a versão do meu MediaNav?</div>
-                    <div class="faq-answer">Na tela da sua multimídia, vá em: <strong>CONFIGURAÇÕES > SISTEMA > VERSÃO DO SISTEMA</strong>. Lá diz qual a versão atual da sua MediaNav.</div>
+                    <div class="faq-answer">Na tela da sua multimídia, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>. Anote os números exibidos (Ex: 4.0.6, 9.1.3, 1.0.15.5) para adquirir o produto correto ou informar na mensagem após a compra.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question"><i class="fa fa-microchip" style="color: #f1c40f;"></i> 4. O procedimento afeta o funcionamento original do carro?</div>
@@ -1470,7 +1425,7 @@
 
                 <div class="whatsapp-box">
                     <h3>Precisa de suporte personalizado direto pelo WhatsApp?</h3>
-                    <p style="opacity: 0.8; margin-top: 5px;">Caso tenha alguma dúvida específica sobre a versão do seu aparelho, converse direto com nossos técnicos.</p>
+                    <p style="color: #555; margin-top: 5px;">Caso tenha alguma dúvida específica sobre a versão do seu aparelho, converse direto com nossos técnicos.</p>
                     <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20suporte." target="_blank" class="btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Falar com o Suporte Técnico
                     </a>
@@ -1479,12 +1434,12 @@
         </div>
     </div>
 
-    <!-- ================= PAGE: CADASTRO ================= -->
+    <!-- ================= PAGE: CADASTRO COM GOOGLE FORMS ================= -->
     <div id="page-cadastro-form" class="page-view">
         <div class="container">
             <h2 class="section-title">Faça o seu Cadastro</h2>
             <div class="forms-container">
-                <p style="margin-bottom: 20px; opacity: 0.8;">Preencha o formulário abaixo para registrar seus dados:</p>
+                <p style="margin-bottom: 20px; color: #555;">Preencha o formulário abaixo para registrar seus dados:</p>
                 <iframe src="https://forms.gle/XCjuyv1YdL8LsoADA" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px;">Carregando…</iframe>
             </div>
         </div>
@@ -1527,55 +1482,172 @@
     </div>
 
     <!-- Modais dos Produtos -->
+
+    <!-- MODAL 1: MAPA 2025 EVOLUTION -->
     <div id="modal2025" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2025')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault</div>
             <div class="modal-body">Brazil_HERE_2025.Q4_260107 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS***
-Versões compatíveis: 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3</div>
+
+***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
+
+PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
+
+NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
+
+O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
+
+OBSERVAÇÕES:
+
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
+
+CARACTERÍSTICAS:
+
+MODELO: MEDIA NAV
+MARCA: RENAULT / DACIA
+
+DESCRIÇÃO:
+
+GPS COMPATÍVEL COM MEDIA NAV EVOLUTION RENAULT / DACIA
+
+#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN # KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
+
+VERSÕES COMPATÍVEIS:
+
+*** 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3 ***</div>
         </div>
     </div>
 
+    <!-- MODAL 2: MAPA 2025 STANDARD (NOVO) -->
     <div id="modal2025Standard" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2025Standard')">&times;</span>
             <div class="modal-title">Atualização Mapa Brasil 2025 - Renault Media Nav Standard</div>
             <div class="modal-body">MAPA BRASIL HERE 2025.Q4_260106 PARA GPS ORIGINAL MEDIANAV RENAULT STANDARD.
-Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
+
+***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
+
+PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
+
+NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
+
+O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
+
+OBSERVAÇÕES:
+
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
+
+CARACTERÍSTICAS:
+
+MODELO: MEDIA NAV
+MARCA: RENAULT / DACIA
+
+DESCRIÇÃO:
+
+GPS COMPATÍVEL COM MEDIA NAV STANDARD RENAULT / DACIA
+
+#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN # KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
+
+VERSÕES COMPATÍVEIS:
+
+*** 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 ***</div>
         </div>
     </div>
 
+    <!-- MODAL 3: MAPA 2024 STANDARD -->
     <div id="modal2024" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal2024')">&times;</span>
             <div class="modal-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
             <div class="modal-body">MAPA BRASIL HERE 2024.Q2 PARA GPS ORIGINAL MEDIANAV RENAULT STANDARD.
-Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
+
+***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
+
+PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
+
+NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
+
+O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
+
+OBSERVAÇÕES:
+
+PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
+
+CARACTERÍSTICAS:
+
+MODELO: MEDIA NAV
+MARCA: RENAULT / DACIA
+
+DESCRIÇÃO:
+
+GPS COMPATÍVEL COM MEDIA NAV STANDARD RENAULT / DACIA
+
+#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN # KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
+
+VERSÕES COMPATÍVEIS:
+
+*** 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 ***</div>
         </div>
     </div>
 
+    <!-- MODAL 4: SISTEMA 4.1.0 -->
     <div id="modalFirmware" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
             <div class="modal-title">Atualização Medianav Renault - 4.1.0</div>
-            <div class="modal-body">Atualização para MEDIANAV RENAULT STANDARD para a versão 4.1.0 (Versões 4.0.2 a 4.0.6).</div>
+            <div class="modal-body">Atualização para MEDIANAV RENAULT STANDARD para a versão mais atual 4.1.0
+
+PARA MEDIANAV COM AS VERSÕES - 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6
+
+ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS</div>
         </div>
     </div>
 
+    <!-- MODAL 5: SISTEMA 9.1.3 -->
     <div id="modalEvolution913" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modalEvolution913')">&times;</span>
             <div class="modal-title">Atualização Medianav Renault Evolution - 9.1.3</div>
-            <div class="modal-body">Atualização MEDIANAV RENAULT EVOLUTION para a versão 9.1.3.</div>
+            <div class="modal-body">Atualização MEDIANAV RENAULT EVOLUTION para a versão mais atual 9.1.3
+
+PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1
+
+** ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS**</div>
         </div>
     </div>
 
+    <!-- MODAL 6: SISTEMA 1.0.15.5 -->
     <div id="modal10155" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal10155')">&times;</span>
             <div class="modal-title">Atualização Medianav Renault - 1.0.15.5</div>
-            <div class="modal-body">Atualização MEDIANAV RENAULT EVO para a versão mais atual 1.0.15.5 (Compatibilidade com Android Auto / Apple CarPlay).</div>
+            <div class="modal-body">Atualização MEDIANAV RENAULT EVO para a versão mais atual 1.0.15.5
+
+PARA MEDIANAV COM AS VERSÕES - 1.0.13.1
+
+* ESTA ATUALIZAÇÃO NÃO SERVE NAS VERSÕES: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3
+
+- Principais Vantagens da Atualização para a 1.0.15.5 -
+
+1. - Compatibilidade com Android Auto e Apple CarPlay
+- Disponível em algumas versões do MediaNav Evolution 2 com hardware compatível. A atualização prepara o sistema para ativar esse recurso (pode depender do desbloqueio posterior).
+
+2. - Correções de bugs e maior estabilidade
+- Problemas comuns de travamento, reinicializações ou lentidão são reduzidos.
+
+3. - Interface mais fluida e responsiva
+- Pequenas melhorias visuais e melhor tempo de resposta nos comandos.
+
+4. - Atualização de compatibilidade com mídias
+- Reconhecimento de mais formatos de áudio/vídeo via USB.
+- Maior compatibilidade com celulares e pendrives.
+
+5. - Preparação para atualizações futuras de mapa
+- Alguns mapas mais novos exigem versões recentes do sistema para serem instalados.
+
+6. - Melhoria na conexão Bluetooth e chamadas
+- Redução de falhas ao parear celulares, chamadas mais estáveis e maior compatibilidade com modelos recentes.</div>
         </div>
     </div>
 
@@ -1621,50 +1693,6 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
     </footer>
 
     <script>
-        // Alternância de Tema Escuro / Claro
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('themeIcon');
-            if (body.getAttribute('data-theme') === 'light') {
-                body.setAttribute('data-theme', 'dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.setAttribute('data-theme', 'light');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Carregar tema salvo
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.body.setAttribute('data-theme', savedTheme);
-            const icon = document.getElementById('themeIcon');
-            if (savedTheme === 'dark') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
-
-        // Ferramenta Interativa de Recomendação
-        function recomendarProduto() {
-            const val = document.getElementById('versaoSelect').value;
-            const resDiv = document.getElementById('finderResult');
-            resDiv.style.display = 'block';
-            if (val === 'standard') {
-                resDiv.innerHTML = "✨ Recomendado para você: <strong>Atualização Mapa Brasil 2025 - Media Nav Standard</strong> (Compatível com versões 4.x).";
-            } else if (val === 'evolution') {
-                resDiv.innerHTML = "✨ Recomendado para você: <strong>Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault Evolution</strong>.";
-            } else if (val === 'evo2') {
-                resDiv.innerHTML = "✨ Recomendado para você: <strong>Atualização Medianav Renault - 1.0.15.5 (Sistema)</strong>.";
-            } else {
-                resDiv.innerHTML = "Por favor, selecione uma opção válida para receber a recomendação.";
-            }
-        }
-
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page-view');
             pages.forEach(page => page.classList.remove('active'));
@@ -1676,16 +1704,20 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
         }
 
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'block';
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'none';
         }
 
         function openZoom(imageSrc) {
-            document.getElementById('zoomImg').src = imageSrc;
-            document.getElementById('zoomModal').style.display = 'flex';
+            const zoomModal = document.getElementById('zoomModal');
+            const zoomImg = document.getElementById('zoomImg');
+            zoomImg.src = imageSrc;
+            zoomModal.style.display = 'flex';
         }
 
         function closeZoom() {
@@ -1700,28 +1732,40 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
 
         function filterProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.product-card').forEach(card => {
+            let cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
                 let name = card.getAttribute('data-name');
-                card.style.display = name.includes(input) ? "flex" : "none";
+                if (name.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
             });
         }
 
         function filterCategory(category, context) {
             let gridId = context === 'Home' ? 'productGridHome' : 'productGridProdutos';
             let container = document.getElementById(gridId);
+            let cards = container.querySelectorAll('.product-card');
             let pageEl = context === 'Home' ? document.getElementById('page-home') : document.getElementById('page-produtos');
-            pageEl.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            let buttons = pageEl.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            container.querySelectorAll('.product-card').forEach(card => {
+            cards.forEach(card => {
                 let cardCategory = card.getAttribute('data-category');
-                card.style.display = (category === 'all' || cardCategory === category) ? "flex" : "none";
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
             });
         }
 
         function setRating(val) {
             document.getElementById('reviewRatingValue').value = val;
-            document.querySelectorAll('#starRatingInput i').forEach((star, idx) => {
+            const stars = document.querySelectorAll('#starRatingInput i');
+            stars.forEach((star, idx) => {
                 if (idx < val) star.classList.add('selected');
                 else star.classList.remove('selected');
             });
@@ -1742,9 +1786,11 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
 
         function triggerToast() {
             const toast = document.getElementById('toastNotification');
+            const titleEl = document.getElementById('toastTitle');
+            const descEl = document.getElementById('toastDesc');
             const randomBuyer = mockBuyers[Math.floor(Math.random() * mockBuyers.length)];
-            document.getElementById('toastTitle').innerText = randomBuyer.name;
-            document.getElementById('toastDesc').innerText = `acabou de comprar a ${randomBuyer.product}`;
+            titleEl.innerText = randomBuyer.name;
+            descEl.innerText = `acabou de comprar a ${randomBuyer.product}`;
             toast.classList.add('show');
             setTimeout(() => { toast.classList.remove('show'); }, 8000); 
         }
@@ -1760,7 +1806,7 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
             if (topic === 'pendrive') {
                 respDiv.innerHTML = "Recomendamos utilizar um pen drive de <strong>4GB a 8GB</strong>, USB 2.0, formatado em FAT32 e totalmente vazio.";
             } else if (topic === 'versao') {
-                respDiv.innerHTML = "Para ver a versão, vá em: <strong>CONFIGURAÇÕES > SISTEMA > VERSÃO DO SISTEMA</strong>. Lá diz qual a versão atual da sua MediaNav.";
+                respDiv.innerHTML = "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>.";
             } else if (topic === 'envio') {
                 respDiv.innerHTML = "O envio é digital após a confirmação do pagamento e envio do comprovante.";
             }
@@ -1778,22 +1824,104 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
             }
         }
 
+        /* LÓGICA DE GEOLOCALIZAÇÃO COM PERMISSÃO DE GPS + FALLBACK DE IP */
+        function carregarGeolocalizacao() {
+            const geoEl = document.getElementById('geoLocalizacao');
+            
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.address) {
+                                    const cidade = data.address.city || data.address.town || data.address.village || data.address.municipality || "Belém";
+                                    const estado = data.address.state || "PA";
+                                    if (geoEl) geoEl.innerText = `${cidade} - ${estado}`;
+                                } else {
+                                    carregarGeoPorIP();
+                                }
+                            })
+                            .catch(() => carregarGeoPorIP());
+                    },
+                    error => {
+                        carregarGeoPorIP();
+                    },
+                    { timeout: 10000, enableHighAccuracy: true }
+                );
+            } else {
+                carregarGeoPorIP();
+            }
+        }
+
+        function carregarGeoPorIP() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.city && data.region_code) {
+                        const geoEl = document.getElementById('geoLocalizacao');
+                        if (geoEl) geoEl.innerText = `${data.city} - ${data.region_code}`;
+                    } else {
+                        const geoEl = document.getElementById('geoLocalizacao');
+                        if (geoEl) geoEl.innerText = "Belém - PA";
+                    }
+                })
+                .catch(() => {
+                    const geoEl = document.getElementById('geoLocalizacao');
+                    if (geoEl) geoEl.innerText = "Belém - PA";
+                });
+        }
+
         atualizarRelogioData();
         setInterval(atualizarRelogioData, 1000);
 
         window.addEventListener('DOMContentLoaded', () => {
+            carregarGeolocalizacao();
             let visits = localStorage.getItem('medianav_visit_count') || 1246;
             if (!sessionStorage.getItem('visited_session')) {
                 visits = parseInt(visits) + 1;
                 sessionStorage.setItem('visited_session', 'true');
             }
             localStorage.setItem('medianav_visit_count', visits);
-            document.getElementById('visitCount').innerText = Number(visits).toLocaleString('pt-BR');
-            document.getElementById('onlineCount').innerText = Math.floor(Math.random() * 10) + 5;
+            const visitCountEl = document.getElementById('visitCount');
+            if (visitCountEl) visitCountEl.innerText = Number(visits).toLocaleString('pt-BR');
+
+            let onlineUsers = Math.floor(Math.random() * 10) + 5;
+            const onlineCountEl = document.getElementById('onlineCount');
+            if (onlineCountEl) onlineCountEl.innerText = onlineUsers;
 
             setTimeout(triggerToast, 5000);
             setInterval(triggerToast, 65000);
         });
+
+        const form = document.getElementById('formComprovante');
+        const result = document.getElementById('formStatus');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                result.innerHTML = "Enviando aviso, por favor aguarde...";
+                result.style.color = "#d35400";
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = "Aviso enviado com sucesso!";
+                        result.style.color = "#27ae60";
+                        form.reset();
+                    } else {
+                        result.innerHTML = json.message;
+                        result.style.color = "#c0392b";
+                    }
+                })
+                .catch(() => {
+                    result.innerHTML = "Erro ao enviar. Tente novamente pelo WhatsApp.";
+                    result.style.color = "#c0392b";
+                });
+            });
+        }
     </script>
 </body>
 </html>
