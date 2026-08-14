@@ -232,6 +232,17 @@
             font-size: 1.2rem;
         }
 
+        .finder-box .instruction-step {
+            background: rgba(241, 196, 15, 0.12);
+            border-left: 3px solid #f39c12;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
         .finder-controls {
             display: flex;
             gap: 15px;
@@ -1155,6 +1166,9 @@
             <!-- Ferramenta Interativa: Descubra sua Versão -->
             <div class="finder-box">
                 <h3><i class="fa fa-wand-magic-sparkles"></i> Descubra a Atualização Ideal para o seu Carro</h3>
+                <div class="instruction-step">
+                    <i class="fa fa-info-circle" style="color: #f39c12;"></i> Para verificar a sua versão atual na central, acesse no MediaNav: <strong>CONFIGURAÇÕES > SISTEMA > VERSÃO DO SISTEMA</strong>.
+                </div>
                 <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Selecione a versão atual da sua central para receber a recomendação exata:</p>
                 <div class="finder-controls">
                     <select id="versaoSelect" class="finder-select">
@@ -1447,7 +1461,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question"><i class="fa fa-info-circle" style="color: #f1c40f;"></i> 3. Como identifico a versão do meu MediaNav?</div>
-                    <div class="faq-answer">Na tela da sua multimídia, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>. Anote os números exibidos (Ex: 4.0.6, 9.1.3, 1.0.15.5) para adquirir o produto correto ou informar na mensagem após a compra.</div>
+                    <div class="faq-answer">Na tela da sua multimídia, vá em: <strong>CONFIGURAÇÕES > SISTEMA > VERSÃO DO SISTEMA</strong>. Lá diz qual a versão atual da sua MediaNav.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question"><i class="fa fa-microchip" style="color: #f1c40f;"></i> 4. O procedimento afeta o funcionamento original do carro?</div>
@@ -1746,7 +1760,7 @@ Versões compatíveis: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0</div>
             if (topic === 'pendrive') {
                 respDiv.innerHTML = "Recomendamos utilizar um pen drive de <strong>4GB a 8GB</strong>, USB 2.0, formatado em FAT32 e totalmente vazio.";
             } else if (topic === 'versao') {
-                respDiv.innerHTML = "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>.";
+                respDiv.innerHTML = "Para ver a versão, vá em: <strong>CONFIGURAÇÕES > SISTEMA > VERSÃO DO SISTEMA</strong>. Lá diz qual a versão atual da sua MediaNav.";
             } else if (topic === 'envio') {
                 respDiv.innerHTML = "O envio é digital após a confirmação do pagamento e envio do comprovante.";
             }
