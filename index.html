@@ -2422,7 +2422,7 @@
             });
         }
 
-        // Relógio, Data e Localização (DATA POR EXTENSO)
+        // Relógio e Data
         function updateClock() {
             const now = new Date();
             
@@ -2432,20 +2432,55 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             document.getElementById('tempoRelogio').innerText = `${hours}:${minutes}:${seconds}`;
 
-            // Data por Extenso (Ex: 29 de agosto de 2026)
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            // Data
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
             document.getElementById('tempoData').innerText = now.toLocaleDateString('pt-BR', options);
         }
 
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Simulação de Geolocalização Simples
-        if ("geolocation" in navigator) {
-            document.getElementById('geoLocalizacao').innerText = "Belém / PA";
-        } else {
-            document.getElementById('geoLocalizacao').innerText = "Belém / PA";
+        // Solicitar Localização Real do Usuário via Geolocalização (Com Geocodificação Reversa)
+        function obterLocalizacaoUsuario() {
+            const geoSpan = document.getElementById('geoLocalizacao');
+
+            if ("geolocation" in navigator) {
+                geoSpan.innerText = "Obtendo local...";
+
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        try {
+                            const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+                            const data = await response.json();
+
+                            const address = data.address || {};
+                            const cidade = address.city || address.town || address.village || address.municipality || "Local Indefinido";
+                            const estado = address.state || "";
+
+                            geoSpan.innerText = estado ? `${cidade} / ${estado}` : cidade;
+                        } catch (error) {
+                            geoSpan.innerText = "Local Indisponível";
+                        }
+                    },
+                    (error) => {
+                        geoSpan.innerText = "Localização Negada";
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                geoSpan.innerText = "Não suportado";
+            }
         }
+
+        // Dispara a solicitação de localização assim que a página carregar
+        window.addEventListener('DOMContentLoaded', obterLocalizacaoUsuario);
 
         // Notificação Toast Simulado (Prova Social)
         const toastTitles = ["Marcos de São Paulo - SP", "Roberto de Curitiba - PR", "Ana de Belém - PA", "Lucas de Belo Horizonte - MG"];
