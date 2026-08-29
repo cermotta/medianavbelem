@@ -6,1650 +6,1560 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediaNav Belém - Sua Solução em GPS e Multimídia</title>
 
-```
-<link rel="icon" type="image/png" href="medianavbelem.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="medianavbelem.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-        background-color: #f4f6f9;
-        color: #333;
-        scroll-behavior: smooth;
-    }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            scroll-behavior: smooth;
+        }
 
-    .top-bar {
-        background: linear-gradient(135deg, #f1c40f, #f39c12);
-        color: #111;
-        padding: 15px 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        .top-bar {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: #111;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo-area {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
 
-    .logo-area img {
-        height: 120px;
-        object-fit: contain;
-        filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));
-    }
+        .logo-area img {
+            height: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));
+        }
 
-    .top-bar-right {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-    .search-box {
-        position: relative;
-        width: 300px;
-    }
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
 
-    .search-box input {
-        width: 100%;
-        padding: 10px 15px 10px 35px;
-        border-radius: 20px;
-        border: none;
-        outline: none;
-        font-size: 0.95rem;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 35px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    .search-box i {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #666;
-    }
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
 
-    .nav-menu {
-        background-color: #000;
-        padding: 12px 5%;
-        display: flex;
-        gap: 25px;
-        border-top: 1px solid #222;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+        .nav-menu {
+            background-color: #000;
+            padding: 12px 5%;
+            display: flex;
+            gap: 25px;
+            border-top: 1px solid #222;
+            flex-wrap: wrap;
+            align-items: center;
+        }
 
-    .nav-links-wrapper {
-        display: flex;
-        gap: 25px;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+        .nav-links-wrapper {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
 
-    .nav-menu a {
-        color: #ddd;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: color 0.3s;
-        cursor: pointer;
-    }
+        .nav-menu a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
 
-    .nav-menu a:hover {
-        color: #f1c40f;
-    }
+        .nav-menu a:hover {
+            color: #f1c40f;
+        }
 
-    .nav-geo-datetime {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        color: #ccc;
-        font-size: 0.9rem;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 6px 14px;
-        border-radius: 20px;
-        border: 1px solid #333;
-        margin-left: auto;
-    }
+        .nav-geo-datetime {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ccc;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            margin-left: auto;
+        }
 
-    .nav-geo-datetime span {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        color: #fff;
-    }
+        .nav-geo-datetime span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+        }
 
-    .nav-geo-datetime i {
-        color: #f1c40f;
-    }
+        .nav-geo-datetime i {
+            color: #f1c40f;
+        }
 
-    .banner {
-        background: linear-gradient(135deg, #1a1a1a, #2c3e50);
-        color: white;
-        padding: 40px 5%;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
+        .banner {
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-    .banner-text h1 {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-    }
+        .banner-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
 
-    .banner-text p {
-        font-size: 1.1rem;
-        color: #ccc;
-    }
+        .banner-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
 
-    .page-view {
-        display: none;
-    }
+        .page-view {
+            display: none;
+        }
 
-    .page-view.active {
-        display: block;
-    }
+        .page-view.active {
+            display: block;
+        }
 
-    .container {
-        max-width: 1200px;
-        margin: 30px auto;
-        padding: 0 20px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-    h2.section-title {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        color: #222;
-        border-left: 4px solid #f1c40f;
-        padding-left: 10px;
-    }
+        h2.section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #222;
+            border-left: 4px solid #f1c40f;
+            padding-left: 10px;
+        }
 
-    .category-filters {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-    }
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
 
-    .filter-btn {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 8px 16px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #444;
-        transition: all 0.3s;
-    }
+        .filter-btn {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #444;
+            transition: all 0.3s;
+        }
 
-    .filter-btn:hover,
-    .filter-btn.active {
-        background-color: #f1c40f;
-        color: #111;
-        border-color: #f39c12;
-    }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #f1c40f;
+            color: #111;
+            border-color: #f39c12;
+        }
 
-    .about-section {
-        background: white;
-        padding: 40px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        margin-bottom: 40px;
-    }
+        .about-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
 
-    .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
-    }
-
-    @media (max-width: 768px) {
         .about-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
-    }
 
-    .about-text h3 {
-        font-size: 1.8rem;
-        color: #2c3e50;
-        margin-bottom: 15px;
-    }
-
-    .about-text p {
-        font-size: 1rem;
-        color: #555;
-        line-height: 1.7;
-        margin-bottom: 15px;
-    }
-
-    .about-features {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        color: #333;
-        font-size: 0.95rem;
-    }
-
-    .feature-item i {
-        color: #f1c40f;
-        font-size: 1.2rem;
-    }
-
-    .about-badge {
-        background: linear-gradient(135deg, #1a252f, #2c3e50);
-        padding: 35px;
-        border-radius: 8px;
-        color: #fff;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        border-left: 5px solid #f1c40f;
-    }
-
-    .about-badge i {
-        font-size: 3.5rem;
-        margin-bottom: 15px;
-        color: #f1c40f;
-    }
-
-    .about-badge h4 {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
-    }
-
-    .about-badge p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: #ddd;
-    }
-
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 20px;
-        margin-bottom: 40px;
-    }
-
-    .product-card {
-        background: white;
-        border-radius: 8px;
-        padding: 15px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition: transform 0.3s;
-        position: relative;
-    }
-
-    .product-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .digital-badge {
-        background-color: #e8f8f5;
-        color: #16a085;
-        font-size: 0.75rem;
-        font-weight: bold;
-        padding: 4px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-bottom: 8px;
-        border: 1px solid #a3e4d7;
-    }
-
-    .product-img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        transition: opacity 0.2s;
-    }
-
-    .product-img:hover {
-        opacity: 0.85;
-    }
-
-    .product-title {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #333;
-        height: 40px;
-        overflow: hidden;
-    }
-
-    .product-price {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #27ae60;
-        margin-bottom: 10px;
-    }
-
-    .btn-desc {
-        background-color: #34495e;
-        color: white;
-        text-align: center;
-        padding: 8px;
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 600;
-        width: 100%;
-        margin-bottom: 8px;
-        transition: background 0.3s;
-    }
-
-    .btn-desc:hover {
-        background-color: #2c3e50;
-    }
-
-    .btn-buy {
-        background-color: #009ee3;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 6px;
-        transition: background 0.3s;
-    }
-
-    .btn-buy:hover {
-        background-color: #0073a8;
-    }
-
-    .toast-notification {
-        position: fixed;
-        bottom: 30px;
-        left: 30px;
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        z-index: 2000;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border-left: 4px solid #27ae60;
-        max-width: 320px;
-        transform: translateY(100px);
-        opacity: 0;
-        transition: all 0.4s ease-in-out;
-    }
-
-    .toast-notification.show {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .toast-icon {
-        background: #e8f8f5;
-        color: #27ae60;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        flex-shrink: 0;
-    }
-
-    .toast-content h4 {
-        font-size: 0.85rem;
-        color: #2c3e50;
-        margin-bottom: 2px;
-    }
-
-    .toast-content p {
-        font-size: 0.8rem;
-        color: #666;
-    }
-
-    .chatbot-container {
-        position: fixed;
-        bottom: 95px;
-        right: 30px;
-        z-index: 997;
-    }
-
-    .chatbot-toggle {
-        background-color: #2c3e50;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        transition: transform 0.3s, background-color 0.3s;
-    }
-
-    .chatbot-toggle:hover {
-        transform: scale(1.1);
-        background-color: #1a252f;
-    }
-
-    .chatbot-box {
-        display: none;
-        position: absolute;
-        bottom: 60px;
-        right: 0;
-        width: 320px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-        overflow: hidden;
-        animation: fadeIn 0.3s;
-        border: 1px solid #ddd;
-    }
-
-    .chatbot-header {
-        background: #2c3e50;
-        color: white;
-        padding: 12px 15px;
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.95rem;
-    }
-
-    .chatbot-header span i {
-        color: #27ae60;
-        font-size: 0.6rem;
-        margin-right: 5px;
-    }
-
-    .chatbot-close {
-        cursor: pointer;
-        font-size: 1.1rem;
-    }
-
-    .chatbot-body {
-        padding: 15px;
-        max-height: 250px;
-        overflow-y: auto;
-        font-size: 0.9rem;
-        color: #444;
-    }
-
-    .chatbot-options {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-top: 10px;
-    }
-
-    .chatbot-option-btn {
-        background: #f4f6f9;
-        border: 1px solid #ccc;
-        padding: 8px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        text-align: left;
-        font-size: 0.85rem;
-        color: #333;
-        transition: background 0.2s;
-    }
-
-    .chatbot-option-btn:hover {
-        background: #f1c40f;
-        border-color: #f39c12;
-        font-weight: 600;
-    }
-
-    .chatbot-response {
-        margin-top: 10px;
-        padding: 10px;
-        background: #eef2f7;
-        border-radius: 4px;
-        font-size: 0.85rem;
-        line-height: 1.4;
-    }
-
-    .testimonials-section {
-        margin-top: 50px;
-        margin-bottom: 40px;
-    }
-
-    .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
-
-    .testimonial-card {
-        background: white;
-        padding: 25px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        border-top: 3px solid #f1c40f;
-    }
-
-    .testimonial-stars {
-        color: #f39c12;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-    }
-
-    .testimonial-text {
-        font-size: 0.95rem;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 15px;
-        font-style: italic;
-    }
-
-    .testimonial-author {
-        font-weight: bold;
-        color: #2c3e50;
-        font-size: 0.9rem;
-    }
-
-    .testimonial-location {
-        font-size: 0.8rem;
-        color: #888;
-    }
-
-    .review-form-box {
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        margin-top: 40px;
-        border: 1px solid #e1e8ed;
-    }
-
-    .review-form-box h3 {
-        font-size: 1.3rem;
-        color: #2c3e50;
-        margin-bottom: 15px;
-    }
-
-    .star-rating-input {
-        display: flex;
-        gap: 8px;
-        font-size: 1.5rem;
-        color: #ccc;
-        cursor: pointer;
-        margin-bottom: 15px;
-    }
-
-    .star-rating-input i.selected {
-        color: #f39c12;
-    }
-
-    .faq-container {
-        background: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .faq-item {
-        margin-bottom: 20px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 15px;
-    }
-
-    .faq-question {
-        font-weight: 600;
-        font-size: 1.1rem;
-        color: #2c3e50;
-        margin-bottom: 8px;
-    }
-
-    .faq-answer {
-        color: #666;
-        line-height: 1.5;
-    }
-
-    .whatsapp-box {
-        text-align: center;
-        margin-top: 30px;
-        background: #e1f5fe;
-        padding: 20px;
-        border-radius: 8px;
-    }
-
-    .btn-whatsapp {
-        display: inline-block;
-        background-color: #25d366;
-        color: white;
-        padding: 12px 25px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 10px;
-        transition: background 0.3s;
-    }
-
-    .btn-whatsapp:hover {
-        background-color: #1ebd59;
-    }
-
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 30px;
-        right: 30px;
-        background-color: #25d366;
-        color: #fff;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        z-index: 999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: transform 0.3s;
-    }
-
-    .whatsapp-float:hover {
-        transform: scale(1.1);
-        color: #fff;
-    }
-
-    .back-to-top {
-        position: fixed;
-        width: 45px;
-        height: 45px;
-        bottom: 30px;
-        left: 30px;
-        background-color: #34495e;
-        color: #fff;
-        border-radius: 50%;
-        text-align: center;
-        font-size: 20px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        z-index: 998;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: transform 0.3s, background-color 0.3s;
-    }
-
-    .back-to-top:hover {
-        transform: scale(1.1);
-        background-color: #2c3e50;
-        color: #fff;
-    }
-
-    .comprovante-container {
-        background: white;
-        padding: 35px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .forms-container {
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .comprovante-box {
-        background: #fff8e1;
-        padding: 25px;
-        border-radius: 8px;
-        border: 1px dashed #f39c12;
-        margin-bottom: 20px;
-    }
-
-    .comprovante-box h3 {
-        color: #d35400;
-        margin-bottom: 10px;
-        font-size: 1.2rem;
-    }
-
-    .comprovante-box p {
-        color: #555;
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-        line-height: 1.5;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-        text-align: left;
-    }
-
-    .form-group label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: #333;
-        font-size: 0.9rem;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 0.95rem;
-        outline: none;
-    }
-
-    .btn-enviar-comprovante {
-        background-color: #27ae60;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 30px;
-        font-weight: bold;
-        font-size: 1rem;
-        cursor: pointer;
-        width: 100%;
-        transition: background 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .btn-enviar-comprovante:hover {
-        background-color: #219653;
-    }
-
-    .form-status {
-        margin-top: 15px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 0.95rem;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.6);
-    }
-
-    .modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 30px;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 700px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-        position: relative;
-        animation: fadeIn 0.3s;
-    }
-
-    @keyframes fadeIn {
-        from {
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .feature-item i {
+            color: #f1c40f;
+            font-size: 1.2rem;
+        }
+
+        .about-badge {
+            background: linear-gradient(135deg, #1a252f, #2c3e50);
+            padding: 35px;
+            border-radius: 8px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #f1c40f;
+        }
+
+        .about-badge i {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+
+        .about-badge h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .about-badge p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .digital-badge {
+            background-color: #e8f8f5;
+            color: #16a085;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
+            border: 1px solid #a3e4d7;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .product-img:hover {
+            opacity: 0.85;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .btn-desc {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            width: 100%;
+            margin-bottom: 8px;
+            transition: background 0.3s;
+        }
+
+        .btn-desc:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-buy {
+            background-color: #009ee3;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn-buy:hover {
+            background-color: #0073a8;
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #27ae60;
+            max-width: 320px;
+            transform: translateY(100px);
             opacity: 0;
-            transform: translateY(-20px);
+            transition: all 0.4s ease-in-out;
         }
 
-        to {
-            opacity: 1;
+        .toast-notification.show {
             transform: translateY(0);
-        }
-    }
-
-    .close-modal {
-        color: #aaa;
-        position: absolute;
-        right: 20px;
-        top: 15px;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-
-    .close-modal:hover {
-        color: #000;
-    }
-
-    .modal-title {
-        font-size: 1.3rem;
-        color: #2c3e50;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #f1c40f;
-        padding-bottom: 8px;
-    }
-
-    .modal-body {
-        font-size: 0.95rem;
-        color: #444;
-        line-height: 1.6;
-        max-height: 60vh;
-        overflow-y: auto;
-        padding-right: 10px;
-        white-space: pre-line;
-    }
-
-    .zoom-modal {
-        display: none;
-        position: fixed;
-        z-index: 2000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .zoom-modal img {
-        max-width: 90%;
-        max-height: 90vh;
-        object-fit: contain;
-        border-radius: 6px;
-        box-shadow: 0 5px 30px rgba(0,0,0,0.5);
-        animation: zoomIn 0.3s;
-    }
-
-    @keyframes zoomIn {
-        from {
-            transform: scale(0.8);
-            opacity: 0;
-        }
-
-        to {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-
-    .close-zoom {
-        position: absolute;
-        top: 20px;
-        right: 35px;
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-
-    .close-zoom:hover {
-        color: #f1c40f;
-    }
-
-    .counters-wrapper {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        margin-top: 10px;
-    }
-
-    .visitor-counter {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid #333;
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        color: #bbb;
-    }
-
-    .visitor-counter i {
-        color: #f1c40f;
-    }
-
-    .visitor-counter i.fa-circle {
-        color: #27ae60;
-        font-size: 0.5rem;
-        animation: pulseDot 1.5s infinite;
-    }
-
-    @keyframes pulseDot {
-        0% {
-            opacity: 0.3;
-        }
-
-        50% {
             opacity: 1;
         }
 
-        100% {
-            opacity: 0.3;
+        .toast-icon {
+            background: #e8f8f5;
+            color: #27ae60;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
-    }
 
-    .visitor-counter span {
-        color: #fff;
-        font-weight: bold;
-    }
+        .toast-content h4 {
+            font-size: 0.85rem;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
 
-    footer {
-        background: linear-gradient(135deg, #111111, #1a1a1a);
-        color: #aaa;
-        padding: 50px 5% 20px;
-        margin-top: 60px;
-        border-top: 4px solid #f1c40f;
-    }
+        .toast-content p {
+            font-size: 0.8rem;
+            color: #666;
+        }
 
-    .footer-cols {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 30px;
-        margin-bottom: 40px;
-    }
+        .chatbot-container {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            z-index: 997;
+        }
 
-    .footer-col h3 {
-        color: #fff;
-        font-size: 1.1rem;
-        margin-bottom: 18px;
-        position: relative;
-        padding-bottom: 8px;
-    }
+        .chatbot-toggle {
+            background-color: #2c3e50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
 
-    .footer-col h3::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 35px;
-        height: 2px;
-        background-color: #f1c40f;
-    }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            background-color: #1a252f;
+        }
 
-    .footer-col p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        color: #bbb;
-        margin-bottom: 15px;
-    }
+        .chatbot-box {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            width: 320px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: fadeIn 0.3s;
+            border: 1px solid #ddd;
+        }
 
-    .footer-col ul {
-        list-style: none;
-    }
+        .chatbot-header {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
 
-    .footer-col ul li {
-        margin-bottom: 10px;
-    }
+        .chatbot-header span i {
+            color: #27ae60;
+            font-size: 0.6rem;
+            margin-right: 5px;
+        }
 
-    .footer-col ul li a {
-        color: #aaa;
-        text-decoration: none;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
 
-    .footer-col ul li a:hover {
-        color: #f1c40f;
-        padding-left: 5px;
-    }
+        .chatbot-body {
+            padding: 15px;
+            max-height: 250px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            color: #444;
+        }
 
-    .social-icons {
-        display: flex;
-        gap: 15px;
-        margin-top: 15px;
-    }
+        .chatbot-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
 
-    .social-icons a {
-        background-color: #222;
-        color: #f1c40f;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        transition: background 0.3s, color 0.3s;
-        text-decoration: none;
-    }
+        .chatbot-option-btn {
+            background: #f4f6f9;
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #333;
+            transition: background 0.2s;
+        }
 
-    .social-icons a:hover {
-        background-color: #f1c40f;
-        color: #111;
-    }
+        .chatbot-option-btn:hover {
+            background: #f1c40f;
+            border-color: #f39c12;
+            font-weight: 600;
+        }
 
-    .footer-bottom {
-        text-align: center;
-        border-top: 1px solid #222;
-        padding-top: 25px;
-        font-size: 0.85rem;
-        color: #777;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-</style>
-```
+        .chatbot-response {
+            margin-top: 10px;
+            padding: 10px;
+            background: #eef2f7;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
 
+        .testimonials-section {
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 3px solid #f1c40f;
+        }
+
+        .testimonial-stars {
+            color: #f39c12;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-location {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .review-form-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .review-form-box h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 8px;
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .star-rating-input i.selected {
+            color: #f39c12;
+        }
+
+        .faq-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .whatsapp-box {
+            text-align: center;
+            margin-top: 30px;
+            background: #e1f5fe;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd59;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        .back-to-top {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            bottom: 30px;
+            left: 30px;
+            background-color: #34495e;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            background-color: #2c3e50;
+            color: #fff;
+        }
+
+        .comprovante-container {
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .forms-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .comprovante-box {
+            background: #fff8e1;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px dashed #f39c12;
+            margin-bottom: 20px;
+        }
+
+        .comprovante-box h3 {
+            color: #d35400;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .comprovante-box p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .btn-enviar-comprovante {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-enviar-comprovante:hover {
+            background-color: #219653;
+        }
+
+        .form-status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            color: #aaa;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1c40f;
+            padding-bottom: 8px;
+        }
+
+        .modal-body {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.6;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-line;
+        }
+
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .zoom-modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-zoom {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-zoom:hover {
+            color: #f1c40f;
+        }
+
+        .counters-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .visitor-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+
+        .visitor-counter i {
+            color: #f1c40f;
+        }
+
+        .visitor-counter i.fa-circle {
+            color: #27ae60;
+            font-size: 0.5rem;
+            animation: pulseDot 1.5s infinite;
+        }
+
+        @keyframes pulseDot {
+            0% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        .visitor-counter span {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #111111, #1a1a1a);
+            color: #aaa;
+            padding: 50px 5% 20px;
+            margin-top: 60px;
+            border-top: 4px solid #f1c40f;
+        }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 35px;
+            height: 2px;
+            background-color: #f1c40f;
+        }
+
+        .footer-col p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #f1c40f;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            background-color: #222;
+            color: #f1c40f;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: background 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: #f1c40f;
+            color: #111;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #222;
+            padding-top: 25px;
+            font-size: 0.85rem;
+            color: #777;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<!-- BOTÃO FLUTUANTE WHATSAPP -->
-<a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20ajuda."
-   target="_blank"
-   class="whatsapp-float"
-   title="Fale conosco no WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20ajuda."
+       target="_blank"
+       class="whatsapp-float"
+       title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- BOTÃO VOLTAR AO TOPO -->
-<a href="#" class="back-to-top" title="Voltar ao topo">
-    <i class="fa fa-arrow-up"></i>
-</a>
+    <a href="#" class="back-to-top" title="Voltar ao topo">
+        <i class="fa fa-arrow-up"></i>
+    </a>
 
-<!-- NOTIFICAÇÃO DE COMPRA -->
-<div class="toast-notification" id="toastNotification">
-    <div class="toast-icon">
-        <i class="fa fa-shopping-bag"></i>
-    </div>
-
-    <div class="toast-content">
-        <h4 id="toastTitle">Carlos de Belém - PA</h4>
-        <p id="toastDesc">acabou de comprar a Atualização Mapa 2025</p>
-    </div>
-</div>
-
-<!-- CHATBOT -->
-<div class="chatbot-container">
-
-    <div class="chatbot-toggle"
-         onclick="toggleChatbot()"
-         title="Assistente Virtual">
-        <i class="fa fa-comments"></i>
-    </div>
-
-    <div class="chatbot-box" id="chatbotBox">
-
-        <div class="chatbot-header">
-            <span>
-                <i class="fa fa-circle"></i>
-                Assistente MediaNav
-            </span>
-
-            <span class="chatbot-close"
-                  onclick="toggleChatbot()">
-                &times;
-            </span>
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-icon">
+            <i class="fa fa-shopping-bag"></i>
         </div>
 
-        <div class="chatbot-body" id="chatbotBody">
+        <div class="toast-content">
+            <h4 id="toastTitle">Carlos de Belém - PA</h4>
+            <p id="toastDesc">acabou de comprar a Atualização Mapa 2025</p>
+        </div>
+    </div>
+
+    <div class="chatbot-container">
+
+        <div class="chatbot-toggle"
+             onclick="toggleChatbot()"
+             title="Assistente Virtual">
+            <i class="fa fa-comments"></i>
+        </div>
+
+        <div class="chatbot-box" id="chatbotBox">
+
+            <div class="chatbot-header">
+                <span>
+                    <i class="fa fa-circle"></i>
+                    Assistente MediaNav
+                </span>
+
+                <span class="chatbot-close"
+                      onclick="toggleChatbot()">
+                    &times;
+                </span>
+            </div>
+
+            <div class="chatbot-body" id="chatbotBody">
+
+                <p>
+                    Olá! Como posso ajudar você hoje com o seu MediaNav?
+                </p>
+
+                <div class="chatbot-options">
+
+                    <button class="chatbot-option-btn"
+                            onclick="chatbotReply('pendrive')">
+                        Qual pen drive devo usar?
+                    </button>
+
+                    <button class="chatbot-option-btn"
+                            onclick="chatbotReply('versao')">
+                        Como ver a versão do meu aparelho?
+                    </button>
+
+                    <button class="chatbot-option-btn"
+                            onclick="chatbotReply('envio')">
+                        Como funciona o envio dos arquivos?
+                    </button>
+
+                </div>
+
+                <div id="chatbotResponse"
+                     class="chatbot-response"
+                     style="display: none;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <header class="top-bar">
+
+        <div class="logo-area"
+             onclick="switchPage('home')">
+
+            <img src="medianavbelem.png"
+                 alt="MediaNav Belém Logo">
+
+        </div>
+
+        <div class="top-bar-right">
+
+            <div class="search-box">
+
+                <i class="fa fa-search"></i>
+
+                <input type="text"
+                       id="searchInput"
+                       placeholder="Pesquisar produtos..."
+                       onkeyup="filterProducts()">
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="nav-menu">
+
+        <div class="nav-links-wrapper">
+
+            <a onclick="switchPage('home')">
+                Início
+            </a>
+
+            <a onclick="switchPage('produtos')">
+                Produtos
+            </a>
+
+            <a onclick="switchPage('quemsomos')">
+                Quem Somos
+            </a>
+
+            <a onclick="switchPage('suporte')">
+                Suporte / FAQ
+            </a>
+
+            <a onclick="switchPage('cadastro-form')"
+               style="color: #f1c40f; font-weight: bold;">
+                <i class="fa fa-user-plus"></i>
+                Cadastre-se
+            </a>
+
+            <a onclick="switchPage('comprovante')"
+               style="color: #f1c40f; font-weight: bold;">
+                <i class="fa fa-paper-plane"></i>
+                Enviar Comprovante
+            </a>
+
+        </div>
+
+        <div class="nav-geo-datetime">
+
+            <span>
+                <i class="fa fa-map-marker-alt"></i>
+                <span id="geoLocalizacao">Localizando...</span>
+            </span>
+
+            <span>
+                <i class="fa fa-calendar-alt"></i>
+                <span id="tempoData">Carregando data...</span>
+            </span>
+
+            <span>
+                <i class="fa fa-clock"></i>
+                <span id="tempoRelogio">--:--:--</span>
+            </span>
+
+        </div>
+
+    </nav>
+
+    <section class="banner">
+
+        <div class="banner-text">
+
+            <h1>
+                MediaNav Belém - Atualização de GPS e Multimídia Renault
+            </h1>
 
             <p>
-                Olá! Como posso ajudar você hoje com o seu MediaNav?
+                Atualize seu sistema com versões oficiais, firmware,
+                radares e pontos de interesse.
             </p>
 
-            <div class="chatbot-options">
-
-                <button class="chatbot-option-btn"
-                        onclick="chatbotReply('pendrive')">
-                    Qual pen drive devo usar?
-                </button>
-
-                <button class="chatbot-option-btn"
-                        onclick="chatbotReply('versao')">
-                    Como ver a versão do meu aparelho?
-                </button>
-
-                <button class="chatbot-option-btn"
-                        onclick="chatbotReply('envio')">
-                    Como funciona o envio dos arquivos?
-                </button>
-
-            </div>
-
-            <div id="chatbotResponse"
-                 class="chatbot-response"
-                 style="display: none;">
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- TOPO -->
-<header class="top-bar">
-
-    <div class="logo-area"
-         onclick="switchPage('home')">
-
-        <img src="medianavbelem.png"
-             alt="MediaNav Belém Logo">
-
-    </div>
-
-    <div class="top-bar-right">
-
-        <div class="search-box">
-
-            <i class="fa fa-search"></i>
-
-            <input type="text"
-                   id="searchInput"
-                   placeholder="Pesquisar produtos..."
-                   onkeyup="filterProducts()">
-
         </div>
 
-    </div>
+    </section>
 
-</header>
 
-<!-- MENU -->
-<nav class="nav-menu">
+    <div id="page-home" class="page-view active">
 
-    <div class="nav-links-wrapper">
-
-        <a onclick="switchPage('home')">
-            Início
-        </a>
-
-        <a onclick="switchPage('produtos')">
-            Produtos
-        </a>
-
-        <a onclick="switchPage('quemsomos')">
-            Quem Somos
-        </a>
-
-        <a onclick="switchPage('suporte')">
-            Suporte / FAQ
-        </a>
-
-        <a onclick="switchPage('cadastro-form')"
-           style="color: #f1c40f; font-weight: bold;">
-            <i class="fa fa-user-plus"></i>
-            Cadastre-se
-        </a>
-
-        <a onclick="switchPage('comprovante')"
-           style="color: #f1c40f; font-weight: bold;">
-            <i class="fa fa-paper-plane"></i>
-            Enviar Comprovante
-        </a>
-
-    </div>
-
-    <div class="nav-geo-datetime">
-
-        <span>
-            <i class="fa fa-map-marker-alt"></i>
-            <span id="geoLocalizacao">Localizando...</span>
-        </span>
-
-        <span>
-            <i class="fa fa-calendar-alt"></i>
-            <span id="tempoData">Carregando data...</span>
-        </span>
-
-        <span>
-            <i class="fa fa-clock"></i>
-            <span id="tempoRelogio">--:--:--</span>
-        </span>
-
-    </div>
-
-</nav>
-
-<!-- BANNER -->
-<section class="banner">
-
-    <div class="banner-text">
-
-        <h1>
-            MediaNav Belém - Atualização de GPS e Multimídia Renault
-        </h1>
-
-        <p>
-            Atualize seu sistema com versões oficiais, firmware,
-            radares e pontos de interesse.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================================== -->
-<!-- PAGE: INÍCIO -->
-<!-- ===================================================== -->
-
-<div id="page-home" class="page-view active">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Destaques & Produtos Populares
-        </h2>
-
-        <div class="category-filters">
-
-            <button class="filter-btn active"
-                    onclick="filterCategory('all', 'Home')">
-                Todos
-            </button>
-
-            <button class="filter-btn"
-                    onclick="filterCategory('mapa', 'Home')">
-                Mapas
-            </button>
-
-            <button class="filter-btn"
-                    onclick="filterCategory('sistema', 'Home')">
-                Sistemas / Firmware
-            </button>
-
-        </div>
-
-
-        <div class="product-grid" id="productGridHome">
-
-            <!-- PRODUTO 1 - MAPA 2025 EVOLUTION -->
-
-            <div class="product-card"
-                 data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution"
-                 data-category="mapa">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp"
-                         alt="Atualização Mapa do Brasil 2025 Renault Evolution"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Mapa do Brasil 2025
-                        (Versão 9.1.3) Renault
-                    </div>
-
-                    <div class="product-price">
-                        R$ 135,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal2025')">
-
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-
-                    </button>
-
-                    <!-- ALTERADO PARA INFINITEPAY -->
-                    <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn-buy">
-                        Comprar com InfinitePay
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 2 - MAPA 2025 STANDARD -->
-
-            <div class="product-card"
-                 data-name="atualização mapa brasil 2025 renault media nav standard"
-                 data-category="mapa">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_760902-MLB115317715011_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-standard.webp"
-                         alt="Atualização Mapa Brasil 2025 Renault Media Nav Standard"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Mapa Brasil 2025 -
-                        Renault Media Nav Standard
-                    </div>
-
-                    <div class="product-price">
-                        R$ 135,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal2025Standard')">
-
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-
-                    </button>
-
-                    <!-- ALTERADO PARA INFINITEPAY -->
-                    <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn-buy">
-                        Comprar com InfinitePay
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 3 - MAPA 2024 STANDARD -->
-
-            <div class="product-card"
-                 data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard"
-                 data-category="mapa">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp"
-                         alt="Atualização Mapa do Brasil Renault Media Nav Standard"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Mapa do Brasil 2024
-                        (Versão 4.1.0) Renault
-                    </div>
-
-                    <div class="product-price">
-                        R$ 125,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal2024')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/2zGXq7J"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 4 - SISTEMA 4.1.0 -->
-
-            <div class="product-card"
-                 data-name="atualização medianav renault 4.1.0 sistema"
-                 data-category="sistema">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp"
-                         alt="Atualização Medianav Renault 4.1.0 Sistema"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Medianav Renault -
-                        4.1.0 (Sistema)
-                    </div>
-
-                    <div class="product-price">
-                        R$ 55,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modalFirmware')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/1HmKUWz"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 5 - SISTEMA EVOLUTION 9.1.3 -->
-
-            <div class="product-card"
-                 data-name="atualização medianav renault evolution 9.1.3 sistema"
-                 data-category="sistema">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp"
-                         alt="Atualização Medianav Renault Evolution 9.1.3"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Medianav Renault Evolution -
-                        9.1.3 (Sistema)
-                    </div>
-
-                    <div class="product-price">
-                        R$ 55,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modalEvolution913')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/2z2VCpC"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 6 - SISTEMA 1.0.15.5 -->
-
-            <div class="product-card"
-                 data-name="atualização medianav renault 1.0.15.5 sistema"
-                 data-category="sistema">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp"
-                         alt="Atualização Medianav Renault 1.0.15.5"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Medianav Renault -
-                        1.0.15.5 (Sistema)
-                    </div>
-
-                    <div class="product-price">
-                        R$ 60,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal10155')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/1nnyjKr"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DEPOIMENTOS -->
-
-        <div class="testimonials-section">
+        <div class="container">
 
             <h2 class="section-title">
-                O que dizem nossos clientes
+                Destaques & Produtos Populares
             </h2>
 
-            <div class="testimonial-grid"
-                 id="testimonialGrid">
+            <div class="category-filters">
 
-                <div class="testimonial-card">
+                <button class="filter-btn active"
+                        onclick="filterCategory('all', 'Home')">
+                    Todos
+                </button>
 
-                    <div class="testimonial-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                <button class="filter-btn"
+                        onclick="filterCategory('mapa', 'Home')">
+                    Mapas
+                </button>
+
+                <button class="filter-btn"
+                        onclick="filterCategory('sistema', 'Home')">
+                    Sistemas / Firmware
+                </button>
+
+            </div>
+
+
+            <div class="product-grid" id="productGridHome">
+
+                <div class="product-card"
+                     data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution"
+                     data-category="mapa">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp"
+                             alt="Atualização Mapa do Brasil 2025 Renault Evolution"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Mapa do Brasil 2025
+                            (Versão 9.1.3) Renault
+                        </div>
+
+                        <div class="product-price">
+                            R$ 135,00
+                        </div>
+
                     </div>
 
-                    <div class="testimonial-text">
-                        "A atualização funcionou corretamente.
-                        No mapa aparecem as edificações em 3d,
-                        funciona perfeitamente. A instalação demora
-                        em torno de 10-15 minutos. Recomendo muito!"
-                    </div>
+                    <div>
 
-                    <div class="testimonial-author">
-                        Cliente Verificado (Mapa 2025 - 9.1.3)
-                    </div>
+                        <button class="btn-desc"
+                                onclick="openModal('modal2025')">
 
-                    <div class="testimonial-location">
-                        Rio de Janeiro - RJ
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
                     </div>
 
                 </div>
 
 
-                <div class="testimonial-card">
+                <div class="product-card"
+                     data-name="atualização mapa brasil 2025 renault media nav standard"
+                     data-category="mapa">
 
-                    <div class="testimonial-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_760902-MLB115317715011_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-standard.webp"
+                             alt="Atualização Mapa Brasil 2025 Renault Media Nav Standard"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Mapa Brasil 2025 -
+                            Renault Media Nav Standard
+                        </div>
+
+                        <div class="product-price">
+                            R$ 135,00
+                        </div>
+
                     </div>
 
-                    <div class="testimonial-text">
-                        "Ótima atualização, minha media nav tinha
-                        versão 4.0.3, depois que atualizei passou
-                        pra versão 4.1.0 com mapas 2024,
-                        recomendo a todos!"
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal2025Standard')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
                     </div>
 
-                    <div class="testimonial-author">
-                        Cliente Verificado (Mapa/Versão 2024 - 4.1.0)
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard"
+                     data-category="mapa">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp"
+                             alt="Atualização Mapa do Brasil Renault Media Nav Standard"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Mapa do Brasil 2024
+                            (Versão 4.1.0) Renault
+                        </div>
+
+                        <div class="product-price">
+                            R$ 125,00
+                        </div>
+
                     </div>
 
-                    <div class="testimonial-location">
-                        São Paulo - SP
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal2024')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://mpago.la/2zGXq7J"
+                           target="_blank"
+                           class="btn-buy">
+                            Comprar com Mercado Pago
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização medianav renault 4.1.0 sistema"
+                     data-category="sistema">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp"
+                             alt="Atualização Medianav Renault 4.1.0 Sistema"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Medianav Renault - 4.1.0 (Sistema)
+                        </div>
+
+                        <div class="product-price">
+                            R$ 55,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modalFirmware')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/5cwD7fzpeK"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização medianav renault evolution 9.1.3 sistema"
+                     data-category="sistema">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp"
+                             alt="Atualização Medianav Renault Evolution 9.1.3"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Medianav Renault Evolution - 9.1.3 (Sistema)
+                        </div>
+
+                        <div class="product-price">
+                            R$ 55,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modalEvolution913')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/5cwD7fzpeK"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização medianav renault 1.0.15.5 sistema"
+                     data-category="sistema">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp"
+                             alt="Atualização Medianav Renault 1.0.15.5"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Medianav Renault - 1.0.15.5 (Sistema)
+                        </div>
+
+                        <div class="product-price">
+                            R$ 60,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal10155')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/5cwD7fzpeK"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
                     </div>
 
                 </div>
@@ -1657,101 +1567,583 @@
             </div>
 
 
-            <!-- FORMULÁRIO DE AVALIAÇÃO -->
+            <div class="testimonials-section">
 
-            <div class="review-form-box">
+                <h2 class="section-title">
+                    O que dizem nossos clientes
+                </h2>
 
-                <h3>
-                    Deixe sua Avaliação / Depoimento
-                </h3>
+                <div class="testimonial-grid" id="testimonialGrid">
 
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
-                    Sua opinião é fundamental para nossa prova social.
-                    Avalie nosso serviço!
-                </p>
+                    <div class="testimonial-card">
 
-                <form id="formReview"
-                      onsubmit="enviarAvaliacao(event)">
+                        <div class="testimonial-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
 
-                    <div class="form-group">
+                        <div class="testimonial-text">
+                            "A atualização funcionou corretamente. No mapa aparecem as edificações em 3d, funciona perfeitamente. A instalação demora em torno de 10-15 minutos. Recomendo muito!"
+                        </div>
 
-                        <label>
-                            Sua Nota (1 a 5 estrelas):
-                        </label>
+                        <div class="testimonial-author">
+                            Cliente Verificado (Mapa 2025 - 9.1.3)
+                        </div>
 
-                        <div class="star-rating-input"
-                             id="starRatingInput">
+                        <div class="testimonial-location">
+                            Rio de Janeiro - RJ
+                        </div>
 
-                            <i class="fa fa-star selected"
-                               data-value="1"
-                               onclick="setRating(1)">
-                            </i>
+                    </div>
 
-                            <i class="fa fa-star selected"
-                               data-value="2"
-                               onclick="setRating(2)">
-                            </i>
+                    <div class="testimonial-card">
 
-                            <i class="fa fa-star selected"
-                               data-value="3"
-                               onclick="setRating(3)">
-                            </i>
+                        <div class="testimonial-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
 
-                            <i class="fa fa-star selected"
-                               data-value="4"
-                               onclick="setRating(4)">
-                            </i>
+                        <div class="testimonial-text">
+                            "Ótima atualização, minha media nav tinha versão 4.0.3, depois que atualizei passou pra versão 4.1.0 com mapas 2024, recomendo a todos!"
+                        </div>
 
-                            <i class="fa fa-star selected"
-                               data-value="5"
-                               onclick="setRating(5)">
-                            </i>
+                        <div class="testimonial-author">
+                            Cliente Verificado (Mapa/Versão 2024 - 4.1.0)
+                        </div>
+
+                        <div class="testimonial-location">
+                            São Paulo - SP
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="review-form-box">
+                    <h3>Deixe sua Avaliação / Depoimento</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Sua opinião é fundamental para nossa prova social. Avalie nosso serviço!</p>
+                    
+                    <form id="formReview" onsubmit="enviarAvaliacao(event)">
+                        <div class="form-group">
+                            <label>Sua Nota (1 a 5 estrelas):</label>
+                            <div class="star-rating-input" id="starRatingInput">
+                                <i class="fa fa-star selected" data-value="1" onclick="setRating(1)"></i>
+                                <i class="fa fa-star selected" data-value="2" onclick="setRating(2)"></i>
+                                <i class="fa fa-star selected" data-value="3" onclick="setRating(3)"></i>
+                                <i class="fa fa-star selected" data-value="4" onclick="setRating(4)"></i>
+                                <i class="fa fa-star selected" data-value="5" onclick="setRating(5)"></i>
+                            </div>
+                            <input type="hidden" id="reviewRatingValue" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewAuthor">Seu Nome e Cidade/Estado:</label>
+                            <input type="text" id="reviewAuthor" placeholder="Ex: Marcos Silva - Belém/PA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Seu Comentário:</label>
+                            <textarea id="reviewText" rows="3" placeholder="O que achou da atualização e do suporte?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-enviar-comprovante">
+                            <i class="fa fa-paper-plane"></i> Publicar Avaliação
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="page-produtos" class="page-view">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Catálogo Completo de Produtos
+            </h2>
+
+            <div class="category-filters">
+
+                <button class="filter-btn active"
+                        onclick="filterCategory('all', 'Produtos')">
+                    Todos
+                </button>
+
+                <button class="filter-btn"
+                        onclick="filterCategory('mapa', 'Produtos')">
+                    Mapas
+                </button>
+
+                <button class="filter-btn"
+                        onclick="filterCategory('sistema', 'Produtos')">
+                    Sistemas / Firmware
+                </button>
+
+            </div>
+
+
+            <div class="product-grid" id="productGridProdutos">
+
+                <div class="product-card"
+                     data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution"
+                     data-category="mapa">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp"
+                             alt="Atualização Mapa do Brasil 2025 Renault Evolution"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Mapa do Brasil 2025
+                            (Versão 9.1.3) Renault
+                        </div>
+
+                        <div class="product-price">
+                            R$ 135,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal2025')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização mapa brasil 2025 renault media nav standard"
+                     data-category="mapa">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_760902-MLB115317715011_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-standard.webp"
+                             alt="Atualização Mapa Brasil 2025 Renault Media Nav Standard"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Mapa Brasil 2025 -
+                            Renault Media Nav Standard
+                        </div>
+
+                        <div class="product-price">
+                            R$ 135,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal2025Standard')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard"
+                     data-category="mapa">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp"
+                             alt="Atualização Mapa do Brasil Renault Media Nav Standard"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Mapa do Brasil 2024
+                            (Versão 4.1.0) Renault
+                        </div>
+
+                        <div class="product-price">
+                            R$ 125,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal2024')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://mpago.la/2zGXq7J"
+                           target="_blank"
+                           class="btn-buy">
+                            Comprar com Mercado Pago
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização medianav renault 4.1.0 sistema"
+                     data-category="sistema">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp"
+                             alt="Atualização Medianav Renault 4.1.0 Sistema"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Medianav Renault - 4.1.0 (Sistema)
+                        </div>
+
+                        <div class="product-price">
+                            R$ 55,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modalFirmware')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/5cwD7fzpeK"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização medianav renault evolution 9.1.3 sistema"
+                     data-category="sistema">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp"
+                             alt="Atualização Medianav Renault Evolution 9.1.3"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Medianav Renault Evolution - 9.1.3 (Sistema)
+                        </div>
+
+                        <div class="product-price">
+                            R$ 55,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modalEvolution913')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/5cwD7fzpeK"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card"
+                     data-name="atualização medianav renault 1.0.15.5 sistema"
+                     data-category="sistema">
+
+                    <div>
+
+                        <span class="digital-badge">
+                            <i class="fa fa-bolt"></i>
+                            Envio Digital Imediato
+                        </span>
+
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp"
+                             alt="Atualização Medianav Renault 1.0.15.5"
+                             class="product-img"
+                             onclick="openZoom(this.src)">
+
+                        <div class="product-title">
+                            Atualização Medianav Renault - 1.0.15.5 (Sistema)
+                        </div>
+
+                        <div class="product-price">
+                            R$ 60,00
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="btn-desc"
+                                onclick="openModal('modal10155')">
+
+                            <i class="fa fa-info-circle"></i>
+                            Ver Descrição
+
+                        </button>
+
+                        <a href="https://invoice.infinitepay.io/mottatshirts/5cwD7fzpeK"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-buy">
+                            Comprar com InfinitePay
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="page-quemsomos" class="page-view">
+
+        <div class="container">
+
+            <div class="about-section">
+
+                <div class="about-grid">
+
+                    <div class="about-text">
+
+                        <h3>Sobre a MediaNav Belém</h3>
+
+                        <p>
+                            A <strong>MediaNav Belém</strong> é uma empresa especializada em soluções de atualização, manutenção técnica e otimização de sistemas multimídia automotivos da linha Renault.
+                        </p>
+
+                        <p>
+                            Nosso objetivo é fornecer arquivos atualizados de mapas, radares, pontos de interesse (POI) e firmwares de sistema com total segurança e praticidade para nossos clientes em todo o Brasil.
+                        </p>
+
+                        <div class="about-features">
+
+                            <div class="feature-item">
+                                <i class="fa fa-check-circle"></i>
+                                Suporte via WhatsApp
+                            </div>
+
+                            <div class="feature-item">
+                                <i class="fa fa-check-circle"></i>
+                                Envio Rápido e Seguro
+                            </div>
+
+                            <div class="feature-item">
+                                <i class="fa fa-check-circle"></i>
+                                Mapas Atualizados
+                            </div>
+
+                            <div class="feature-item">
+                                <i class="fa fa-check-circle"></i>
+                                Arquivos Originais
+                            </div>
 
                         </div>
 
-                        <input type="hidden"
-                               id="reviewRatingValue"
-                               value="5">
-
                     </div>
 
+                    <div class="about-badge">
+                        <i class="fa fa-shield-alt"></i>
+                        <h4>Garantia & Qualidade</h4>
+                        <p>Todos os nossos arquivos e tutoriais são previamente testados para garantir que sua central multimídia funcione perfeitamente sem riscos ao aparelho.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="page-suporte" class="page-view">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Perguntas Frequentes & Suporte
+            </h2>
+
+            <div class="faq-container">
+
+                <div class="faq-item">
+                    <div class="faq-question">1. Como recebo os arquivos após a compra?</div>
+                    <div class="faq-answer">Após o pagamento, você receberá o link de download diretamente por e-mail ou via WhatsApp de forma digital e rápida. Ao enviar o comprovante na aba "Enviar Comprovante", nosso envio é acelerado.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">2. Preciso de um pen drive para realizar a atualização?</div>
+                    <div class="faq-answer">Sim, você precisará de um pen drive de no mínimo 4GB ou 8GB formatado em FAT32 para copiar os arquivos e conectar na central do seu carro.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">3. O processo é seguro para a central multimídia?</div>
+                    <div class="faq-answer">Sim! Todos os nossos pacotes acompanham passo a passo detalhado e os arquivos são oficiais/compatíveis com cada versão específica de hardware.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">4. Qual a diferença entre MediaNav Standard e Evolution?</div>
+                    <div class="faq-answer">Geralmente as versões Standard utilizam firmwares do tipo 1.0.x até 4.1.0, enquanto a Evolution utiliza versões 5.2.x até 9.1.3. Você pode checar a versão na opção Configurações > Sistema > Versão do Sistema no próprio aparelho.</div>
+                </div>
+
+                <div class="whatsapp-box">
+                    <h3>Ainda tem dúvidas?</h3>
+                    <p>Fale diretamente com o nosso atendimento técnico via WhatsApp.</p>
+                    <a href="https://wa.me/5591982079997?text=Olá,%20tenho%20dúvidas%20sobre%20as%20atualizações%20MediaNav." target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="page-cadastro-form" class="page-view">
+
+        <div class="container">
+
+            <div class="forms-container">
+
+                <h2 class="section-title" style="border:none; padding:0; margin-bottom: 10px;">
+                    Cadastro de Cliente
+                </h2>
+
+                <p style="color: #666; margin-bottom: 25px; font-size: 0.95rem;">
+                    Preencha seus dados para agilizar o atendimento e garantir suporte prioritário para suas atualizações.
+                </p>
+
+                <form id="formCadastroCliente" onsubmit="enviarFormularioWeb3(event, 'cadastro')">
+
+                    <input type="hidden" name="access_key" value="0fb07c4b-c744-4696-9f89-cbebd008316c">
+                    <input type="hidden" name="subject" value="Novo Cadastro de Cliente - MediaNav Belém">
+                    <input type="hidden" name="from_name" value="MediaNav Belém Web">
 
                     <div class="form-group">
-
-                        <label for="reviewAuthor">
-                            Seu Nome e Cidade/Estado:
-                        </label>
-
-                        <input type="text"
-                               id="reviewAuthor"
-                               placeholder="Ex: Marcos Silva - Belém/PA"
-                               required>
-
+                        <label for="cadNome">Nome Completo *</label>
+                        <input type="text" id="cadNome" name="Nome" placeholder="Digite seu nome completo" required>
                     </div>
-
 
                     <div class="form-group">
-
-                        <label for="reviewText">
-                            Seu Comentário:
-                        </label>
-
-                        <textarea id="reviewText"
-                                  rows="3"
-                                  placeholder="O que achou da atualização e do suporte?"
-                                  required>
-                        </textarea>
-
+                        <label for="cadEmail">E-mail *</label>
+                        <input type="email" id="cadEmail" name="Email" placeholder="seuemail@exemplo.com" required>
                     </div>
 
+                    <div class="form-group">
+                        <label for="cadWhatsapp">WhatsApp / Telefone *</label>
+                        <input type="tel" id="cadWhatsapp" name="WhatsApp" placeholder="(91) 98207-9997" required>
+                    </div>
 
-                    <button type="submit"
-                            class="btn-enviar-comprovante">
+                    <div class="form-group">
+                        <label for="cadVeiculo">Modelo do Veículo e Ano</label>
+                        <input type="text" id="cadVeiculo" name="Veiculo_Modelo_Ano" placeholder="Ex: Renault Sandero 2018">
+                    </div>
 
-                        <i class="fa fa-paper-plane"></i>
-                        Publicar Avaliação
+                    <div class="form-group">
+                        <label for="cadVersao">Versão do MediaNav (se souber)</label>
+                        <input type="text" id="cadVersao" name="Versao_MediaNav" placeholder="Ex: 9.1.3 ou 4.1.0">
+                    </div>
 
+                    <button type="submit" class="btn-enviar-comprovante">
+                        <i class="fa fa-user-plus"></i> Concluir Cadastro
                     </button>
+
+                    <div class="form-status" id="statusCadastro"></div>
 
                 </form>
 
@@ -1761,687 +2153,64 @@
 
     </div>
 
-</div>
 
+    <div id="page-comprovante" class="page-view">
 
-<!-- ===================================================== -->
-<!-- PAGE: PRODUTOS -->
-<!-- ===================================================== -->
+        <div class="container">
 
-<div id="page-produtos" class="page-view">
+            <div class="comprovante-container">
 
-    <div class="container">
-
-        <h2 class="section-title">
-            Catálogo Completo de Produtos
-        </h2>
-
-        <div class="category-filters">
-
-            <button class="filter-btn active"
-                    onclick="filterCategory('all', 'Produtos')">
-                Todos
-            </button>
-
-            <button class="filter-btn"
-                    onclick="filterCategory('mapa', 'Produtos')">
-                Mapas
-            </button>
-
-            <button class="filter-btn"
-                    onclick="filterCategory('sistema', 'Produtos')">
-                Sistemas / Firmware
-            </button>
-
-        </div>
-
-
-        <div class="product-grid"
-             id="productGridProdutos">
-
-            <!-- PRODUTO 1 - MAPA 2025 EVOLUTION -->
-
-            <div class="product-card"
-                 data-name="atualização mapa do brasil 2025 versão 9.1.3 renault evolution"
-                 data-category="mapa">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728087-MLB114000928090_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-evolution.webp"
-                         alt="Atualização Mapa do Brasil 2025 Renault Evolution"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Mapa do Brasil 2025
-                        (Versão 9.1.3) Renault
-                    </div>
-
-                    <div class="product-price">
-                        R$ 135,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal2025')">
-
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-
-                    </button>
-
-                    <!-- ALTERADO PARA INFINITEPAY -->
-                    <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn-buy">
-                        Comprar com InfinitePay
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 2 - MAPA 2025 STANDARD -->
-
-            <div class="product-card"
-                 data-name="atualização mapa brasil 2025 renault media nav standard"
-                 data-category="mapa">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_760902-MLB115317715011_072026-F-atualizacao-mapa-brasil-2025--renault-media-nav-standard.webp"
-                         alt="Atualização Mapa Brasil 2025 Renault Media Nav Standard"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Mapa Brasil 2025 -
-                        Renault Media Nav Standard
-                    </div>
-
-                    <div class="product-price">
-                        R$ 135,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal2025Standard')">
-
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-
-                    </button>
-
-                    <!-- ALTERADO PARA INFINITEPAY -->
-                    <a href="https://invoice.infinitepay.io/mottatshirts/vE5qyYXHL4"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn-buy">
-                        Comprar com InfinitePay
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 3 - MAPA 2024 STANDARD -->
-
-            <div class="product-card"
-                 data-name="atualização mapa do brasil 2024 versão 4.1.0 renault standard"
-                 data-category="mapa">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_777618-MLB82481784449_022025-F-atualizacao-mapa-brasil-2024--renault-media-nav-standard.webp"
-                         alt="Atualização Mapa do Brasil Renault Media Nav Standard"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Mapa do Brasil 2024
-                        (Versão 4.1.0) Renault
-                    </div>
-
-                    <div class="product-price">
-                        R$ 125,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal2024')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/2zGXq7J"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 4 - SISTEMA 4.1.0 -->
-
-            <div class="product-card"
-                 data-name="atualização medianav renault 4.1.0 sistema"
-                 data-category="sistema">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662514-MLB76548536722_052024-F-atualizacao-medianav-renault--410.webp"
-                         alt="Atualização Medianav Renault 4.1.0 Sistema"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Medianav Renault -
-                        4.1.0 (Sistema)
-                    </div>
-
-                    <div class="product-price">
-                        R$ 55,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modalFirmware')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/1HmKUWz"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 5 - SISTEMA EVOLUTION 9.1.3 -->
-
-            <div class="product-card"
-                 data-name="atualização medianav renault evolution 9.1.3 sistema"
-                 data-category="sistema">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_609508-MLB76548431108_052024-F-atualizacao-medianav-renault-evolution--913.webp"
-                         alt="Atualização Medianav Renault Evolution 9.1.3"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Medianav Renault Evolution -
-                        9.1.3 (Sistema)
-                    </div>
-
-                    <div class="product-price">
-                        R$ 55,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modalEvolution913')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/2z2VCpC"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUTO 6 - SISTEMA 1.0.15.5 -->
-
-            <div class="product-card"
-                 data-name="atualização medianav renault 1.0.15.5 sistema"
-                 data-category="sistema">
-
-                <div>
-
-                    <span class="digital-badge">
-                        <i class="fa fa-bolt"></i>
-                        Envio Digital Imediato
-                    </span>
-
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812405-MLB90043763419_082025-F-atualizacao-medianav-renault--10155.webp"
-                         alt="Atualização Medianav Renault 1.0.15.5"
-                         class="product-img"
-                         onclick="openZoom(this.src)">
-
-                    <div class="product-title">
-                        Atualização Medianav Renault -
-                        1.0.15.5 (Sistema)
-                    </div>
-
-                    <div class="product-price">
-                        R$ 60,00
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <button class="btn-desc"
-                            onclick="openModal('modal10155')">
-                        <i class="fa fa-info-circle"></i>
-                        Ver Descrição
-                    </button>
-
-                    <a href="https://mpago.la/1nnyjKr"
-                       target="_blank"
-                       class="btn-buy">
-                        Comprar com Mercado Pago
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ===================================================== -->
-<!-- PAGE: QUEM SOMOS -->
-<!-- ===================================================== -->
-
-<div id="page-quemsomos" class="page-view">
-
-    <div class="container">
-
-        <div class="about-section">
-
-            <div class="about-grid">
-
-                <div class="about-text">
-
-                    <h3>
-                        Quem Somos
-                    </h3>
-
+                <div class="comprovante-box">
+                    <h3><i class="fa fa-paper-plane"></i> Aviso de Pagamento</h3>
                     <p>
-                        O <strong>MediaNav Belém</strong> é uma empresa
-                        especializada no desenvolvimento e fornecimento
-                        de soluções de software, atualização de mapas GPS
-                        HERE e otimização de firmewares para centrais
-                        multimídia da linha Renault e Dacia.
+                        Envie os dados do seu pagamento abaixo para que possamos liberar seu link de download o mais rápido possível!
                     </p>
-
-                    <p>
-                        Nossa missão é proporcionar autonomia,
-                        praticidade e segurança aos condutores,
-                        garantindo que seu sistema de navegação utilize
-                        sempre os mapas e radares mais atualizados do
-                        Brasil, com arquivos seguros e procedimentos
-                        passo a passo totalmente em vídeo tutorial.
-                    </p>
-
-                    <div class="about-features">
-
-                        <div class="feature-item">
-                            <i class="fa fa-check-circle"></i>
-                            Suporte Técnico Especializado
-                        </div>
-
-                        <div class="feature-item">
-                            <i class="fa fa-check-circle"></i>
-                            Envio 100% Digital e Rápido
-                        </div>
-
-                        <div class="feature-item">
-                            <i class="fa fa-check-circle"></i>
-                            Vídeos Tutoriais Exclusivos
-                        </div>
-
-                        <div class="feature-item">
-                            <i class="fa fa-check-circle"></i>
-                            Processo Seguro via USB
-                        </div>
-
-                    </div>
-
                 </div>
 
-
-                <div class="about-badge">
-
-                    <i class="fa fa-shield-halved"></i>
-
-                    <h4>
-                        Excelência & Confiança
-                    </h4>
-
-                    <p>
-                        Atendendo com máxima eficiência e credibilidade
-                        clientes em todo o Brasil. Garantia de funcionamento
-                        para todas as versões homologadas MediaNav.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ===================================================== -->
-<!-- PAGE: SUPORTE -->
-<!-- ===================================================== -->
-
-<div id="page-suporte" class="page-view">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Perguntas Frequentes (FAQ) & Suporte Técnico
-        </h2>
-
-        <div class="faq-container">
-
-            <div class="faq-item">
-
-                <div class="faq-question">
-                    <i class="fa fa-usb" style="color: #f1c40f;"></i>
-                    1. Qual tipo de Pen Drive devo utilizar para o procedimento?
-                </div>
-
-                <div class="faq-answer">
-                    É obrigatório o uso de um pen drive USB 2.0 com
-                    capacidade entre <strong>4GB e 8GB</strong>,
-                    totalmente formatado em <strong>FAT32</strong>
-                    e vazio. Não utilize pen drives de marcas genéricas
-                    ("xing-ling") ou com capacidade superior a 32GB para
-                    evitar falhas de leitura no MediaNav.
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <div class="faq-question">
-                    <i class="fa fa-download" style="color: #f1c40f;"></i>
-                    2. Como recebo os arquivos de atualização após a compra?
-                </div>
-
-                <div class="faq-answer">
-                    O envio é feito de forma 100% digital diretamente no
-                    seu e-mail ou WhatsApp após a confirmação do pagamento.
-                    Você receberá os links de download junto com o tutorial
-                    em vídeo com todo o passo a passo.
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <div class="faq-question">
-                    <i class="fa fa-info-circle" style="color: #f1c40f;"></i>
-                    3. Como identifico a versão do meu MediaNav?
-                </div>
-
-                <div class="faq-answer">
-                    Na tela da sua multimídia, vá em:
-                    <strong>Configurações &gt; Sistema &gt; Versão do Sistema</strong>.
-                    Anote os números exibidos (Ex: 4.0.6, 9.1.3,
-                    1.0.15.5) para adquirir o produto correto ou informar
-                    na mensagem após a compra.
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <div class="faq-question">
-                    <i class="fa fa-microchip" style="color: #f1c40f;"></i>
-                    4. O procedimento afeta o funcionamento original do carro?
-                </div>
-
-                <div class="faq-answer">
-                    Não. A instalação atualiza os arquivos internos de
-                    navegação salvos na memória interna do aparelho sem
-                    alterar o restante da multimídia ou perder funções originais.
-                </div>
-
-            </div>
-
-
-            <div class="whatsapp-box">
-
-                <h3>
-                    Precisa de suporte personalizado direto pelo WhatsApp?
-                </h3>
-
-                <p style="color: #555; margin-top: 5px;">
-                    Caso tenha uma dúvida específica sobre a versão do
-                    seu aparelho, converse direto com nossos técnicos.
-                </p>
-
-                <a href="https://wa.me/5591982079997?text=Olá,%20vim%20pelo%20site%20MediaNav%20Belém%20e%20preciso%20de%20suporte."
-                   target="_blank"
-                   class="btn-whatsapp">
-
-                    <i class="fab fa-whatsapp"></i>
-                    Falar com o Suporte Técnico
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ===================================================== -->
-<!-- PAGE: CADASTRO -->
-<!-- ===================================================== -->
-
-<div id="page-cadastro-form" class="page-view">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Faça o seu Cadastro
-        </h2>
-
-        <div class="forms-container">
-
-            <p style="margin-bottom: 20px; color: #555;">
-                Preencha o formulário abaixo para registrar seus dados:
-            </p>
-
-            <iframe src="https://forms.gle/XCjuyv1YdL8LsoADA"
-                    width="100%"
-                    height="800"
-                    frameborder="0"
-                    marginheight="0"
-                    marginwidth="0"
-                    style="border-radius: 8px;">
-                Carregando…
-            </iframe>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ===================================================== -->
-<!-- PAGE: COMPROVANTE -->
-<!-- ===================================================== -->
-
-<div id="page-comprovante" class="page-view">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Enviar Comprovante de Pagamento
-        </h2>
-
-        <div class="comprovante-container">
-
-            <div class="comprovante-box">
-
-                <h3>
-                    Já paguei, avise-nos por aqui ou pelo WhatsApp!
-                </h3>
-
-                <form action="https://api.web3forms.com/submit"
-                      method="POST"
-                      id="formComprovante">
-
-                    <input type="hidden"
-                           name="access_key"
-                           value="92776d49-4c7e-42fc-8127-b96cd8732750">
-
-                    <input type="hidden"
-                           name="subject"
-                           value="Novo Aviso de Pagamento - MediaNav Belém">
-
+                <form id="formComprovante" onsubmit="enviarFormularioWeb3(event, 'comprovante')">
+
+                    <input type="hidden" name="access_key" value="0fb07c4b-c744-4696-9f89-cbebd008316c">
+                    <input type="hidden" name="subject" value="Novo Comprovante de Pagamento - MediaNav Belém">
+                    <input type="hidden" name="from_name" value="MediaNav Belém Web">
 
                     <div class="form-group">
-
-                        <label for="name">
-                            Seu Nome Completo:
-                        </label>
-
-                        <input type="text"
-                               id="name"
-                               name="name"
-                               placeholder="Digite seu nome"
-                               required>
-
+                        <label for="compNome">Nome Completo *</label>
+                        <input type="text" id="compNome" name="Nome_Cliente" placeholder="Digite seu nome completo" required>
                     </div>
-
 
                     <div class="form-group">
-
-                        <label for="email">
-                            Seu E-mail:
-                        </label>
-
-                        <input type="email"
-                               id="email"
-                               name="email"
-                               placeholder="seuemail@exemplo.com"
-                               required>
-
+                        <label for="compEmail">E-mail para Recebimento *</label>
+                        <input type="email" id="compEmail" name="Email_Envio" placeholder="seuemail@exemplo.com" required>
                     </div>
-
 
                     <div class="form-group">
-
-                        <label for="whatsapp">
-                            Seu WhatsApp (com DDD):
-                        </label>
-
-                        <input type="text"
-                               id="whatsapp"
-                               name="whatsapp"
-                               placeholder="(91) 99999-9999"
-                               required>
-
+                        <label for="compWhatsapp">WhatsApp *</label>
+                        <input type="tel" id="compWhatsapp" name="WhatsApp" placeholder="(DDD) 00000-0000" required>
                     </div>
-
 
                     <div class="form-group">
-
-                        <label for="message">
-                            ID DE TRANSAÇÃO:
-                        </label>
-
-                        <textarea id="message"
-                                  name="message"
-                                  rows="3"
-                                  placeholder="Informe o ID de transação..."
-                                  required>
-                        </textarea>
-
+                        <label for="compProduto">Produto Adquirido *</label>
+                        <select id="compProduto" name="Produto_Adquirido" required>
+                            <option value="">Selecione o produto...</option>
+                            <option value="Atualização Mapa 2025 Evolution (9.1.3)">Atualização Mapa 2025 Evolution (9.1.3)</option>
+                            <option value="Atualização Mapa 2025 Standard">Atualização Mapa 2025 Standard</option>
+                            <option value="Atualização Mapa 2024 Standard (4.1.0)">Atualização Mapa 2024 Standard (4.1.0)</option>
+                            <option value="Sistema 4.1.0">Atualização Medianav 4.1.0 (Sistema)</option>
+                            <option value="Sistema Evolution 9.1.3">Atualização Medianav Evolution 9.1.3 (Sistema)</option>
+                            <option value="Sistema 1.0.15.5">Atualização Medianav 1.0.15.5 (Sistema)</option>
+                        </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="compObs">Observações / Código da Transação</label>
+                        <textarea id="compObs" name="Observacoes" rows="3" placeholder="Informe detalhes da transferência ou código gerado pelo Mercado Pago / InfinitePay"></textarea>
+                    </div>
 
-                    <button type="submit"
-                            class="btn-enviar-comprovante">
-
-                        <i class="fa fa-paper-plane"></i>
-                        Enviar Aviso de Pagamento por E-mail
-
+                    <button type="submit" class="btn-enviar-comprovante">
+                        <i class="fa fa-paper-plane"></i> Enviar Informações
                     </button>
 
-
-                    <div id="formStatus"
-                         class="form-status">
-                    </div>
+                    <div class="form-status" id="statusComprovante"></div>
 
                 </form>
 
@@ -2451,1171 +2220,397 @@
 
     </div>
 
-</div>
 
+    <div id="modal2025" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2025')">&times;</span>
+            <div class="modal-title">Atualização Mapa do Brasil 2025 (Versão 9.1.3) Renault Evolution</div>
+            <div class="modal-body">
+                Atualização completa dos mapas do Brasil ano 2025 para centrais MediaNav Evolution (versão 9.1.3 ou compatíveis).
 
-<!-- ===================================================== -->
-<!-- MODAL MAPA 2025 EVOLUTION -->
-<!-- ===================================================== -->
-
-<div id="modal2025" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal"
-              onclick="closeModal('modal2025')">
-            &times;
-        </span>
-
-        <div class="modal-title">
-            Atualização Mapa do Brasil 2025
-            (Versão 9.1.3) Renault
+                - Mapas atualizados do Brasil 2025.
+                - Base de dados de Radares e Pontos de Interesse (POI) atualizada.
+                - Alertas visuais e sonoros de velocidade.
+                - Edificações e monumentos em 3D.
+                - Envio via download com tutorial em vídeo e texto passo a passo.
+            </div>
         </div>
-
-        <div class="modal-body">
-```
-
-Brazil_HERE_2025.Q4_260107 PARA GPS ORIGINAL MEDIA NAV RENAULT EVOLUTION.
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
-
-NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
-
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
-
-OBSERVAÇÕES:
-
-PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
-
-CARACTERÍSTICAS:
-
-MODELO: MEDIA NAV
-MARCA: RENAULT / DACIA
-
-DESCRIÇÃO:
-
-GPS COMPATÍVEL COM MEDIA NAV EVOLUTION RENAULT / DACIA
-
-#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN #KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
-
-VERSÕES COMPATÍVEIS:
-
-*** 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3 *** </div>
-
-```
     </div>
 
-</div>
+    <div id="modal2025Standard" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2025Standard')">&times;</span>
+            <div class="modal-title">Atualização Mapa Brasil 2025 - Renault Media Nav Standard</div>
+            <div class="modal-body">
+                Pacote de mapa do Brasil 2025 ideal para centrais MediaNav Standard (versões 4.1.0, 4.0.6, etc).
 
-
-<!-- ===================================================== -->
-<!-- MODAL MAPA 2025 STANDARD -->
-<!-- ===================================================== -->
-
-<div id="modal2025Standard" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal"
-              onclick="closeModal('modal2025Standard')">
-            &times;
-        </span>
-
-        <div class="modal-title">
-            Atualização Mapa Brasil 2025 -
-            Renault Media Nav Standard
+                - Cobertura nacional atualizada 2025.
+                - Radares fixos, móveis e lombadas eletrônicas.
+                - Pontos de interesse (postos, restaurantes, hospitais).
+                - Manual simples para instalação via pen drive.
+            </div>
         </div>
-
-        <div class="modal-body">
-```
-
-MAPA BRASIL HERE 2025.Q4_260106 PARA GPS ORIGINAL MEDIANAV RENAULT STANDARD.
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
-
-NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
-
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
-
-OBSERVAÇÕES:
-
-PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
-
-CARACTERÍSTICAS:
-
-MODELO: MEDIA NAV
-MARCA: RENAULT / DACIA
-
-DESCRIÇÃO:
-
-GPS COMPATÍVEL COM MEDIA NAV STANDARD RENAULT / DACIA
-
-#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN #KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
-
-VERSÕES COMPATÍVEIS:
-
-*** 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 *** </div>
-
-```
     </div>
 
-</div>
+    <div id="modal2024" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2024')">&times;</span>
+            <div class="modal-title">Atualização Mapa do Brasil 2024 (Versão 4.1.0) Renault</div>
+            <div class="modal-body">
+                Atualização de mapa 2024 voltada para centrais multimídia Renault MediaNav versão 4.1.0.
 
-
-<!-- ===================================================== -->
-<!-- MODAL MAPA 2024 -->
-<!-- ===================================================== -->
-
-<div id="modal2024" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal"
-              onclick="closeModal('modal2024')">
-            &times;
-        </span>
-
-        <div class="modal-title">
-            Atualização Mapa do Brasil 2024
-            (Versão 4.1.0) Renault
+                - Inclui radares, lombadas e pontos de interesse.
+                - Correções de vias e rotas principais.
+                - Suporte garantido para instalação.
+            </div>
         </div>
-
-        <div class="modal-body">
-```
-
-MAPA BRASIL HERE 2024.Q2 PARA GPS ORIGINAL MEDIANAV RENAULT STANDARD.
-
-***IMPORTANTE: APÓS SUA COMPRA, INFORMAR A VERSÃO DO SEU MEDIA NAV PELO CAMPO DE MENSAGENS ENTRE VENDEDOR E COMPRADOR NA SUA COMPRA***
-
-PROCEDIMENTO NÃO É REALIZADO PELO SITE DA RENAULT, MAS SIM POR ARQUIVOS QUE FAZEM COM QUE SEU GPS ACEITE A INSTALAÇÃO DE UM MAPA EXTERNO ATRAVÉS DE PENDRIVE.
-
-NECESSÁRIO UM PENDRIVE NO MÍNIMO 4GB E NO MÁXIMO 32GB, 2.0, FORMATADO EM FAT32 E VAZIO PARA FAZER A INSTALAÇÃO (NÃO PODE SER XING LING)
-
-O MAPA FICA SALVO NA MEMÓRIA DO MEDIA NAV. PARA MAIORES INFORMAÇÕES, ENTRE EM CONTATO PELO CAMPO DE MENSAGENS.
-
-OBSERVAÇÕES:
-
-PROCEDIMENTO DE ATUALIZAÇÃO DO MAPA TODO EM VÍDEO TUTORIAL.
-
-CARACTERÍSTICAS:
-
-MODELO: MEDIA NAV
-MARCA: RENAULT / DACIA
-
-DESCRIÇÃO:
-
-GPS COMPATÍVEL COM MEDIA NAV STANDARD RENAULT / DACIA
-
-#DUSTER #SANDERO #LOGAN #NOVO SANDERO #NOVO LOGAN #KWID #OROCH #CAPTUR #STEPWAY #SANDERO RS
-
-VERSÕES COMPATÍVEIS:
-
-*** 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 *** </div>
-
-```
     </div>
 
-</div>
+    <div id="modalFirmware" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalFirmware')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault - 4.1.0 (Sistema)</div>
+            <div class="modal-body">
+                Atualização de sistema/firmware oficial para versão 4.1.0.
 
-
-<!-- ===================================================== -->
-<!-- MODAL FIRMWARE 4.1.0 -->
-<!-- ===================================================== -->
-
-<div id="modalFirmware" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal"
-              onclick="closeModal('modalFirmware')">
-            &times;
-        </span>
-
-        <div class="modal-title">
-            Atualização Medianav Renault - 4.1.0
+                - Corrige travamentos e instabilidade do sistema.
+                - Melhora o desempenho do Bluetooth e rádio.
+                - Prepara o aparelho para receber mapas atualizados.
+            </div>
         </div>
-
-        <div class="modal-body">
-```
-
-Atualização para MEDIANAV RENAULT STANDARD para a versão mais atual 4.1.0
-
-PARA MEDIANAV COM AS VERSÕES - 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6
-
-ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS </div>
-
-```
     </div>
 
-</div>
+    <div id="modalEvolution913" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalEvolution913')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault Evolution - 9.1.3 (Sistema)</div>
+            <div class="modal-body">
+                Firmware oficial para a linha MediaNav Evolution até a versão 9.1.3.
 
-
-<!-- ===================================================== -->
-<!-- MODAL EVOLUTION 9.1.3 -->
-<!-- ===================================================== -->
-
-<div id="modalEvolution913" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal"
-              onclick="closeModal('modalEvolution913')">
-            &times;
-        </span>
-
-        <div class="modal-title">
-            Atualização Medianav Renault Evolution - 9.1.3
+                - Correção de bugs de áudio e GPS.
+                - Maior fluidez nas telas de navegação.
+                - Arquivos de recuperação e atualização rápida.
+            </div>
         </div>
-
-        <div class="modal-body">
-```
-
-Atualização MEDIANAV RENAULT EVOLUTION para a versão mais atual 9.1.3
-
-PARA MEDIANAV COM AS VERSÕES - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1
-
-** ESTE ARQUIVO NÃO HABILITA O BOTÃO CONCORDO DO GPS E NEM ATUALIZA OS MAPAS** </div>
-
-```
     </div>
 
-</div>
+    <div id="modal10155" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal10155')">&times;</span>
+            <div class="modal-title">Atualização Medianav Renault - 1.0.15.5 (Sistema)</div>
+            <div class="modal-body">
+                Atualização de sistema para as novas centrais MediaNav (Media Display / Media Nav 3ª Geração / Linux).
 
-
-<!-- ===================================================== -->
-<!-- MODAL 1.0.15.5 -->
-<!-- ===================================================== -->
-
-<div id="modal10155" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal"
-              onclick="closeModal('modal10155')">
-            &times;
-        </span>
-
-        <div class="modal-title">
-            Atualização Medianav Renault - 1.0.15.5
+                - Versão de firmware 1.0.15.5.
+                - Correção de bugs conhecidos e melhoria de integração.
+                - Instruções completas para aplicação via USB.
+            </div>
         </div>
-
-        <div class="modal-body">
-```
-
-Atualização MEDIANAV RENAULT EVO para a versão mais atual 1.0.15.5
-
-PARA MEDIANAV COM AS VERSÕES - 1.0.13.1
-
-* ESTA ATUALIZAÇÃO NÃO SERVE NAS VERSÕES: 4.0.2 - 4.0.3 - 4.0.5 - 4.0.6 - 4.1.0 - 5.2.7 - 5.2.8 - 6.0.3 - 6.0.4 - 7.0.5 - 8.0.5 - 9.1.1 - 9.1.3
-
-- Principais Vantagens da Atualização para a 1.0.15.5 -
-
-1. * Compatibilidade com Android Auto e Apple CarPlay
-
-* Disponível em algumas versões do MediaNav Evolution 2 com hardware compatível. A atualização prepara o sistema para ativar esse recurso (pode depender do desbloqueio posterior).
-
-2. - Correções de bugs e maior estabilidade
-
-* Problemas comuns de travamento, reinicializações ou lentidão são reduzidos.
-
-3. - Interface mais fluida e responsiva
-
-* Pequenas melhorias visuais e melhor tempo de resposta nos comandos.
-
-4. - Atualização de compatibilidade com mídias
-
-* Reconhecimento de mais formatos de áudio/vídeo via USB.
-* Maior compatibilidade com celulares e pendrives.
-
-5. - Preparação para atualizações futuras de mapa
-
-* Alguns mapas mais novos exigem versões recentes do sistema para serem instalados.
-
-6. - Melhoria na conexão Bluetooth e chamadas
-
-* Redução de falhas ao parear celulares, chamadas mais estáveis e maior compatibilidade com modelos recentes. </div>
-
-  ```
-    </div>
-  ```
-
     </div>
 
-    <!-- ZOOM -->
-
-    <div id="zoomModal"
-         class="zoom-modal"
-         onclick="closeZoom()">
-
-  ```
-    <span class="close-zoom">
-        &times;
-    </span>
-
-    <img id="zoomImg"
-         src=""
-         alt="Zoom da Imagem">
-  ```
-
+    <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
+        <span class="close-zoom">&times;</span>
+        <img id="zoomImg" src="" alt="Imagem Ampliada">
     </div>
 
-    <!-- ===================================================== -->
-
-    <!-- FOOTER -->
-
-    <!-- ===================================================== -->
 
     <footer>
-
-  ```
-    <div class="container">
 
         <div class="footer-cols">
 
             <div class="footer-col">
-
-                <h3>
-                    MediaNav Belém
-                </h3>
-
-                <p>
-                    Sua solução completa em atualizações de mapas,
-                    firmware e sistemas multimídia Renault.
-                </p>
-
+                <h3>MediaNav Belém</h3>
+                <p>Especialistas em atualizações de centrais multimídia Renault. Segurança, praticidade e suporte completo para o seu veículo.</p>
+                <div class="social-icons">
+                    <a href="https://wa.me/5591982079997" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
 
-
             <div class="footer-col">
-
-                <h3>
-                    Links Rápidos
-                </h3>
-
+                <h3>Navegação</h3>
                 <ul>
-
-                    <li>
-                        <a onclick="switchPage('home')">
-                            Início
-                        </a>
-                    </li>
-
-                    <li>
-                        <a onclick="switchPage('produtos')">
-                            Produtos
-                        </a>
-                    </li>
-
-                    <li>
-                        <a onclick="switchPage('quemsomos')">
-                            Quem Somos
-                        </a>
-                    </li>
-
-                    <li>
-                        <a onclick="switchPage('suporte')">
-                            Suporte / FAQ
-                        </a>
-                    </li>
-
-                    <li>
-                        <a onclick="switchPage('cadastro-form')">
-                            Cadastre-se
-                        </a>
-                    </li>
-
-                    <li>
-                        <a onclick="switchPage('comprovante')">
-                            Enviar Comprovante
-                        </a>
-                    </li>
-
+                    <li><a onclick="switchPage('home')">Início</a></li>
+                    <li><a onclick="switchPage('produtos')">Produtos</a></li>
+                    <li><a onclick="switchPage('quemsomos')">Quem Somos</a></li>
+                    <li><a onclick="switchPage('suporte')">Suporte / FAQ</a></li>
+                    <li><a onclick="switchPage('cadastro-form')">Cadastre-se</a></li>
+                    <li><a onclick="switchPage('comprovante')">Enviar Comprovante</a></li>
                 </ul>
-
             </div>
 
-
             <div class="footer-col">
-
-                <h3>
-                    Contato Direto
-                </h3>
-
-                <ul>
-
-                    <li>
-                        <i class="fa fa-map-marker-alt"></i>
-                        Belém - PA
-                    </li>
-
-                    <li>
-                        <i class="fa fa-phone"></i>
-                        (91) 98207-9997
-                    </li>
-
-                </ul>
-
+                <h3>Contato & Suporte</h3>
+                <p><i class="fa fa-map-marker-alt" style="color:#f1c40f;"></i> Belém - PA / Atendimento para todo o Brasil</p>
+                <p><i class="fab fa-whatsapp" style="color:#25d366;"></i> (91) 98207-9997</p>
+                <p><i class="fa fa-clock" style="color:#f1c40f;"></i> Seg a Sáb: 08h às 20h</p>
             </div>
 
         </div>
-
 
         <div class="footer-bottom">
-
+            <p>&copy; MediaNav Belém - Todos os direitos reservados.</p>
+            
             <div class="counters-wrapper">
+                <div class="visitor-counter">
+                    <i class="fa fa-users"></i>
+                    Visitantes Totais: <span id="counterTotal">...</span>
+                </div>
 
                 <div class="visitor-counter">
-
                     <i class="fa fa-circle"></i>
-
-                    Online agora:
-
-                    <span id="onlineCount">
-                        --
-                    </span>
-
+                    Online Agora: <span id="counterOnline">...</span>
                 </div>
-
-
-                <div class="visitor-counter">
-
-                    <i class="fa fa-eye"></i>
-
-                    Visitantes:
-
-                    <span id="visitCount">
-                        Carregando...
-                    </span>
-
-                </div>
-
             </div>
-
-
-            <p>
-                &copy; 2026 MediaNav Belém.
-                Todos os direitos reservados.
-            </p>
-
         </div>
-
-    </div>
-  ```
 
     </footer>
 
-    <!-- ===================================================== -->
-
-    <!-- JAVASCRIPT -->
-
-    <!-- ===================================================== -->
 
     <script>
-
+        // Sistema de Troca de Páginas (SPA)
         function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => page.classList.remove('active'));
 
-            const pages =
-                document.querySelectorAll('.page-view');
-
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
-            const target =
-                document.getElementById('page-' + pageId);
-
-            if (target) {
-
-                target.classList.add('active');
-
-                window.scrollTo(0, 0);
-
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-
         }
 
-
+        // Modais de Descrição
         function openModal(modalId) {
-
-            const modal =
-                document.getElementById(modalId);
-
-            if (modal) {
-                modal.style.display = 'block';
-            }
-
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'block';
         }
-
 
         function closeModal(modalId) {
-
-            const modal =
-                document.getElementById(modalId);
-
-            if (modal) {
-                modal.style.display = 'none';
-            }
-
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'none';
         }
-
-
-        function openZoom(imageSrc) {
-
-            const zoomModal =
-                document.getElementById('zoomModal');
-
-            const zoomImg =
-                document.getElementById('zoomImg');
-
-            zoomImg.src = imageSrc;
-
-            zoomModal.style.display = 'flex';
-
-        }
-
-
-        function closeZoom() {
-
-            document.getElementById('zoomModal')
-                .style.display = 'none';
-
-        }
-
 
         window.onclick = function(event) {
-
             if (event.target.classList.contains('modal')) {
-
                 event.target.style.display = 'none';
-
             }
-
         };
 
-
-        function filterProducts() {
-
-            let input =
-                document.getElementById('searchInput')
-                    .value
-                    .toLowerCase();
-
-            let cards =
-                document.querySelectorAll('.product-card');
-
-            cards.forEach(card => {
-
-                let name =
-                    card.getAttribute('data-name');
-
-                if (name.includes(input)) {
-
-                    card.style.display = "flex";
-
-                } else {
-
-                    card.style.display = "none";
-
-                }
-
-            });
-
+        // Zoom de Imagens
+        function openZoom(src) {
+            const zoomModal = document.getElementById('zoomModal');
+            const zoomImg = document.getElementById('zoomImg');
+            zoomImg.src = src;
+            zoomModal.style.display = 'flex';
         }
 
+        function closeZoom() {
+            document.getElementById('zoomModal').style.display = 'none';
+        }
 
-        function filterCategory(category, context) {
+        // Chatbot Toggle
+        function toggleChatbot() {
+            const box = document.getElementById('chatbotBox');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'block';
+            }
+        }
 
-            let gridId =
-                context === 'Home'
-                    ? 'productGridHome'
-                    : 'productGridProdutos';
+        function chatbotReply(option) {
+            const resp = document.getElementById('chatbotResponse');
+            resp.style.display = 'block';
 
-            let container =
-                document.getElementById(gridId);
+            if (option === 'pendrive') {
+                resp.innerHTML = "Recomendamos utilizar um pen drive de 4GB, 8GB ou 16GB de boa marca (SanDisk, Kingston), formatado em FAT32 no computador antes de colocar os arquivos.";
+            } else if (option === 'versao') {
+                resp.innerHTML = "No seu MediaNav, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>. Anote os números que aparecem na tela (ex: 4.1.0, 9.1.3, 1.0.15.3).";
+            } else if (option === 'envio') {
+                resp.innerHTML = "Após a confirmação do pagamento, os arquivos são disponibilizados por link para download direto no seu e-mail ou WhatsApp com orientações passo a passo!";
+            }
+        }
 
-            let cards =
-                container.querySelectorAll('.product-card');
+        // Filtro de Busca de Produtos
+        function filterProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.product-card');
 
-            let pageEl =
-                context === 'Home'
-                    ? document.getElementById('page-home')
-                    : document.getElementById('page-produtos');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                if (name.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
-            let buttons =
-                pageEl.querySelectorAll('.filter-btn');
+        // Filtro por Categoria
+        function filterCategory(category, targetSection) {
+            const gridId = targetSection === 'Home' ? 'productGridHome' : 'productGridProdutos';
+            const cards = document.querySelectorAll(`#${gridId} .product-card`);
+            const container = targetSection === 'Home' ? document.getElementById('page-home') : document.getElementById('page-produtos');
+            const btns = container.querySelectorAll('.filter-btn');
 
-            buttons.forEach(btn =>
-                btn.classList.remove('active')
-            );
-
+            btns.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
             cards.forEach(card => {
-
-                let cardCategory =
-                    card.getAttribute('data-category');
-
-                if (
-                    category === 'all' ||
-                    cardCategory === category
-                ) {
-
-                    card.style.display = "flex";
-
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
                 } else {
-
-                    card.style.display = "none";
-
+                    card.style.display = 'none';
                 }
-
             });
-
         }
 
+        // Relógio, Data e Localização
+        function updateClock() {
+            const now = new Date();
+            
+            // Relógio
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('tempoRelogio').innerText = `${hours}:${minutes}:${seconds}`;
 
-        function setRating(val) {
-
-            document.getElementById(
-                'reviewRatingValue'
-            ).value = val;
-
-            const stars =
-                document.querySelectorAll(
-                    '#starRatingInput i'
-                );
-
-            stars.forEach((star, idx) => {
-
-                if (idx < val) {
-
-                    star.classList.add('selected');
-
-                } else {
-
-                    star.classList.remove('selected');
-
-                }
-
-            });
-
+            // Data
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            document.getElementById('tempoData').innerText = now.toLocaleDateString('pt-BR', options);
         }
 
+        setInterval(updateClock, 1000);
+        updateClock();
 
-        function enviarAvaliacao(e) {
-
-            e.preventDefault();
-
-            alert(
-                "Obrigado pela sua avaliação! Publicada com sucesso."
-            );
-
-            document.getElementById(
-                'formReview'
-            ).reset();
-
-            setRating(5);
-
+        // Simulação de Geolocalização Simples
+        if ("geolocation" in navigator) {
+            document.getElementById('geoLocalizacao').innerText = "Belém / PA";
+        } else {
+            document.getElementById('geoLocalizacao').innerText = "Belém / PA";
         }
 
-
-        const mockBuyers = [
-
-            {
-                name: "Carlos de Belém - PA",
-                product: "Atualização Mapa 2025 Standard"
-            },
-
-            {
-                name: "Marcos de Ananindeua - PA",
-                product: "Atualização Sistema Evolution 9.1.3"
-            },
-
-            {
-                name: "João de Castanhal - PA",
-                product: "Atualização Mapa 2025 Evolution"
-            }
-
+        // Notificação Toast Simulado (Prova Social)
+        const toastTitles = ["Marcos de São Paulo - SP", "Roberto de Curitiba - PR", "Ana de Belém - PA", "Lucas de Belo Horizonte - MG"];
+        const toastDescs = [
+            "acabou de comprar Mapa 2025 Evolution",
+            "comprou Atualização Sistema 9.1.3",
+            "adquiriu Mapa Brasil 2025 Standard",
+            "comprou Atualização 4.1.0 Sistema"
         ];
 
+        function showRandomToast() {
+            const toast = document.getElementById('toastNotification');
+            const randomIndex = Math.floor(Math.random() * toastTitles.length);
 
-        function triggerToast() {
-
-            const toast =
-                document.getElementById(
-                    'toastNotification'
-                );
-
-            const titleEl =
-                document.getElementById(
-                    'toastTitle'
-                );
-
-            const descEl =
-                document.getElementById(
-                    'toastDesc'
-                );
-
-            const randomBuyer =
-                mockBuyers[
-                    Math.floor(
-                        Math.random() *
-                        mockBuyers.length
-                    )
-                ];
-
-            titleEl.innerText =
-                randomBuyer.name;
-
-            descEl.innerText =
-                `acabou de comprar a ${randomBuyer.product}`;
+            document.getElementById('toastTitle').innerText = toastTitles[randomIndex];
+            document.getElementById('toastDesc').innerText = toastDescs[randomIndex];
 
             toast.classList.add('show');
 
             setTimeout(() => {
-
                 toast.classList.remove('show');
-
-            }, 8000);
-
+            }, 5000);
         }
 
+        setInterval(showRandomToast, 18000);
 
-        function toggleChatbot() {
+        // Contadores Fictícios Dinâmicos
+        function initCounters() {
+            let total = localStorage.getItem('mn_total_visitors') || 14820;
+            total = parseInt(total) + 1;
+            localStorage.setItem('mn_total_visitors', total);
+            document.getElementById('counterTotal').innerText = total.toLocaleString('pt-BR');
 
-            const box =
-                document.getElementById(
-                    'chatbotBox'
-                );
-
-            box.style.display =
-                box.style.display === 'block'
-                    ? 'none'
-                    : 'block';
-
+            const online = Math.floor(Math.random() * 8) + 5;
+            document.getElementById('counterOnline').innerText = online;
         }
 
-
-        function chatbotReply(topic) {
-
-            const respDiv =
-                document.getElementById(
-                    'chatbotResponse'
-                );
-
-            respDiv.style.display = 'block';
-
-
-            if (topic === 'pendrive') {
-
-                respDiv.innerHTML =
-                    "Recomendamos utilizar um pen drive de <strong>4GB a 8GB</strong>, USB 2.0, formatado em FAT32 e totalmente vazio.";
-
-            }
-
-
-            else if (topic === 'versao') {
-
-                respDiv.innerHTML =
-                    "Para ver a versão, vá em: <strong>Configurações > Sistema > Versão do Sistema</strong>.";
-
-            }
-
-
-            else if (topic === 'envio') {
-
-                respDiv.innerHTML =
-                    "O envio é digital após a confirmação do pagamento e envio do comprovante.";
-
-            }
-
-        }
-
-
-        function atualizarRelogioData() {
-
-            const agora =
-                new Date();
-
-            const relogioEl =
-                document.getElementById(
-                    'tempoRelogio'
-                );
-
-            const dataEl =
-                document.getElementById(
-                    'tempoData'
-                );
-
-
-            if (relogioEl) {
-
-                relogioEl.innerText =
-                    agora.toLocaleTimeString(
-                        'pt-BR'
-                    );
-
-            }
-
-
-            if (dataEl) {
-
-                const opcoesData = {
-
-                    weekday: 'long',
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-
-                };
-
-                let dataFormatada =
-                    agora.toLocaleDateString(
-                        'pt-BR',
-                        opcoesData
-                    );
-
-                dataEl.innerText =
-                    dataFormatada.charAt(0).toUpperCase() +
-                    dataFormatada.slice(1);
-
-            }
-
-        }
-
-
-        function carregarGeolocalizacao() {
-
-            const geoEl =
-                document.getElementById(
-                    'geoLocalizacao'
-                );
-
-
-            if ("geolocation" in navigator) {
-
-                navigator.geolocation.getCurrentPosition(
-
-                    position => {
-
-                        const lat =
-                            position.coords.latitude;
-
-                        const lon =
-                            position.coords.longitude;
-
-
-                        fetch(
-                            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
-                        )
-
-                        .then(res =>
-                            res.json()
-                        )
-
-                        .then(data => {
-
-                            if (data.address) {
-
-                                const cidade =
-                                    data.address.city ||
-                                    data.address.town ||
-                                    data.address.village ||
-                                    data.address.municipality ||
-                                    "Belém";
-
-                                const estado =
-                                    data.address.state ||
-                                    "PA";
-
-                                if (geoEl) {
-
-                                    geoEl.innerText =
-                                        `${cidade} - ${estado}`;
-
-                                }
-
-                            } else {
-
-                                carregarGeoPorIP();
-
-                            }
-
-                        })
-
-                        .catch(() =>
-                            carregarGeoPorIP()
-                        );
-
-                    },
-
-                    error => {
-
-                        carregarGeoPorIP();
-
-                    },
-
-                    {
-                        timeout: 10000,
-                        enableHighAccuracy: true
-                    }
-
-                );
-
-            } else {
-
-                carregarGeoPorIP();
-
-            }
-
-        }
-
-
-        function carregarGeoPorIP() {
-
-            fetch(
-                'https://ipapi.co/json/'
-            )
-
-            .then(response =>
-                response.json()
-            )
-
-            .then(data => {
-
-                if (
-                    data &&
-                    data.city &&
-                    data.region_code
-                ) {
-
-                    const geoEl =
-                        document.getElementById(
-                            'geoLocalizacao'
-                        );
-
-                    if (geoEl) {
-
-                        geoEl.innerText =
-                            `${data.city} - ${data.region_code}`;
-
-                    }
-
+        initCounters();
+
+        // Sistema de Avaliação (Estrelas)
+        function setRating(rating) {
+            document.getElementById('reviewRatingValue').value = rating;
+            const stars = document.querySelectorAll('#starRatingInput i');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('selected');
                 } else {
-
-                    const geoEl =
-                        document.getElementById(
-                            'geoLocalizacao'
-                        );
-
-                    if (geoEl) {
-
-                        geoEl.innerText =
-                            "Belém - PA";
-
-                    }
-
+                    star.classList.remove('selected');
                 }
-
-            })
-
-            .catch(() => {
-
-                const geoEl =
-                    document.getElementById(
-                        'geoLocalizacao'
-                    );
-
-                if (geoEl) {
-
-                    geoEl.innerText =
-                        "Belém - PA";
-
-                }
-
             });
-
         }
 
+        function enviarAvaliacao(event) {
+            event.preventDefault();
+            const rating = document.getElementById('reviewRatingValue').value;
+            const author = document.getElementById('reviewAuthor').value;
+            const text = document.getElementById('reviewText').value;
 
-        atualizarRelogioData();
+            const grid = document.getElementById('testimonialGrid');
 
-        setInterval(
-            atualizarRelogioData,
-            1000
-        );
-
-
-        window.addEventListener(
-            'DOMContentLoaded',
-            () => {
-
-                carregarGeolocalizacao();
-
-
-                let visits =
-                    localStorage.getItem(
-                        'medianav_visit_count'
-                    ) || 1246;
-
-
-                if (
-                    !sessionStorage.getItem(
-                        'visited_session'
-                    )
-                ) {
-
-                    visits =
-                        parseInt(visits) + 1;
-
-                    sessionStorage.setItem(
-                        'visited_session',
-                        'true'
-                    );
-
-                }
-
-
-                localStorage.setItem(
-                    'medianav_visit_count',
-                    visits
-                );
-
-
-                const visitCountEl =
-                    document.getElementById(
-                        'visitCount'
-                    );
-
-
-                if (visitCountEl) {
-
-                    visitCountEl.innerText =
-                        Number(visits)
-                            .toLocaleString('pt-BR');
-
-                }
-
-
-                let onlineUsers =
-                    Math.floor(
-                        Math.random() * 10
-                    ) + 5;
-
-
-                const onlineCountEl =
-                    document.getElementById(
-                        'onlineCount'
-                    );
-
-
-                if (onlineCountEl) {
-
-                    onlineCountEl.innerText =
-                        onlineUsers;
-
-                }
-
-
-                setTimeout(
-                    triggerToast,
-                    5000
-                );
-
-
-                setInterval(
-                    triggerToast,
-                    65000
-                );
-
+            let starIcons = '';
+            for (let i = 0; i < rating; i++) {
+                starIcons += '<i class="fa fa-star"></i> ';
             }
-        );
 
+            const newCard = document.createElement('div');
+            newCard.className = 'testimonial-card';
+            newCard.innerHTML = `
+                <div class="testimonial-stars">${starIcons}</div>
+                <div class="testimonial-text">"${text}"</div>
+                <div class="testimonial-author">${author}</div>
+                <div class="testimonial-location">Cliente Verificado</div>
+            `;
 
-        const form =
-            document.getElementById(
-                'formComprovante'
-            );
-
-        const result =
-            document.getElementById(
-                'formStatus'
-            );
-
-
-        if (form) {
-
-            form.addEventListener(
-                'submit',
-                function(e) {
-
-                    e.preventDefault();
-
-                    const formData =
-                        new FormData(form);
-
-
-                    result.innerHTML =
-                        "Enviando aviso, por favor aguarde...";
-
-                    result.style.color =
-                        "#d35400";
-
-
-                    fetch(
-                        'https://api.web3forms.com/submit',
-                        {
-                            method: 'POST',
-                            body: formData
-                        }
-                    )
-
-                    .then(async response => {
-
-                        let json =
-                            await response.json();
-
-
-                        if (response.status == 200) {
-
-                            result.innerHTML =
-                                "Aviso enviado com sucesso!";
-
-                            result.style.color =
-                                "#27ae60";
-
-                            form.reset();
-
-                        } else {
-
-                            result.innerHTML =
-                                json.message;
-
-                            result.style.color =
-                                "#c0392b";
-
-                        }
-
-                    })
-
-                    .catch(() => {
-
-                        result.innerHTML =
-                            "Erro ao enviar. Tente novamente pelo WhatsApp.";
-
-                        result.style.color =
-                            "#c0392b";
-
-                    });
-
-                }
-            );
-
+            grid.prepend(newCard);
+            document.getElementById('formReview').reset();
+            setRating(5);
+            alert('Obrigado por deixar sua avaliação!');
         }
 
+        // Envio dos Formulários (Web3Forms)
+        function enviarFormularioWeb3(event, tipo) {
+            event.preventDefault();
+
+            let form, result;
+
+            if (tipo === 'cadastro') {
+                form = document.getElementById('formCadastroCliente');
+                result = document.getElementById('statusCadastro');
+            } else {
+                form = document.getElementById('formComprovante');
+                result = document.getElementById('statusComprovante');
+            }
+
+            const formData = new FormData(form);
+
+            result.innerHTML = "Enviando, por favor aguarde...";
+            result.style.color = "#d35400";
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async response => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = tipo === 'cadastro' ? "Cadastro realizado com sucesso!" : "Aviso enviado com sucesso!";
+                    result.style.color = "#27ae60";
+                    form.reset();
+                } else {
+                    result.innerHTML = json.message;
+                    result.style.color = "#c0392b";
+                }
+            })
+            .catch(() => {
+                result.innerHTML = "Erro ao enviar. Tente novamente pelo WhatsApp.";
+                result.style.color = "#c0392b";
+            });
+        }
     </script>
 
 </body>
